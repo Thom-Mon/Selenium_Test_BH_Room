@@ -1,0 +1,432 @@
+<html lang="de"><head>
+  <meta charset="utf-8">
+  <title>BH-Room</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+<!--  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">-->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<link rel="stylesheet" href="styles.css"><style>
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJhcHAuY29tcG9uZW50LnNjc3MifQ== */</style><style>a[_ngcontent-fja-c146] {
+  color: white;
+  text-decoration: none;
+}
+
+.nav-pills[_ngcontent-fja-c146]   .nav-item[_ngcontent-fja-c146] {
+  padding: 3px 8px;
+}
+
+.bhRoomLogo[_ngcontent-fja-c146] {
+  width: 200px;
+}
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm5hdmlnYXRpb24uY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxZQUFBO0VBQ0EscUJBQUE7QUFDRjs7QUFFQTtFQUNFLGdCQUFBO0FBQ0Y7O0FBWUE7RUFDRSxZQUFBO0FBVEYiLCJmaWxlIjoibmF2aWdhdGlvbi5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImEge1xyXG4gIGNvbG9yOiB3aGl0ZTtcclxuICB0ZXh0LWRlY29yYXRpb246IG5vbmU7XHJcbn1cclxuXHJcbi5uYXYtcGlsbHMgLm5hdi1pdGVtIHtcclxuICBwYWRkaW5nOiAzcHggOHB4O1xyXG59XHJcblxyXG4vLy50b3BuYXYge1xyXG4vLyAgZGlzcGxheTogZmxleDtcclxuLy8gIGZsZXgtZGlyZWN0aW9uOiByb3c7XHJcbi8vICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWFyb3VuZDtcclxuLy8gIGJhY2tncm91bmQtY29sb3I6IGdyYXk7XHJcbi8vICBwYWRkaW5nOiA1cHg7XHJcbi8vICBoZWlnaHQ6IDUwcHg7XHJcbi8vXHJcbi8vfVxyXG5cclxuLmJoUm9vbUxvZ297XHJcbiAgd2lkdGg6MjAwcHg7XHJcbn1cclxuIl19 */</style><style>.footer[_ngcontent-fja-c147] {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: white;
+  text-align: center;
+  height: 44px;
+  background-color: #c6538c;
+}
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImZvb3Rlci5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFFQTtFQUNFLGVBQUE7RUFDQSxPQUFBO0VBQ0EsU0FBQTtFQUNBLFdBQUE7RUFDQSxZQUFBO0VBQ0Esa0JBQUE7RUFDQSxZQUFBO0VBQ0EseUJBVlc7QUFTYiIsImZpbGUiOiJmb290ZXIuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIkYmFzZS1jb2xvcjogI2M2NTM4YztcclxuXHJcbi5mb290ZXIge1xyXG4gIHBvc2l0aW9uOiBmaXhlZDtcclxuICBsZWZ0OiAwO1xyXG4gIGJvdHRvbTogMDtcclxuICB3aWR0aDogMTAwJTtcclxuICBjb2xvcjogd2hpdGU7XHJcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gIGhlaWdodDogNDRweDtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiAkYmFzZS1jb2xvcjtcclxufVxyXG5cclxuIl19 */</style><style>.booking-view[_ngcontent-fja-c195] {
+  padding: 22px;
+}
+@media only screen and (min-width: 1250px) {
+  .booking-view[_ngcontent-fja-c195]   .form-inline[_ngcontent-fja-c195] {
+    display: grid;
+    grid-template-columns: 400px 1fr 458px;
+    grid-template-rows: 1fr;
+    grid-gap: 22px 22px;
+    gap: 22px 22px;
+    grid-template-areas: "room-details booking-details date-group";
+  }
+}
+@media only screen and (max-width: 1249px) {
+  .booking-view[_ngcontent-fja-c195]   .form-inline[_ngcontent-fja-c195] {
+    display: grid;
+    grid-template-columns: 1fr 458px;
+    grid-template-rows: 500px 0.7fr;
+    justify-content: space-between;
+    grid-gap: 22px 22px;
+    gap: 22px 22px;
+    grid-template-areas: "booking-details date-group" "room-details date-group";
+  }
+}
+.booking-view[_ngcontent-fja-c195]   .room-image[_ngcontent-fja-c195] {
+  width: 400px;
+  height: 300px;
+  object-fit: cover;
+}
+.booking-view[_ngcontent-fja-c195]   .booking-details[_ngcontent-fja-c195] {
+  grid-area: booking-details;
+  text-align: center;
+}
+.booking-view[_ngcontent-fja-c195]   .booking-details-card[_ngcontent-fja-c195] {
+  height: 500px;
+}
+.booking-view[_ngcontent-fja-c195]   .room-details[_ngcontent-fja-c195] {
+  grid-area: room-details;
+  text-align: center;
+  min-width: 400px;
+  height: 300px;
+}
+.booking-view[_ngcontent-fja-c195]   .room-details-card[_ngcontent-fja-c195] {
+  margin-left: 0;
+  margin-right: auto;
+  width: 400px;
+}
+.booking-view[_ngcontent-fja-c195]   .date-group[_ngcontent-fja-c195] {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-gap: 0px 0px;
+  gap: 0px 0px;
+  grid-template-areas: "date-picker" "time-picker";
+  grid-area: date-group;
+  float: right;
+}
+.booking-view[_ngcontent-fja-c195]   .date-picker[_ngcontent-fja-c195] {
+  grid-area: date-picker;
+  align-items: center;
+}
+.booking-view[_ngcontent-fja-c195]   .time-picker[_ngcontent-fja-c195] {
+  display: grid;
+  grid-template-columns: 1fr 0.5fr;
+  grid-template-rows: 1fr;
+  grid-gap: 0px 0px;
+  gap: 0px 0px;
+  grid-template-areas: "start-time end-time";
+  grid-area: time-picker;
+}
+.booking-view[_ngcontent-fja-c195]   .start-time[_ngcontent-fja-c195] {
+  grid-area: start-time;
+  display: inline;
+}
+.booking-view[_ngcontent-fja-c195]   .end-time[_ngcontent-fja-c195] {
+  grid-area: end-time;
+}
+.booking-view[_ngcontent-fja-c195]   .btn[_ngcontent-fja-c195] {
+  visibility: visible;
+}
+.custom-day[_ngcontent-fja-c195] {
+  text-align: center;
+  padding: 0.15rem 0.25rem;
+  display: inline-block;
+  height: 2rem;
+  width: 2rem;
+  border-radius: 10px;
+}
+.custom-day.single[_ngcontent-fja-c195] {
+  background-color: #0275d8;
+  color: white;
+}
+.custom-day.rangeStart[_ngcontent-fja-c195] {
+  background-color: #0275d8;
+  color: white;
+  border-radius: 10px 0 0 10px;
+}
+.custom-day.rangeEnd[_ngcontent-fja-c195] {
+  background-color: #0275d8;
+  color: white;
+  border-radius: 0 10px 10px 0;
+}
+.custom-day[_ngcontent-fja-c195]:hover {
+  background-color: #0275d8;
+  color: white;
+}
+.custom-day.faded[_ngcontent-fja-c195] {
+  background-color: rgba(2, 117, 216, 0.5);
+  color: white;
+  border-radius: 0;
+}
+.custom-day.unavailable[_ngcontent-fja-c195] {
+  background-color: rgba(222, 50, 50, 0.4);
+  color: white;
+  border-radius: 0;
+}
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImJvb2tpbmcuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBSUE7RUFDRSxhQUFBO0FBSEY7QUFLRTtFQUNFO0lBQ0UsYUFBQTtJQUNBLHNDQUFBO0lBQ0EsdUJBQUE7SUFDQSxtQkFBQTtJQUFBLGNBQUE7SUFDQSw4REFDRjtFQUpGO0FBQ0Y7QUFNRTtFQUNFO0lBQ0UsYUFBQTtJQUNBLGdDQUFBO0lBQ0EsK0JBQUE7SUFDQSw4QkFBQTtJQUNBLG1CQUFBO0lBQUEsY0FBQTtJQUNBLDJFQUNGO0VBTEY7QUFDRjtBQVNFO0VBQ0UsWUFBQTtFQUNBLGFBQUE7RUFDQSxpQkFBQTtBQVBKO0FBVUU7RUFDRSwwQkFBQTtFQUNBLGtCQUFBO0FBUko7QUFXRTtFQUNFLGFBQUE7QUFUSjtBQWFFO0VBQ0UsdUJBQUE7RUFDQSxrQkFBQTtFQUNBLGdCQUFBO0VBQ0EsYUFBQTtBQVhKO0FBY0U7RUFDRSxjQUFBO0VBQ0Esa0JBQUE7RUFDQSxZQUFBO0FBWko7QUFnQkU7RUFDRSxhQUFBO0VBQ0EsMEJBQUE7RUFDQSwyQkFBQTtFQUNBLGlCQUFBO0VBQUEsWUFBQTtFQUNBLGdEQUNBO0VBRUEscUJBQUE7RUFDQSxZQUFBO0FBaEJKO0FBbUJFO0VBQ0Usc0JBQUE7RUFFQSxtQkFBQTtBQWxCSjtBQXFCRTtFQUNFLGFBQUE7RUFDQSxnQ0FBQTtFQUNBLHVCQUFBO0VBQ0EsaUJBQUE7RUFBQSxZQUFBO0VBQ0EsMENBQ0E7RUFDQSxzQkFBQTtBQXBCSjtBQXNCRTtFQUNFLHFCQUFBO0VBRUEsZUFBQTtBQXJCSjtBQXVCRTtFQUNFLG1CQUFBO0FBckJKO0FBMkJFO0VBQ0UsbUJBQUE7QUF6Qko7QUFrQ0E7RUFDRSxrQkFBQTtFQUNBLHdCQUFBO0VBQ0EscUJBQUE7RUFDQSxZQUFBO0VBQ0EsV0FBQTtFQUNBLG1CQUFBO0FBL0JGO0FBMENBO0VBQ0UseUJBQUE7RUFDQSxZQUFBO0FBdkNGO0FBMENBO0VBQ0UseUJBQUE7RUFDQSxZQUFBO0VBQ0EsNEJBQUE7QUF2Q0Y7QUEwQ0E7RUFDRSx5QkFBQTtFQUNBLFlBQUE7RUFDQSw0QkFBQTtBQXZDRjtBQTBDQTtFQUNFLHlCQUFBO0VBQ0EsWUFBQTtBQXZDRjtBQTBDQTtFQUNFLHdDQUFBO0VBQ0EsWUFBQTtFQUNBLGdCQUFBO0FBdkNGO0FBMENBO0VBQ0Usd0NBQUE7RUFDQSxZQUFBO0VBQ0EsZ0JBQUE7QUF2Q0YiLCJmaWxlIjoiYm9va2luZy5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIlxyXG5cclxuXHJcbi8vIGdyaWRMYXlvdXRcclxuLmJvb2tpbmctdmlldyB7XHJcbiAgcGFkZGluZzogMjJweDtcclxuXHJcbiAgQG1lZGlhIG9ubHkgc2NyZWVuIGFuZCAobWluLXdpZHRoOiAxMjUwcHgpIHtcclxuICAgIC5mb3JtLWlubGluZSB7XHJcbiAgICAgIGRpc3BsYXk6IGdyaWQ7XHJcbiAgICAgIGdyaWQtdGVtcGxhdGUtY29sdW1uczogNDAwcHggMWZyIDQ1OHB4O1xyXG4gICAgICBncmlkLXRlbXBsYXRlLXJvd3M6IDFmcjtcclxuICAgICAgZ2FwOiAyMnB4IDIycHg7XHJcbiAgICAgIGdyaWQtdGVtcGxhdGUtYXJlYXM6XHJcbiAgICBcInJvb20tZGV0YWlscyBib29raW5nLWRldGFpbHMgZGF0ZS1ncm91cFwiO1xyXG4gICAgfVxyXG4gIH1cclxuICBAbWVkaWEgb25seSBzY3JlZW4gYW5kIChtYXgtd2lkdGg6IDEyNDlweCkge1xyXG4gICAgLmZvcm0taW5saW5lIHtcclxuICAgICAgZGlzcGxheTogZ3JpZDtcclxuICAgICAgZ3JpZC10ZW1wbGF0ZS1jb2x1bW5zOiAxZnIgNDU4cHg7XHJcbiAgICAgIGdyaWQtdGVtcGxhdGUtcm93czogNTAwcHggMC43ZnI7XHJcbiAgICAgIGp1c3RpZnktY29udGVudDogc3BhY2UtYmV0d2VlbjtcclxuICAgICAgZ2FwOiAyMnB4IDIycHg7XHJcbiAgICAgIGdyaWQtdGVtcGxhdGUtYXJlYXM6XHJcbiAgICBcImJvb2tpbmctZGV0YWlscyBkYXRlLWdyb3VwXCJcclxuICAgIFwicm9vbS1kZXRhaWxzIGRhdGUtZ3JvdXBcIjtcclxuICAgIH1cclxuICB9XHJcblxyXG4gIC5yb29tLWltYWdlIHtcclxuICAgIHdpZHRoOiA0MDBweDtcclxuICAgIGhlaWdodDogMzAwcHg7XHJcbiAgICBvYmplY3QtZml0OiBjb3ZlcjtcclxuICB9XHJcblxyXG4gIC5ib29raW5nLWRldGFpbHMge1xyXG4gICAgZ3JpZC1hcmVhOiBib29raW5nLWRldGFpbHM7XHJcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbiAgfVxyXG5cclxuICAuYm9va2luZy1kZXRhaWxzLWNhcmQge1xyXG4gICAgaGVpZ2h0OiA1MDBweDtcclxuXHJcbiAgfVxyXG5cclxuICAucm9vbS1kZXRhaWxzIHtcclxuICAgIGdyaWQtYXJlYTogcm9vbS1kZXRhaWxzO1xyXG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gICAgbWluLXdpZHRoOiA0MDBweDtcclxuICAgIGhlaWdodDogMzAwcHg7XHJcbiAgfVxyXG5cclxuICAucm9vbS1kZXRhaWxzLWNhcmQge1xyXG4gICAgbWFyZ2luLWxlZnQ6IDA7XHJcbiAgICBtYXJnaW4tcmlnaHQ6IGF1dG87XHJcbiAgICB3aWR0aDogNDAwcHg7XHJcbiAgICAvL2hlaWdodDogMzAwcHg7XHJcbiAgfVxyXG5cclxuICAuZGF0ZS1ncm91cCB7XHJcbiAgICBkaXNwbGF5OiBncmlkO1xyXG4gICAgZ3JpZC10ZW1wbGF0ZS1jb2x1bW5zOiAxZnI7XHJcbiAgICBncmlkLXRlbXBsYXRlLXJvd3M6IDFmciAxZnI7XHJcbiAgICBnYXA6IDBweCAwcHg7XHJcbiAgICBncmlkLXRlbXBsYXRlLWFyZWFzOlxyXG4gICAgXCJkYXRlLXBpY2tlclwiXHJcbiAgICBcInRpbWUtcGlja2VyXCI7XHJcbiAgICBncmlkLWFyZWE6IGRhdGUtZ3JvdXA7XHJcbiAgICBmbG9hdDogcmlnaHQ7XHJcbiAgfVxyXG5cclxuICAuZGF0ZS1waWNrZXIge1xyXG4gICAgZ3JpZC1hcmVhOiBkYXRlLXBpY2tlcjtcclxuICAgIC8vbWFyZ2luLXJpZ2h0OiAwcHg7XHJcbiAgICBhbGlnbi1pdGVtczogY2VudGVyO1xyXG4gIH1cclxuXHJcbiAgLnRpbWUtcGlja2VyIHtcclxuICAgIGRpc3BsYXk6IGdyaWQ7XHJcbiAgICBncmlkLXRlbXBsYXRlLWNvbHVtbnM6IDFmciAwLjVmcjtcclxuICAgIGdyaWQtdGVtcGxhdGUtcm93czogMWZyO1xyXG4gICAgZ2FwOiAwcHggMHB4O1xyXG4gICAgZ3JpZC10ZW1wbGF0ZS1hcmVhczpcclxuICAgIFwic3RhcnQtdGltZSBlbmQtdGltZVwiO1xyXG4gICAgZ3JpZC1hcmVhOiB0aW1lLXBpY2tlcjtcclxuICB9XHJcbiAgLnN0YXJ0LXRpbWUge1xyXG4gICAgZ3JpZC1hcmVhOiBzdGFydC10aW1lO1xyXG4gICAgLy93aWR0aDogMTIwcHg7XHJcbiAgICBkaXNwbGF5OiBpbmxpbmU7XHJcbiAgfVxyXG4gIC5lbmQtdGltZSB7XHJcbiAgICBncmlkLWFyZWE6IGVuZC10aW1lO1xyXG4gICAgLy93aWR0aDogMTQzcHg7XHJcbiAgfVxyXG5cclxuXHJcblxyXG4gIC5idG4ge1xyXG4gICAgdmlzaWJpbGl0eTogdmlzaWJsZTtcclxuICB9XHJcblxyXG5cclxuXHJcbn1cclxuXHJcblxyXG4vLyBuZ2JEYXRlUGlja2VyXHJcbi5jdXN0b20tZGF5IHtcclxuICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbiAgcGFkZGluZzogMC4xNXJlbSAwLjI1cmVtO1xyXG4gIGRpc3BsYXk6IGlubGluZS1ibG9jaztcclxuICBoZWlnaHQ6IDJyZW07XHJcbiAgd2lkdGg6IDJyZW07XHJcbiAgYm9yZGVyLXJhZGl1czogMTBweDtcclxuXHJcbn1cclxuLy8uY3VzdG9tLWRheS5mb2N1c2VkIHtcclxuLy8gIGJhY2tncm91bmQtY29sb3I6IHJlZDtcclxuLy99XHJcbi8vLmN1c3RvbS1kYXkucmFuZ2Uge1xyXG4vLyAgYmFja2dyb3VuZC1jb2xvcjogcmdiKDIsIDExNywgMjE2KTtcclxuLy8gIGNvbG9yOiB3aGl0ZTtcclxuLy99XHJcblxyXG4uY3VzdG9tLWRheS5zaW5nbGUge1xyXG4gIGJhY2tncm91bmQtY29sb3I6IHJnYigyLCAxMTcsIDIxNik7XHJcbiAgY29sb3I6IHdoaXRlO1xyXG59XHJcblxyXG4uY3VzdG9tLWRheS5yYW5nZVN0YXJ0IHtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiByZ2IoMiwgMTE3LCAyMTYpO1xyXG4gIGNvbG9yOiB3aGl0ZTtcclxuICBib3JkZXItcmFkaXVzOiAxMHB4IDAgMCAxMHB4O1xyXG59XHJcblxyXG4uY3VzdG9tLWRheS5yYW5nZUVuZCB7XHJcbiAgYmFja2dyb3VuZC1jb2xvcjogcmdiKDIsIDExNywgMjE2KTtcclxuICBjb2xvcjogd2hpdGU7XHJcbiAgYm9yZGVyLXJhZGl1czogMCAxMHB4IDEwcHggMDtcclxufVxyXG5cclxuLmN1c3RvbS1kYXk6aG92ZXIge1xyXG4gIGJhY2tncm91bmQtY29sb3I6IHJnYigyLCAxMTcsIDIxNik7XHJcbiAgY29sb3I6IHdoaXRlO1xyXG59XHJcblxyXG4uY3VzdG9tLWRheS5mYWRlZCB7XHJcbiAgYmFja2dyb3VuZC1jb2xvcjogcmdiYSgyLCAxMTcsIDIxNiwgMC41KTtcclxuICBjb2xvcjogd2hpdGU7XHJcbiAgYm9yZGVyLXJhZGl1czogMDtcclxufVxyXG5cclxuLmN1c3RvbS1kYXkudW5hdmFpbGFibGUge1xyXG4gIGJhY2tncm91bmQtY29sb3I6IHJnYigyMjIsIDUwLCA1MCwgMC40KTtcclxuICBjb2xvcjogd2hpdGU7XHJcbiAgYm9yZGVyLXJhZGl1czogMDtcclxufVxyXG5cclxuXHJcblxyXG4vLy5jdXN0b20tZGF5IHtcclxuLy8gIHRleHQtYWxpZ246IGNlbnRlcjtcclxuLy8gIHBhZGRpbmc6IDAuMTg1cmVtIDAuMjVyZW07XHJcbi8vICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XHJcbi8vICBoZWlnaHQ6IDJyZW07XHJcbi8vICB3aWR0aDogMnJlbTtcclxuLy99XHJcbi8vLmN1c3RvbS1kYXkuZm9jdXNlZCB7XHJcbi8vICBiYWNrZ3JvdW5kLWNvbG9yOiAjZTZlNmU2O1xyXG4vL31cclxuLy9cclxuLy8uY3VzdG9tLWRheS5zaW5nbGUge1xyXG4vLyAgYm9yZGVyLXJhZGl1czogMTBweDtcclxuLy99XHJcbi8vXHJcbi8vLmN1c3RvbS1kYXkucmFuZ2Uge1xyXG4vLyAgYmFja2dyb3VuZC1jb2xvcjogcmdiKDIsIDExNywgMjE2KTtcclxuLy8gIGNvbG9yOiB3aGl0ZTtcclxuLy99XHJcbi8vXHJcbi8vLmN1c3RvbS1kYXk6aG92ZXIge1xyXG4vLyAgYmFja2dyb3VuZC1jb2xvcjogcmdiKDIsIDExNywgMjE2KTtcclxuLy8gIGNvbG9yOiB3aGl0ZTtcclxuLy8gIGJvcmRlci1yYWRpdXM6IDEwcHg7XHJcbi8vXHJcbi8vfVxyXG4vLy5jdXN0b20tZGF5LmZhZGVkIHtcclxuLy8gIGJhY2tncm91bmQtY29sb3I6IHJnYmEoMiwgMTE3LCAyMTYsIDAuNSk7XHJcbi8vICBib3JkZXItcmFkaXVzOiAwO1xyXG4vL31cclxuLy9cclxuLy8uY3VzdG9tLWRheS5lbmQge1xyXG4vLyAgYmFja2dyb3VuZC1jb2xvcjogcmdiKDIsIDExNywgMjE2KTtcclxuLy8gIGNvbG9yOiB3aGl0ZTtcclxuLy9cclxuLy8gIGJvcmRlci1yYWRpdXM6IDAgMTBweCAxMHB4IDA7XHJcbi8vfVxyXG4vL1xyXG4vLy5jdXN0b20tZGF5LnJhbmdlLmVuZCB7XHJcbi8vICBiYWNrZ3JvdW5kLWNvbG9yOiByZ2IoMiwgMTE3LCAyMTYpO1xyXG4vLyAgY29sb3I6IHdoaXRlO1xyXG4vL1xyXG4vLyAgYm9yZGVyLXJhZGl1czogMCAxMHB4IDEwcHggMDtcclxuLy99XHJcblxyXG5cclxuLy8uZGF5IHtcclxuLy8gIHRleHQtYWxpZ246IGNlbnRlcjtcclxuLy8gIHBhZGRpbmc6IDdweDtcclxuLy8gIGJvcmRlci1yYWRpdXM6IDFyZW07XHJcbi8vICB3aWR0aDogMTAwJSAhaW1wb3J0YW50O1xyXG4vL31cclxuXHJcbiJdfQ== */</style><style>ngb-datepicker{border:1px solid #dfdfdf;border-radius:.25rem;display:inline-block}ngb-datepicker-month{pointer-events:auto}ngb-datepicker.dropdown-menu{padding:0}.ngb-dp-body{z-index:1050}.ngb-dp-header{background-color:#f8f9fa;background-color:var(--light);border-bottom:0;border-radius:.25rem .25rem 0 0;padding-top:.25rem}.ngb-dp-months{display:flex}.ngb-dp-month{pointer-events:none}.ngb-dp-month-name{background-color:#f8f9fa;background-color:var(--light);font-size:larger;height:2rem;line-height:2rem;text-align:center}.ngb-dp-month+.ngb-dp-month .ngb-dp-month-name,.ngb-dp-month+.ngb-dp-month .ngb-dp-week{padding-left:1rem}.ngb-dp-month:last-child .ngb-dp-week{padding-right:.25rem}.ngb-dp-month:first-child .ngb-dp-week{padding-left:.25rem}.ngb-dp-month .ngb-dp-week:last-child{padding-bottom:.25rem}</style><style>ngb-timepicker{font-size:1rem}.ngb-tp{align-items:center;display:flex}.ngb-tp-input-container{width:4em}.ngb-tp-chevron:before{border-style:solid;border-width:.29em .29em 0 0;content:"";display:inline-block;height:.69em;left:.05em;position:relative;top:.15em;transform:rotate(-45deg);vertical-align:middle;width:.69em}.ngb-tp-chevron.bottom:before{top:-.3em;transform:rotate(135deg)}.ngb-tp-input{text-align:center}.ngb-tp-hour,.ngb-tp-meridian,.ngb-tp-minute,.ngb-tp-second{align-items:center;display:flex;flex-direction:column;justify-content:space-around}.ngb-tp-spacer{text-align:center;width:1em}</style><style>ngb-datepicker-navigation{align-items:center;display:flex}.ngb-dp-navigation-chevron{border-style:solid;border-width:.2em .2em 0 0;display:inline-block;height:.75em;margin-left:.25em;margin-right:.15em;transform:rotate(-135deg);width:.75em}.ngb-dp-arrow{display:flex;flex:1 1 auto;height:2rem;margin:0;padding-left:0;padding-right:0;width:2rem}.ngb-dp-arrow.right{justify-content:flex-end}.ngb-dp-arrow.right .ngb-dp-navigation-chevron{margin-left:.15em;margin-right:.25em;transform:rotate(45deg)}.ngb-dp-arrow-btn{background-color:transparent;border:none;margin:0 .5rem;padding:0 .25rem;z-index:1}.ngb-dp-arrow-btn:focus{outline-style:auto;outline-width:1px}@media (-ms-high-contrast:active),(-ms-high-contrast:none){.ngb-dp-arrow-btn:focus{outline-style:solid}}.ngb-dp-month-name{font-size:larger;height:2rem;line-height:2rem;text-align:center}.ngb-dp-navigation-select{display:flex;flex:1 1 9rem}</style><style>ngb-datepicker-navigation-select>.custom-select{flex:1 1 auto;font-size:.875rem;height:1.85rem;padding:0 .5rem}ngb-datepicker-navigation-select>.custom-select:focus{z-index:1}ngb-datepicker-navigation-select>.custom-select::-ms-value{background-color:transparent!important}</style><style>ngb-datepicker-month{display:block}.ngb-dp-week-number,.ngb-dp-weekday{font-style:italic;line-height:2rem;text-align:center}.ngb-dp-weekday{color:#5bc0de;color:var(--info)}.ngb-dp-week{border-radius:.25rem;display:flex}.ngb-dp-weekdays{background-color:#f8f9fa;background-color:var(--light);border-bottom:1px solid rgba(0,0,0,.125);border-radius:0}.ngb-dp-day,.ngb-dp-week-number,.ngb-dp-weekday{height:2rem;width:2rem}.ngb-dp-day{cursor:pointer}.ngb-dp-day.disabled,.ngb-dp-day.hidden{cursor:default;pointer-events:none}.ngb-dp-day[tabindex="0"]{z-index:1}</style></head>
+<body>
+  <app-root _nghost-fja-c148="" ng-version="12.0.5"><app-navigation _ngcontent-fja-c148="" _nghost-fja-c146=""><nav _ngcontent-fja-c146="" class="navbar navbar-expand-lg navbar-dark bg-primary"><div _ngcontent-fja-c146="" class="container-fluid"><a _ngcontent-fja-c146="" href="" class="navbar-brand">BH Roommanager</a><button _ngcontent-fja-c146="" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"><span _ngcontent-fja-c146="" class="navbar-toggler-icon"></span></button><div _ngcontent-fja-c146="" id="navbarSupportedContent" class="collapse navbar-collapse"><ul _ngcontent-fja-c146="" id="pills-tab" class="navbar-nav nav nav-pills ms-auto mb-2 mb-lg-0"><li _ngcontent-fja-c146="" role="presentation" class="nav-item"><button _ngcontent-fja-c146="" routerlink="rooms" id="pills-rooms-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true" class="nav-link nav-item d-none d-sm-none d-md-none d-lg-block" tabindex="0" ng-reflect-router-link="rooms">Räume</button></li><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><li _ngcontent-fja-c146="" role="presentation" class="nav-item"><a _ngcontent-fja-c146="" href="login" class="nav-link nav-item">Login</a></li><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></ul></div></div></nav><div _ngcontent-fja-c146=""></div></app-navigation><router-outlet _ngcontent-fja-c148=""></router-outlet><app-booking _nghost-fja-c195=""><div _ngcontent-fja-c195="" class="booking-view"><div _ngcontent-fja-c195="" class="card"><h4 _ngcontent-fja-c195="" class="card-header">CONFERENCEROOM - SMALLGROUP</h4><div _ngcontent-fja-c195="" class="card-body"><div _ngcontent-fja-c195="" class="form-inline"><div _ngcontent-fja-c195="" class="booking-details"><div _ngcontent-fja-c195="" align="left" class="card booking-details-card"><div _ngcontent-fja-c195="" align="left" class="card-body"><h3 _ngcontent-fja-c195="" class="card-title">Buchungs Details</h3><label _ngcontent-fja-c195="" ngdefaultcontrol="">Datum: Datum Wählen</label><br _ngcontent-fja-c195=""><label _ngcontent-fja-c195="">12:15 Uhr bis 15:30 Uhr</label><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><br _ngcontent-fja-c195=""><div _ngcontent-fja-c195="" class="form-group"><label _ngcontent-fja-c195="">Name</label><input _ngcontent-fja-c195="" type="text" formcontrolname="username" class="form-control" ng-reflect-name="username" ng-reflect-ng-class="[object Object]"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></div><div _ngcontent-fja-c195="" class="form-group"><label _ngcontent-fja-c195="">Vorname</label><input _ngcontent-fja-c195="" type="text" formcontrolname="username" class="form-control" ng-reflect-name="username" ng-reflect-ng-class="[object Object]"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></div><div _ngcontent-fja-c195="" class="form-group"><label _ngcontent-fja-c195="">Firma</label><input _ngcontent-fja-c195="" type="text" formcontrolname="username" class="form-control" ng-reflect-name="username" ng-reflect-ng-class="[object Object]"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></div><div _ngcontent-fja-c195="" class="form-group"><label _ngcontent-fja-c195="">Email-Adresse</label><input _ngcontent-fja-c195="" type="text" formcontrolname="username" class="form-control" ng-reflect-name="username" ng-reflect-ng-class="[object Object]"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></div><div _ngcontent-fja-c195="" class="form-group"><label _ngcontent-fja-c195="">Telefonnummer</label><input _ngcontent-fja-c195="" type="text" formcontrolname="username" class="form-control" ng-reflect-name="username" ng-reflect-ng-class="[object Object]"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></div><br _ngcontent-fja-c195=""><button _ngcontent-fja-c195="" class="btn btn-secondary" tabindex="0" ng-reflect-router-link="/booking,6"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--> Jetzt Buchen </button></div></div><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></div><div _ngcontent-fja-c195="" class="room-details"><div _ngcontent-fja-c195="" class="card room-details-card"><img _ngcontent-fja-c195="" alt="..." class="card-img-top room-image" src="assets/SMALLGROUP-40.jpg"><div _ngcontent-fja-c195="" align="left" class="card-body"><label _ngcontent-fja-c195="">Preis pro Stunde: 25€</label><br _ngcontent-fja-c195=""><label _ngcontent-fja-c195="">Fläche : 40qm</label><br _ngcontent-fja-c195=""></div></div><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></div><div _ngcontent-fja-c195="" class="date-group"><div _ngcontent-fja-c195="" class="card"><div _ngcontent-fja-c195="" class="date-picker"><ngb-datepicker _ngcontent-fja-c195="" outsidedays="hidden" class="border-0" ng-reflect-outside-days="hidden" ng-reflect-display-months="1" ng-reflect-day-template="[object Object]"><!--container--><!--container--><div class="ngb-dp-header"><ngb-datepicker-navigation ng-reflect-date="[object Object]" ng-reflect-months="[object Object]" ng-reflect-disabled="false" ng-reflect-show-select="true" ng-reflect-prev-disabled="false" ng-reflect-next-disabled="false" ng-reflect-select-boxes="[object Object]"><div class="ngb-dp-arrow"><button type="button" aria-label="Previous month" title="Previous month" class="btn btn-link ngb-dp-arrow-btn"><span class="ngb-dp-navigation-chevron"></span></button></div><ngb-datepicker-navigation-select class="ngb-dp-navigation-select" ng-reflect-date="[object Object]" ng-reflect-disabled="false" ng-reflect-months="1,2,3,4,5,6,7,8,9,10,11,12" ng-reflect-years="2011,2012,2013,2014,2015,2016,"><select aria-label="Select month" title="Select month" class="custom-select"><option value="1" ng-reflect-value="1" aria-label="Januar">Jan</option><option value="2" ng-reflect-value="2" aria-label="Februar">Feb</option><option value="3" ng-reflect-value="3" aria-label="März">Mär</option><option value="4" ng-reflect-value="4" aria-label="April">Apr</option><option value="5" ng-reflect-value="5" aria-label="Mai">Mai</option><option value="6" ng-reflect-value="6" aria-label="Juni">Jun</option><option value="7" ng-reflect-value="7" aria-label="Juli">Jul</option><option value="8" ng-reflect-value="8" aria-label="August">Aug</option><option value="9" ng-reflect-value="9" aria-label="September">Sep</option><option value="10" ng-reflect-value="10" aria-label="Oktober">Okt</option><option value="11" ng-reflect-value="11" aria-label="November">Nov</option><option value="12" ng-reflect-value="12" aria-label="Dezember">Dez</option><!--bindings={
+  "ng-reflect-ng-for-of": "1,2,3,4,5,6,7,8,9,10,11,12"
+}--></select><select aria-label="Select year" title="Select year" class="custom-select"><option value="2011" ng-reflect-value="2011">2011</option><option value="2012" ng-reflect-value="2012">2012</option><option value="2013" ng-reflect-value="2013">2013</option><option value="2014" ng-reflect-value="2014">2014</option><option value="2015" ng-reflect-value="2015">2015</option><option value="2016" ng-reflect-value="2016">2016</option><option value="2017" ng-reflect-value="2017">2017</option><option value="2018" ng-reflect-value="2018">2018</option><option value="2019" ng-reflect-value="2019">2019</option><option value="2020" ng-reflect-value="2020">2020</option><option value="2021" ng-reflect-value="2021">2021</option><option value="2022" ng-reflect-value="2022">2022</option><option value="2023" ng-reflect-value="2023">2023</option><option value="2024" ng-reflect-value="2024">2024</option><option value="2025" ng-reflect-value="2025">2025</option><option value="2026" ng-reflect-value="2026">2026</option><option value="2027" ng-reflect-value="2027">2027</option><option value="2028" ng-reflect-value="2028">2028</option><option value="2029" ng-reflect-value="2029">2029</option><option value="2030" ng-reflect-value="2030">2030</option><option value="2031" ng-reflect-value="2031">2031</option><!--bindings={
+  "ng-reflect-ng-for-of": "2011,2012,2013,2014,2015,2016,"
+}--></select></ngb-datepicker-navigation-select><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><div class="ngb-dp-arrow right"><button type="button" aria-label="Next month" title="Next month" class="btn btn-link ngb-dp-arrow-btn"><span class="ngb-dp-navigation-chevron"></span></button></div></ngb-datepicker-navigation><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></div><div class="ngb-dp-content ngb-dp-months"><div class="ngb-dp-month"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><ngb-datepicker-month role="grid" ng-reflect-month="[object Object]"><div role="row" class="ngb-dp-week ngb-dp-weekdays"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><div role="columnheader" class="ngb-dp-weekday small">Mo.</div><div role="columnheader" class="ngb-dp-weekday small">Di.</div><div role="columnheader" class="ngb-dp-weekday small">Mi.</div><div role="columnheader" class="ngb-dp-weekday small">Do.</div><div role="columnheader" class="ngb-dp-weekday small">Fr.</div><div role="columnheader" class="ngb-dp-weekday small">Sa.</div><div role="columnheader" class="ngb-dp-weekday small">So.</div><!--bindings={
+  "ng-reflect-ng-for-of": "Mo.,Di.,Mi.,Do.,Fr.,Sa.,So."
+}--></div><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><div role="row" class="ngb-dp-week"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><div role="gridcell" class="ngb-dp-day hidden" tabindex="-1" aria-label="Montag, 26. Juli 2021"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></div><div role="gridcell" class="ngb-dp-day hidden" tabindex="-1" aria-label="Dienstag, 27. Juli 2021"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></div><div role="gridcell" class="ngb-dp-day hidden" tabindex="-1" aria-label="Mittwoch, 28. Juli 2021"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></div><div role="gridcell" class="ngb-dp-day hidden" tabindex="-1" aria-label="Donnerstag, 29. Juli 2021"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></div><div role="gridcell" class="ngb-dp-day hidden" tabindex="-1" aria-label="Freitag, 30. Juli 2021"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></div><div role="gridcell" class="ngb-dp-day hidden" tabindex="-1" aria-label="Samstag, 31. Juli 2021"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></div><div role="gridcell" class="ngb-dp-day" tabindex="-1" aria-label="Sonntag, 1. August 2021"><div _ngcontent-fja-c195="" class="custom-day"> 1 </div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></div><!--bindings={
+  "ng-reflect-ng-for-of": "[object Object],[object Object"
+}--></div><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><div role="row" class="ngb-dp-week"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><div role="gridcell" class="ngb-dp-day" tabindex="-1" aria-label="Montag, 2. August 2021"><div _ngcontent-fja-c195="" class="custom-day"> 2 </div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></div><div role="gridcell" class="ngb-dp-day" tabindex="-1" aria-label="Dienstag, 3. August 2021"><div _ngcontent-fja-c195="" class="custom-day"> 3 </div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></div><div role="gridcell" class="ngb-dp-day" tabindex="-1" aria-label="Mittwoch, 4. August 2021"><div _ngcontent-fja-c195="" class="custom-day"> 4 </div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></div><div role="gridcell" class="ngb-dp-day" tabindex="-1" aria-label="Donnerstag, 5. August 2021"><div _ngcontent-fja-c195="" class="custom-day"> 5 </div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></div><div role="gridcell" class="ngb-dp-day" tabindex="-1" aria-label="Freitag, 6. August 2021"><div _ngcontent-fja-c195="" class="custom-day"> 6 </div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></div><div role="gridcell" class="ngb-dp-day" tabindex="-1" aria-label="Samstag, 7. August 2021"><div _ngcontent-fja-c195="" class="custom-day"> 7 </div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></div><div role="gridcell" class="ngb-dp-day" tabindex="-1" aria-label="Sonntag, 8. August 2021"><div _ngcontent-fja-c195="" class="custom-day"> 8 </div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></div><!--bindings={
+  "ng-reflect-ng-for-of": "[object Object],[object Object"
+}--></div><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><div role="row" class="ngb-dp-week"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><div role="gridcell" class="ngb-dp-day" tabindex="-1" aria-label="Montag, 9. August 2021"><div _ngcontent-fja-c195="" class="custom-day"> 9 </div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></div><div role="gridcell" class="ngb-dp-day" tabindex="-1" aria-label="Dienstag, 10. August 2021"><div _ngcontent-fja-c195="" class="custom-day unavailable"> 10 </div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></div><div role="gridcell" class="ngb-dp-day ngb-dp-today" tabindex="0" aria-label="Mittwoch, 11. August 2021"><div _ngcontent-fja-c195="" class="custom-day unavailable"> 11 </div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></div><div role="gridcell" class="ngb-dp-day" tabindex="-1" aria-label="Donnerstag, 12. August 2021"><div _ngcontent-fja-c195="" class="custom-day unavailable"> 12 </div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></div><div role="gridcell" class="ngb-dp-day" tabindex="-1" aria-label="Freitag, 13. August 2021"><div _ngcontent-fja-c195="" class="custom-day unavailable"> 13 </div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></div><div role="gridcell" class="ngb-dp-day" tabindex="-1" aria-label="Samstag, 14. August 2021"><div _ngcontent-fja-c195="" class="custom-day"> 14 </div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></div><div role="gridcell" class="ngb-dp-day" tabindex="-1" aria-label="Sonntag, 15. August 2021"><div _ngcontent-fja-c195="" class="custom-day"> 15 </div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></div><!--bindings={
+  "ng-reflect-ng-for-of": "[object Object],[object Object"
+}--></div><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><div role="row" class="ngb-dp-week"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><div role="gridcell" class="ngb-dp-day" tabindex="-1" aria-label="Montag, 16. August 2021"><div _ngcontent-fja-c195="" class="custom-day"> 16 </div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></div><div role="gridcell" class="ngb-dp-day" tabindex="-1" aria-label="Dienstag, 17. August 2021"><div _ngcontent-fja-c195="" class="custom-day unavailable"> 17 </div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></div><div role="gridcell" class="ngb-dp-day" tabindex="-1" aria-label="Mittwoch, 18. August 2021"><div _ngcontent-fja-c195="" class="custom-day"> 18 </div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></div><div role="gridcell" class="ngb-dp-day" tabindex="-1" aria-label="Donnerstag, 19. August 2021"><div _ngcontent-fja-c195="" class="custom-day"> 19 </div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></div><div role="gridcell" class="ngb-dp-day" tabindex="-1" aria-label="Freitag, 20. August 2021"><div _ngcontent-fja-c195="" class="custom-day"> 20 </div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></div><div role="gridcell" class="ngb-dp-day" tabindex="-1" aria-label="Samstag, 21. August 2021"><div _ngcontent-fja-c195="" class="custom-day unavailable"> 21 </div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></div><div role="gridcell" class="ngb-dp-day" tabindex="-1" aria-label="Sonntag, 22. August 2021"><div _ngcontent-fja-c195="" class="custom-day unavailable"> 22 </div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></div><!--bindings={
+  "ng-reflect-ng-for-of": "[object Object],[object Object"
+}--></div><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><div role="row" class="ngb-dp-week"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><div role="gridcell" class="ngb-dp-day" tabindex="-1" aria-label="Montag, 23. August 2021"><div _ngcontent-fja-c195="" class="custom-day unavailable"> 23 </div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></div><div role="gridcell" class="ngb-dp-day" tabindex="-1" aria-label="Dienstag, 24. August 2021"><div _ngcontent-fja-c195="" class="custom-day unavailable"> 24 </div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></div><div role="gridcell" class="ngb-dp-day" tabindex="-1" aria-label="Mittwoch, 25. August 2021"><div _ngcontent-fja-c195="" class="custom-day unavailable"> 25 </div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></div><div role="gridcell" class="ngb-dp-day" tabindex="-1" aria-label="Donnerstag, 26. August 2021"><div _ngcontent-fja-c195="" class="custom-day unavailable"> 26 </div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></div><div role="gridcell" class="ngb-dp-day" tabindex="-1" aria-label="Freitag, 27. August 2021"><div _ngcontent-fja-c195="" class="custom-day unavailable"> 27 </div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></div><div role="gridcell" class="ngb-dp-day" tabindex="-1" aria-label="Samstag, 28. August 2021"><div _ngcontent-fja-c195="" class="custom-day unavailable"> 28 </div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></div><div role="gridcell" class="ngb-dp-day" tabindex="-1" aria-label="Sonntag, 29. August 2021"><div _ngcontent-fja-c195="" class="custom-day unavailable"> 29 </div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></div><!--bindings={
+  "ng-reflect-ng-for-of": "[object Object],[object Object"
+}--></div><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><div role="row" class="ngb-dp-week"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><div role="gridcell" class="ngb-dp-day" tabindex="-1" aria-label="Montag, 30. August 2021"><div _ngcontent-fja-c195="" class="custom-day unavailable"> 30 </div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></div><div role="gridcell" class="ngb-dp-day" tabindex="-1" aria-label="Dienstag, 31. August 2021"><div _ngcontent-fja-c195="" class="custom-day"> 31 </div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></div><div role="gridcell" class="ngb-dp-day hidden" tabindex="-1" aria-label="Mittwoch, 1. September 2021"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></div><div role="gridcell" class="ngb-dp-day hidden" tabindex="-1" aria-label="Donnerstag, 2. September 2021"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></div><div role="gridcell" class="ngb-dp-day hidden" tabindex="-1" aria-label="Freitag, 3. September 2021"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></div><div role="gridcell" class="ngb-dp-day hidden" tabindex="-1" aria-label="Samstag, 4. September 2021"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></div><div role="gridcell" class="ngb-dp-day hidden" tabindex="-1" aria-label="Sonntag, 5. September 2021"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></div><!--bindings={
+  "ng-reflect-ng-for-of": "[object Object],[object Object"
+}--></div><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><!--bindings={
+  "ng-reflect-ng-for-of": "[object Object],[object Object"
+}--></ngb-datepicker-month></div><!--bindings={
+  "ng-reflect-ng-for-of": "[object Object]"
+}--><!--bindings={
+  "ng-reflect-ng-template-outlet": "[object Object]"
+}--></div><!--bindings={}--></ngb-datepicker><!--container--></div><div _ngcontent-fja-c195="" class="card-body border-top"><div _ngcontent-fja-c195="" class="time-picker"><div _ngcontent-fja-c195="" class="start-time"><ngb-timepicker _ngcontent-fja-c195="" style="display: inline;" ng-reflect-model="[object Object]" ng-reflect-hour-step="1" ng-reflect-minute-step="15" ng-reflect-meridian="false" class="ng-valid ng-touched ng-dirty"><fieldset><div class="ngb-tp"><div class="ngb-tp-input-container ngb-tp-hour"><button tabindex="-1" type="button" class="btn btn-link"><span class="chevron ngb-tp-chevron"></span><span class="sr-only">Increment hours</span></button><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><input type="text" maxlength="2" inputmode="numeric" placeholder="HH" aria-label="Hours" class="ngb-tp-input form-control"><button tabindex="-1" type="button" class="btn btn-link"><span class="chevron ngb-tp-chevron bottom"></span><span class="sr-only">Decrement hours</span></button><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></div><div class="ngb-tp-spacer">:</div><div class="ngb-tp-input-container ngb-tp-minute"><button tabindex="-1" type="button" class="btn btn-link"><span class="chevron ngb-tp-chevron"></span><span class="sr-only">Increment minutes</span></button><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><input type="text" maxlength="2" inputmode="numeric" placeholder="MM" aria-label="Minutes" class="ngb-tp-input form-control"><button tabindex="-1" type="button" class="btn btn-link"><span class="chevron ngb-tp-chevron bottom"></span><span class="sr-only">Decrement minutes</span></button><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></div><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></div></fieldset></ngb-timepicker><span _ngcontent-fja-c195="" style="display: inline;">Uhr</span></div><div _ngcontent-fja-c195="" class="end-time"><ngb-timepicker _ngcontent-fja-c195="" ng-reflect-model="[object Object]" ng-reflect-hour-step="1" ng-reflect-minute-step="15" ng-reflect-meridian="false" class="ng-valid ng-touched ng-dirty"><fieldset><div class="ngb-tp"><div class="ngb-tp-input-container ngb-tp-hour"><button tabindex="-1" type="button" class="btn btn-link"><span class="chevron ngb-tp-chevron"></span><span class="sr-only">Increment hours</span></button><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><input type="text" maxlength="2" inputmode="numeric" placeholder="HH" aria-label="Hours" class="ngb-tp-input form-control"><button tabindex="-1" type="button" class="btn btn-link"><span class="chevron ngb-tp-chevron bottom"></span><span class="sr-only">Decrement hours</span></button><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></div><div class="ngb-tp-spacer">:</div><div class="ngb-tp-input-container ngb-tp-minute"><button tabindex="-1" type="button" class="btn btn-link"><span class="chevron ngb-tp-chevron"></span><span class="sr-only">Increment minutes</span></button><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><input type="text" maxlength="2" inputmode="numeric" placeholder="MM" aria-label="Minutes" class="ngb-tp-input form-control"><button tabindex="-1" type="button" class="btn btn-link"><span class="chevron ngb-tp-chevron bottom"></span><span class="sr-only">Decrement minutes</span></button><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></div><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></div></fieldset></ngb-timepicker></div></div></div><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></div><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></div></div></div></div></div></app-booking><!--container--><app-footer _ngcontent-fja-c148="" _nghost-fja-c147=""><div _ngcontent-fja-c147="" class="footer bg-primary"><a _ngcontent-fja-c147="" href="">hier könnte man zum Impressum gelangen</a> Tel.: <a _ngcontent-fja-c147="" href="">0361 123456789</a></div></app-footer></app-root>
+<script src="runtime.js" defer=""></script><script src="polyfills.js" defer=""></script><script src="styles.js" defer=""></script><script src="scripts.js" defer=""></script><script src="vendor.js" defer=""></script><script src="main.js" defer=""></script>
+
+</body></html>
