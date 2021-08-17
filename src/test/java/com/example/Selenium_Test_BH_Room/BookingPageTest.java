@@ -45,9 +45,11 @@ public class BookingPageTest {
         String surname = "Holger";
         String company= "Lange Industries GmbH" ;
         String mail = "Clownery@gmx.de";
-        String phone = "0190123456";
+        String phone = "+490190123456";
         String testMonth = "Feb";
         String testYear = "2022";
+
+        bookingPage.buttonBusinessCustomer.click();
 
         bookingPage.monthPicker.selectOption(testMonth);
         bookingPage.yearPicker.selectOption(testYear);

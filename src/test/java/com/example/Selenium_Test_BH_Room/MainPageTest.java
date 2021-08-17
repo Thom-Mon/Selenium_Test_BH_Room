@@ -18,6 +18,7 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class MainPageTest {
     MainPage mainPage = new MainPage();
+    LoginPage loginPage = new LoginPage();
 
 
 
@@ -25,11 +26,22 @@ public class MainPageTest {
     public static void setUpAll() {
         Configuration.startMaximized = true;
         SelenideLogger.addListener("allure", new AllureSelenide());
+
     }
 
     @BeforeEach
     public void setUp() {
+
         open("http://localhost:4200/");
+        mainPage.logoutButton.click();
+    }
+
+    @AfterEach
+    public void tearDown(){
+        mainPage.navitemLogin.click();
+        loginPage.inputUsername.sendKeys("FlodinWiesret");
+        loginPage.inputPassword.sendKeys("SicheresPasswort");
+        loginPage.loginButton.click();
     }
 
 

@@ -45,7 +45,9 @@ public class conferenceRoomBookingPageTest {
         String surname = "Holger";
         String company= "Lange Industries GmbH" ;
         String mail = "Clownery@gmx.de";
-        String phone = "0190123456";
+        String phone = "+490190123456";
+
+        bookingPage.buttonBusinessCustomer.click();
 
         bookingPage.inputName.sendKeys(name);
         bookingPage.inputSurname.sendKeys(surname);
@@ -119,10 +121,10 @@ public class conferenceRoomBookingPageTest {
         bookingPage.inputMinuteStart.sendKeys("15");
         bookingPage.inputHourEnd.sendKeys("15");
         bookingPage.inputMinuteEnd.sendKeys("30");
-        bookingPage.clockShower.click(); //dieser Click ist notwendig um die neue Eingabe zu übernehmen in die Anzeige bei Buchungsdetails
+        bookingPage.bookingDetailsCard.click(); //dieser Click ist notwendig um die neue Eingabe zu übernehmen in die Anzeige bei Buchungsdetails
 
 
-        bookingPage.clockShower.shouldHave(Condition.text("12:15"), Condition.text("15:30"));
+        bookingPage.bookingDetailsCard.shouldHave(Condition.text("12:15"), Condition.text("15:30"));
     }
 
     @Test
@@ -141,7 +143,7 @@ public class conferenceRoomBookingPageTest {
         bookingPage.inputMinuteStart.sendKeys("15");
         bookingPage.inputHourEnd.sendKeys("15");
         bookingPage.inputMinuteEnd.sendKeys("30");
-        bookingPage.clockShower.click();
+        bookingPage.bookingDetailsCard.click();
 
         bookingPage.lowerArrowHoursStart.click();
         bookingPage.inputHourStart.shouldHave(attribute("value", "11"));
@@ -164,18 +166,5 @@ public class conferenceRoomBookingPageTest {
         bookingPage.inputMinuteEnd.shouldHave(attribute("value", "30"));
     }
 
-
-
-
-    //HELPER FUNCTIONS
-    public String extractDateFromCalender(String startDate,String testYear){
-
-        int i = 0;
-        while (i < startDate.length() && !Character.isDigit(startDate.charAt(i))) i++;
-        int j = i;
-        while (j < startDate.length() && Character.isDigit(startDate.charAt(j))) j++;
-
-        return Integer.parseInt(startDate.substring(i, j)) + ".02."+ testYear;
-    }
 }
 

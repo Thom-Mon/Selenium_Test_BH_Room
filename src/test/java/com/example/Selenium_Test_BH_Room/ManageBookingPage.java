@@ -16,7 +16,7 @@ public class ManageBookingPage {
     public SelenideElement radioButtonConference = $x("//*[@id='mat-radio-3']/label/span[2]");
     public SelenideElement inputCustomerNo = $x("//*[@id='mat-input-0']");
     public SelenideElement dropdownRoomNo = $x("//*[@id='mat-select-value-1']/span");//*[@id='mat-option-18']/span
-    public SelenideElement dropdownRoomNoFour = $x("//*[@id='mat-option-17']/div");
+    public SelenideElement dropdownRoomNoFour = $x("//span[text()='4']");
 
     public SelenideElement inputStartDate = $x("//*[@id='mat-input-1']");
     public SelenideElement inputEndDate = $x("//*[@id='mat-input-3']");

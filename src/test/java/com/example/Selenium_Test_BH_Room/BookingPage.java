@@ -11,11 +11,12 @@ import static com.codeborne.selenide.Selenide.$x;
 
 public class BookingPage {
     public SelenideElement inputName = $x("/html/body/app-root/div/div[2]/app-booking/div/div/div/div/div[1]/div/div/form/div/input[1]");
-    public SelenideElement inputSurname = $x("/html/body/app-root/div/div[2]/app-booking/div/div/div/div/div[1]/div/div/form/div/input[2]");
-    public SelenideElement inputCompany = $x("/html/body/app-root/div/div[2]/app-booking/div/div/div/div/div[1]/div/div/form/div/input[3]");
-    public SelenideElement inputMail = $x("/html/body/app-root/div/div[2]/app-booking/div/div/div/div/div[1]/div/div/form/div/input[4]");
-    public SelenideElement inputPhone = $x("/html/body/app-root/div/div[2]/app-booking/div/div/div/div/div[1]/div/div/form/div/input[5]");
-    public SelenideElement submitButton = $x("/html/body/app-root/div/div[2]/app-booking/div/div/div/div/div[1]/div/div/button");
+    public SelenideElement inputSurname = $x("//input[@formcontrolname='firstName']");
+    public SelenideElement inputCompany = $x("//input[@value='d']");
+    public SelenideElement inputMail = $x("//input[@formcontrolname='emailAddress']");
+    public SelenideElement inputPhone = $x("//input[@formcontrolname='phoneNumber']");
+    public SelenideElement submitButton = $x("//button[normalize-space(text()) = 'Jetzt Buchen']");
+    public SelenideElement buttonBusinessCustomer = $x("//label[text()='Geschäftskonto']");
 
 
     public SelenideElement leftArrowMonth = $x("/html/body/app-root/div/div[2]/app-booking/div/div/div/div/div[3]/div/div/ngb-datepicker/div[1]/ngb-datepicker-navigation/div[1]/button");
@@ -42,7 +43,7 @@ public class BookingPage {
     public SelenideElement lowerArrowMinutesEnd = $x("/html/body/app-root/div/div[2]/app-booking/div/div/div/div/div[3]/div/div[2]/div/div[2]/ngb-timepicker/fieldset/div/div[3]/button[2]");
 
     public SelenideElement dateShower = $x("/html/body/app-root/div/div[2]/app-booking/div/div/div/div/div[1]/div/div/div[2]/label");
-    public SelenideElement clockShower = $x("/html/body/app-root/div/div[2]/app-booking/div/div/div/div/div[1]/div/div/div[2]/label[2]");
+    public SelenideElement bookingDetailsCard = $x("//div[@class='card booking-details-card']//div[@class='card-body']");
 
 
 

@@ -42,8 +42,8 @@ public class LoginPageTest {
 
     @Test
     public void loginToRoommanagerAsEmployee(){
-        loginPage.inputUsername.sendKeys("IggyPop1");
-        loginPage.inputPassword.sendKeys("password123");
+        loginPage.inputUsername.sendKeys("FlodinWiesret");
+        loginPage.inputPassword.sendKeys("SicheresPasswort");
         loginPage.loginButton.click();
         try {
             Thread.sleep(3000);

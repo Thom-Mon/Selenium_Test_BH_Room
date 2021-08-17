@@ -19,7 +19,7 @@ public class RegisterPageTest {
     String surname = "Selen";
     String company = "Register-Test Corp.";
     String mail = "register_me@googlemail.com";
-    String phone = "0167 - 17 17 17";
+    String phone = "+490167171717";
     String username = "BennoGroß";
     String password = "signal714-";
     String passwordrepeat = "nomatch"; //für Falscheingabetests reserviert!
@@ -45,19 +45,13 @@ public class RegisterPageTest {
     }
 
     @Test
-    public void clickRegisterButton() { //TODO: Mit Regisrierung verbinden!!!
-        registerPage.registerbutton.click();
-        //$x("/html/body/app-root/app-registration").shouldBe(visible);
-    }
-
-    @Test
     public void clickCancelButton() {
         registerPage.cancelButton.click();
         $x("/html/body/app-root/div/div[2]/ng-component/div/div/h4[contains(text(),'Login')]").shouldBe(visible);
     }
 
     @Test
-    public void loginToRoommanagerAsEmployee(){
+    public void registerNewUser(){
         registerPage.inputName.sendKeys(name);
         registerPage.inputSurname.sendKeys(surname);
         registerPage.buttonBusinessCustomer.click();
@@ -77,10 +71,10 @@ public class RegisterPageTest {
         registerPage.inputPassword.shouldHave(attribute("value",   password));
         registerPage.inputPasswordRepeat.shouldHave(attribute("value",   password));
 
-        //registerPage.registerbutton.click();
+        registerPage.registerbutton.click();
 
         try {
-            Thread.sleep(5000);
+            Thread.sleep(3000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
