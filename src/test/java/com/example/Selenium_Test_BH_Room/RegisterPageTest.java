@@ -15,14 +15,17 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class RegisterPageTest {
     RegisterPage registerPage = new RegisterPage();
+    LoggedInMainPage loggedInMainPage = new LoggedInMainPage();
     String name = "Konquistator";
     String surname = "Selen";
     String company = "Register-Test Corp.";
     String mail = "register_me@googlemail.com";
     String phone = "+490167171717";
-    String username = "BennoGroß";
-    String password = "signal714-";
-    String passwordrepeat = "nomatch"; //für Falscheingabetests reserviert!
+    String username = "BennoGroß4";
+    String usernameInUse= "IggyPop";
+    String password = "SicheresPasswort";
+    String invalidMail= "asd";
+
 
     @BeforeAll
     public static void setUpAll() {
@@ -37,12 +40,7 @@ public class RegisterPageTest {
         open("http://localhost:4200/register");
     }
 
-    @Test
-    public void isErrorMessagePresentWithNoEntry() {
-        //loginPage.loginButton.click();
-        //loginPage.passwordErrorMessage.shouldBe(visible);
-        //loginPage.usernameErrorMessage.shouldBe(visible);
-    }
+
 
     @Test
     public void clickCancelButton() {
@@ -73,18 +71,55 @@ public class RegisterPageTest {
 
         registerPage.registerbutton.click();
 
+        registerPage.bookingButton.shouldBe(visible);
         try {
-            Thread.sleep(3000);
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
-
+        loggedInMainPage.logoutButton.click();
     }
     //TODO: Login überwachen -> Zugang muss bei richtigen Daten gehen, ansonsten verweigert werden mit entsprechender Meldung
     //TODO: Allgemein noch die Fehlerabfragen auf Richtigkeit überprüfen!
+    @Test
+    public void sameUserNameShouldBeImpossible(){
+        registerPage.inputName.sendKeys(name);
+        registerPage.inputSurname.sendKeys(surname);
+        registerPage.buttonBusinessCustomer.click();
+        registerPage.inputCompany.sendKeys(company);
+        registerPage.inputMail.sendKeys(mail);
+        registerPage.inputPhone.sendKeys(phone);
+        registerPage.inputUsername.sendKeys(usernameInUse);
+        registerPage.inputPassword.sendKeys(password);
+        registerPage.inputPasswordRepeat.sendKeys(password);
 
+        registerPage.registerbutton.click();
 
+        $x("//div[text()='Username bereits vergeben']").shouldBe(visible);
+
+    }
+
+    @Test
+    public void checkErrorMessagesOnEmpty(){
+        registerPage.registerbutton.click();
+        $x("//div[text()='Bitte Vorname angeben']").shouldBe(visible);
+        $x("//div[text()='Bitte Nachname angeben']").shouldBe(visible);
+        $x("//div[text()='Bitte Email-Adresse angeben']").shouldBe(visible);
+        $x("//div[text()='Bitte Username angeben']").shouldBe(visible);
+        $x("//div[text()='Bitte Passwort angeben']").shouldBe(visible);
+        $x("//div[text()='Bitte Passwort wiederholen']").shouldBe(visible);
+    }
+
+    @Test
+    public void checkErrorMessageOnInvalidEntries(){
+        registerPage.inputMail.sendKeys(invalidMail);
+        registerPage.registerbutton.click();
+        $x("//div[text()='Ungültiges Emailformat']").shouldBe(visible);
+        registerPage.inputPassword.sendKeys("asd");
+        $x("//div[text()='Passwort muss mindesten 10 Zeichen lang sein']").shouldBe(visible);
+        registerPage.inputPasswordRepeat.sendKeys("as");
+        $x("//div[text()='Passwort nicht identisch']").shouldBe(visible);
+    }
 
 
 }

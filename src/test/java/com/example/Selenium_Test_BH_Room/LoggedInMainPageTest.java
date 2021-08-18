@@ -21,8 +21,6 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class LoggedInMainPageTest {
     LoggedInMainPage loggedInMainPage = new LoggedInMainPage();
-
-    //weil es noch keine Cookies gibt muss zunächst der Umweg über "ForceLogin" gegangen werden!!!
     MainPage mainPage = new MainPage();
     LoginPage loginPage = new LoginPage();
 
@@ -32,8 +30,6 @@ public class LoggedInMainPageTest {
     public static void setUpAll() {
         Configuration.startMaximized = true;
         SelenideLogger.addListener("allure", new AllureSelenide());
-        //mainPage.navitemLogin.click();
-        //loginPage.forceLoginButton.click();
     }
 
 
@@ -41,17 +37,12 @@ public class LoggedInMainPageTest {
     public void setUp() {
 
         open("http://localhost:4200/");
-        loggedInMainPage.logoutButton.click();
         mainPage.navitemLogin.click();
         loginPage.inputUsername.sendKeys("FlodinWiesret");
         loginPage.inputPassword.sendKeys("SicheresPasswort");
         loginPage.loginButton.click();
     }
 
-    //@Test
-    public void clickLogoutButton() {
-        loggedInMainPage.logoutButton.click();
-    }
 
 
     //Avaiability-Tests for the Tabs

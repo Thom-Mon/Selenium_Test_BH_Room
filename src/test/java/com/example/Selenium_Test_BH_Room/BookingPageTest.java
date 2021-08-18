@@ -27,6 +27,7 @@ import static com.codeborne.selenide.Selenide.*;
 public class BookingPageTest {
     BookingPage bookingPage = new BookingPage();
 
+
     @BeforeAll
     public static void setUpAll() {
         Configuration.startMaximized = true;
@@ -35,12 +36,14 @@ public class BookingPageTest {
 
     @BeforeEach
     public void setUp() {
-        open("http://localhost:4200/booking/1");
-    }
+            open("http://localhost:4200/booking/1");
+        }
+
+
 
 
     @Test
-    public void isWritingPossibleToAllInput() {
+    public void isBookingpossible() { //TODO: Abschicken und Testen der abgeschickten Buchung (unangemeldet)
         String name = "Lucifer";
         String surname = "Holger";
         String company= "Lange Industries GmbH" ;
@@ -69,7 +72,7 @@ public class BookingPageTest {
         bookingPage.inputMail.shouldHave(attribute("value", mail));
         bookingPage.inputPhone.shouldHave(attribute("value", phone));
 
-        //bookingPage.submitButton.click();
+        bookingPage.submitButton.click();
     }
 
     @Test

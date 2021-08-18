@@ -8,6 +8,7 @@ import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.Cookie;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -24,8 +25,9 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class ManageBookingPageTest {
     ManageBookingPage manageBookingPage = new ManageBookingPage();
-
-
+    LoginPage loginPage = new LoginPage();
+    MainPage mainPage = new MainPage();
+    LoggedInMainPage loggedInMainPage = new LoggedInMainPage();
 
     @BeforeAll
     public static void setUpAll() {
@@ -34,10 +36,23 @@ public class ManageBookingPageTest {
         //mainPage.navitemLogin.click();
         //loginPage.forceLoginButton.click();
     }
-
-
     @BeforeEach
-    public void setUp() {open("http://localhost:4200/management/booking");}
+    public void setUp() {
+        open("http://localhost:4200/");
+        mainPage.navitemLogin.click();
+        loginPage.inputUsername.sendKeys("FlodinWiesret");
+        loginPage.inputPassword.sendKeys("SicheresPasswort");
+        loginPage.loginButton.click();
+
+        loggedInMainPage.manageBookingButton.click();
+        //open("http://localhost:4200/management/booking");;
+    }
+    @AfterEach
+    public void tearDown(){
+        loggedInMainPage.logoutButton.click();
+    }
+
+
 
 
     //TAB-AVAIABILITY
@@ -50,13 +65,9 @@ public class ManageBookingPageTest {
        manageBookingPage.editTab.click();
     }
     @Test
-    public void isTabDeleteAvaiable(){
-       manageBookingPage.deleteTab.click();
-    }
+    public void isTabDeleteAvaiable(){manageBookingPage.deleteTab.click();}
     @Test
-    public void isTabShowAvaiable(){
-       manageBookingPage.showTab.click();
-    }
+    public void isTabShowAvaiable(){manageBookingPage.showTab.click();}
 
     @Test //TODO: unfertig in der Abfrage des RadioZustands!!!!
     public void isRadioButtonWorking(){
@@ -66,24 +77,21 @@ public class ManageBookingPageTest {
 
     @Test //TODO: DATEPICKER UND TIMEPICKER IN TEST ->Dropdown bei Raumnummer geht noch nicht
     public void addBookingInformation(){ //TODO: KLick auf Element in Dropdown geht nicht!!!
-
+        manageBookingPage.addTab.click();
         manageBookingPage.inputCustomerNo.sendKeys("4");
-        manageBookingPage.inputStartDate.sendKeys("16122022");
-        manageBookingPage.inputEndDate.sendKeys("17122022");
-        manageBookingPage.inputStartTime.sendKeys("1500");
+        manageBookingPage.inputStartDate.sendKeys("23122023");
+        manageBookingPage.inputEndDate.sendKeys("29122023");
+        manageBookingPage.inputStartTime.sendKeys("1100");
         manageBookingPage.inputEndTime.sendKeys("1200");
         manageBookingPage.inputCustomerWishes.sendKeys("Jeden Tag eine Kugel Eis...auf die Hand...und Cola...verdammt ja...Cola!!!");
         manageBookingPage.radioButtonHotel.click();
 
         manageBookingPage.dropdownRoomNo.click();
         manageBookingPage.dropdownRoomNoFour.click();
-        try {
-            Thread.sleep(6000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        manageBookingPage.inputEndDate.click();
 
-        //manageBookingPage.submitButton.click();
+        manageBookingPage.submitButton.click();
+        //div[@class='notificationArea']
     }
     @Test
     public void isSearchWorkingEditTab(){
@@ -123,6 +131,12 @@ public class ManageBookingPageTest {
         manageBookingPage.inputEditCustomerNo.shouldHave(attribute("value", "3"));
 
         manageBookingPage.submitEditButton.click();
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     @Test
@@ -146,7 +160,7 @@ public class ManageBookingPageTest {
     public void isDeletionWorking(){
         manageBookingPage.deleteTab.click();
         manageBookingPage.inputBookingNoDeletion.clear();
-        manageBookingPage.inputBookingNoDeletion.sendKeys("1");
+        manageBookingPage.inputBookingNoDeletion.sendKeys("5");
         manageBookingPage.searchButtonDeletion.click();
 
         manageBookingPage.releaseButtonToogleDeletion.click();
@@ -155,7 +169,7 @@ public class ManageBookingPageTest {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        //manageBookingPage.deletionButton.click();    -> noch deaktiviert... für mehr Testdaten
+        manageBookingPage.deletionButton.click();
     }
 
     @Test

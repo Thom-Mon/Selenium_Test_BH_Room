@@ -23,9 +23,10 @@ import static com.codeborne.selenide.Selenide.*;
 
 
 public class ManageRoomPageTest {
-    //ManageBookingPage manageBookingPage = new ManageBookingPage();
     ManageRoomPage manageRoomPage = new ManageRoomPage();
-
+    LoggedInMainPage loggedInMainPage = new LoggedInMainPage();
+    MainPage mainPage = new MainPage();
+    LoginPage loginPage = new LoginPage();
 
     @BeforeAll
     public static void setUpAll() {
@@ -35,10 +36,22 @@ public class ManageRoomPageTest {
         //mainPage.navitemLogin.click();
         //loginPage.forceLoginButton.click();
     }
-
-
     @BeforeEach
-    public void setUp() {open("http://localhost:4200/management/room");}
+    public void setUp() {
+        open("http://localhost:4200/");
+        mainPage.navitemLogin.click();
+        loginPage.inputUsername.sendKeys("FlodinWiesret");
+        loginPage.inputPassword.sendKeys("SicheresPasswort");
+        loginPage.loginButton.click();
+
+
+        loggedInMainPage.manageRoomButton.click();
+    }
+    @AfterEach
+    public void tearDown(){
+        loggedInMainPage.logoutButton.click();
+    }
+
 
 
     //TAB-AVAIABILITY
@@ -60,28 +73,25 @@ public class ManageRoomPageTest {
     @Test
     public void addHotelroom(){
         manageRoomPage.radioButtonHotelroom.click();
-        manageRoomPage.inputAreaInSqrMetre.sendKeys("65");
+        manageRoomPage.inputAreaInSqrMetre.sendKeys("165");
         manageRoomPage.inputPricePerUnit.sendKeys("95");
         manageRoomPage.inputBedCount.sendKeys("3");
         manageRoomPage.inputDropDownCategory.click();
-        manageRoomPage.inputDropDownChooseSecond.click();
+        manageRoomPage.inputDropDownChooseHotel.click();
 
         manageRoomPage.checkBoxSpeedLan.click();
         manageRoomPage.checkBoxTV.click();
         manageRoomPage.checkBoxKitchen.click();
         manageRoomPage.checkBoxCoffeemaker.click();
 
-        manageRoomPage.inputAreaInSqrMetre.shouldHave(attribute("value", "65"));
+        manageRoomPage.inputAreaInSqrMetre.shouldHave(attribute("value", "165"));
         manageRoomPage.inputPricePerUnit.shouldHave(attribute("value", "95"));
         manageRoomPage.inputBedCount.shouldHave(attribute("value", "3"));
         manageRoomPage.inputDropDownCategory.shouldHave(Condition.text("Einzelzimmer"));
 
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        //manageRoomPage.submitButton.click();   //TODO: freigeben vor Abgabe
+        manageRoomPage.submitButton.click();
+
+        $x("//div[@class='notificationArea']").shouldHave(Condition.text("Raum erfolgreich angelegt"));
     }
 
     @Test
@@ -90,7 +100,7 @@ public class ManageRoomPageTest {
         manageRoomPage.inputAreaInSqrMetre.sendKeys("35");
         manageRoomPage.inputPricePerUnit.sendKeys("15");
         manageRoomPage.inputDropDownCategory.click();
-        manageRoomPage.inputDropDownChooseSecond.click();
+        manageRoomPage.inputDropDownChooseConference.click();
         manageRoomPage.inputMaxUser.sendKeys("4");
         manageRoomPage.inputWhiteboard.sendKeys("2");
         manageRoomPage.inputBeamer.sendKeys("1");
@@ -107,13 +117,8 @@ public class ManageRoomPageTest {
         manageRoomPage.inputScreen.shouldHave(attribute("value", "3"));
         manageRoomPage.inputDropDownCategory.shouldHave(Condition.text("Konferenzzimmer"));
 
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        //manageRoomPage.submitButton.click();   //TODO: freigeben vor Abgabe
+        manageRoomPage.submitButton.click();
+        $x("//div[@class='notificationArea']").shouldHave(Condition.text("Raum erfolgreich angelegt"));
     }
 
 
@@ -139,18 +144,18 @@ public class ManageRoomPageTest {
     public void isSearchWorkingEditConferenceroom(){
         manageRoomPage.editTab.click();
         manageRoomPage.inputEditRoomNo.clear();
-        manageRoomPage.inputEditRoomNo.sendKeys("6");
+        manageRoomPage.inputEditRoomNo.sendKeys("7");
         manageRoomPage.searchButtonEdit.click();
 
-        manageRoomPage.inputEditAreaInSqrMetre.shouldHave(attribute("value","40"));
-        manageRoomPage.inputEditPricePerUnitConference.shouldHave(attribute("value", "25"));
-        manageRoomPage.inputEditDropdownCategory.shouldHave(Condition.text("Konferenzzimmer"));
+        manageRoomPage.inputEditAreaInSqrMetre.shouldHave(attribute("value","50"));
+        manageRoomPage.inputEditPricePerUnitConference.shouldHave(attribute("value", "35"));
+        manageRoomPage.inputEditDropdownCategory.shouldHave(Condition.text("Konferenzsaal"));
         manageRoomPage.inputEditWhiteboard.shouldHave(attribute("value", "0"));
-        manageRoomPage.inputEditBeamer.shouldHave(attribute("value", "2"));
-        manageRoomPage.inputEditScreen.shouldHave(attribute("value", "0"));
+        manageRoomPage.inputEditBeamer.shouldHave(attribute("value", "3"));
+        manageRoomPage.inputEditScreen.shouldHave(attribute("value", "1"));
 
-        manageRoomPage.checkBoxEditProjectScreen.shouldHave(attribute("ng-reflect-model", "true"));
-        manageRoomPage.checkBoxEditComputerAvaiable.shouldHave(attribute("ng-reflect-model", "true"));
+        manageRoomPage.checkBoxEditProjectScreen.shouldHave(attribute("ng-reflect-model", "false"));
+        manageRoomPage.checkBoxEditComputerAvaiable.shouldHave(attribute("ng-reflect-model", "false"));
     }
 
     @Test
@@ -188,7 +193,9 @@ public class ManageRoomPageTest {
         manageRoomPage.checkBoxEditKitchen.shouldHave(attribute("ng-reflect-model", "true"));
         manageRoomPage.checkBoxEditCoffeemaker.shouldHave(attribute("ng-reflect-model", "false"));
 
-//TODO: SENDBUTTON EDIT HINZUFÜGEN
+        manageRoomPage.submitButtonEdit.click();
+        $x("//div[@class='notificationArea']").shouldHave(Condition.text("Raum erfolgreich geändert"));
+
     }
     @Test
     public void isEditingPossibleConferenceroom(){
@@ -227,26 +234,28 @@ public class ManageRoomPageTest {
 
         manageRoomPage.checkBoxEditProjectScreen.shouldHave(attribute("ng-reflect-model", "false"));
         manageRoomPage.checkBoxEditComputerAvaiable.shouldHave(attribute("ng-reflect-model", "false"));
+
+        manageRoomPage.submitButtonEdit.click();
+        $x("//div[@class='notificationArea']").shouldHave(Condition.text("Raum erfolgreich geändert"));
     }
 
     @Test
     public void isSearchWorkingOnDelete(){
         manageRoomPage.deleteTab.click();
         manageRoomPage.inputDeleteRoomNo.clear();
-        manageRoomPage.inputDeleteRoomNo.sendKeys("6");
+        manageRoomPage.inputDeleteRoomNo.sendKeys("5");
         manageRoomPage.searchButtonDelete.click();
 
         manageRoomPage.roomInformationDeletionCard.shouldHave(
                 Condition.text("40"),
-                Condition.text("Konferenzraum"),
-                Condition.text("Konferenzzimmer"),
-                Condition.text("25"),
-                Condition.text("11"),
-                Condition.text("Beamer 2"),
-                Condition.text("Bildschirme 0"),
-                Condition.text("Whiteboards 0"),
-                Condition.text("Projektionsfläche vorhanden Ja"),
-                Condition.text("Computer vorhanden Ja"));
+                Condition.text("Hotelzimmer"),
+                Condition.text("Doppelzimmer"),
+                Condition.text("95"),
+                Condition.text("Bettenanzahl 1"),
+                Condition.text("Fernseher vorhanden Nein"),
+                Condition.text("Highspeed Internet vorhanden Ja"),
+                Condition.text("Kaffeemaschine vorhanden Nein"),
+                Condition.text("Küchenzeile vorhanden Nein"));
 
         try {
             Thread.sleep(2000);
@@ -258,36 +267,31 @@ public class ManageRoomPageTest {
     public void isDeletionWorking(){
         manageRoomPage.deleteTab.click();
         manageRoomPage.inputDeleteRoomNo.clear();
-        manageRoomPage.inputDeleteRoomNo.sendKeys("6");
+        manageRoomPage.inputDeleteRoomNo.sendKeys("8");
         manageRoomPage.searchButtonDelete.click();
         manageRoomPage.releaseButtonToogle.click();
 
 
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        //manageRoomPage.deleteButton.click();    //zu Testzwecken deaktiviert!
+        manageRoomPage.deleteButton.click();
+        $x("//div[@class='notificationArea']").shouldHave(Condition.text("Raum erfolgreich gelöscht"));
     }
 
     @Test
     public void isSearchWorkingOnShow(){
         manageRoomPage.showTab.click();
         manageRoomPage.inputShowRoomNo.clear();
-        manageRoomPage.inputShowRoomNo.sendKeys("6");
+        manageRoomPage.inputShowRoomNo.sendKeys("5");
         manageRoomPage.searchButtonShow.click();
 
         manageRoomPage.roomInformationShowCard.shouldHave(
                 Condition.text("40"),
-                Condition.text("Konferenzraum"),
-                Condition.text("Konferenzzimmer"),
-                Condition.text("25"),
-                Condition.text("11"),
-                Condition.text("Beamer 2"),
-                Condition.text("Bildschirme 0"),
-                Condition.text("Whiteboards 0"),
-                Condition.text("Projektionsfläche vorhanden Ja"),
-                Condition.text("Computer vorhanden Ja"));
+                Condition.text("Hotelzimmer"),
+                Condition.text("Doppelzimmer"),
+                Condition.text("95"),
+                Condition.text("Bettenanzahl 1"),
+                Condition.text("Fernseher vorhanden Nein"),
+                Condition.text("Highspeed Internet vorhanden Ja"),
+                Condition.text("Kaffeemaschine vorhanden Nein"),
+                Condition.text("Küchenzeile vorhanden Nein"));
     }
 }

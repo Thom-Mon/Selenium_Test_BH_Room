@@ -39,8 +39,9 @@ public class conferenceRoomBookingPageTest {
     }
 
 
+
     @Test
-    public void isWritingPossibleToAllInput() { //TODO: Werte ergänzen um wirklich Buchung zu testen
+    public void isWritingPossibleToAllInput() { //TODO: Funktion muss noch implementiert werden
         String name = "Lucifer";
         String surname = "Holger";
         String company= "Lange Industries GmbH" ;
@@ -61,7 +62,7 @@ public class conferenceRoomBookingPageTest {
         bookingPage.inputMail.shouldHave(attribute("value", mail));
         bookingPage.inputPhone.shouldHave(attribute("value", phone));
 
-        //bookingPage.submitButton.click();
+        bookingPage.submitButton.click();
     }
     @Test
     public void isWritingPossibleToClock(){
@@ -129,11 +130,7 @@ public class conferenceRoomBookingPageTest {
 
     @Test
     public void isClockChangingWithArrows(){
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+
         bookingPage.inputHourStart.clear();
         bookingPage.inputMinuteStart.clear();
         bookingPage.inputHourEnd.clear();

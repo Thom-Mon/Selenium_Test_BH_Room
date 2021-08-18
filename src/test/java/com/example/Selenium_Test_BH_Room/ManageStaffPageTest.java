@@ -24,21 +24,37 @@ import static com.codeborne.selenide.Selenide.*;
 
 
 public class ManageStaffPageTest {
-    //ManageBookingPage manageBookingPage = new ManageBookingPage();
-    //ManageRoomPage manageRoomPage = new ManageRoomPage();
+    LoggedInMainPage loggedInMainPage = new LoggedInMainPage();
+    MainPage mainPage = new MainPage();
+    LoginPage loginPage = new LoginPage();
     ManageStaffPage manageStaffPage = new ManageStaffPage();
     String surname = "Julius";
     String name = "Cäsar";
-    String password = "Lukas-Jenkings14";
+    String password = "SicheresPasswort";
+    String username = "StabMeBrutus1";
 
     @BeforeAll
     public static void setUpAll() {
         Configuration.startMaximized = true;
         SelenideLogger.addListener("allure", new AllureSelenide());
     }
-
     @BeforeEach
-    public void setUp() {open("http://localhost:4200/management/employee");}
+    public void setUp() {
+        open("http://localhost:4200/");
+        mainPage.navitemLogin.click();
+        loginPage.inputUsername.sendKeys("FlodinWiesret");
+        loginPage.inputPassword.sendKeys("SicheresPasswort");
+        loginPage.loginButton.click();
+
+
+        loggedInMainPage.manageStaffButton.click();
+    }
+    @AfterEach
+    public void tearDown(){
+        loggedInMainPage.logoutButton.click();
+    }
+
+
 
 
     //TAB-AVAIABILITY
@@ -67,6 +83,7 @@ public class ManageStaffPageTest {
         manageStaffPage.inputName.sendKeys(name);
         manageStaffPage.inputPassword.sendKeys(password);
         manageStaffPage.inputPasswordRepeat.sendKeys(password);
+        manageStaffPage.inputUsername.sendKeys(username);
 
         manageStaffPage.inputSurname.shouldHave(attribute("value",surname));
         manageStaffPage.inputName.shouldHave(attribute("value",name));
@@ -74,27 +91,38 @@ public class ManageStaffPageTest {
         manageStaffPage.inputPasswordRepeat.shouldHave(attribute("value",password));
         manageStaffPage.inputDropDownRole.shouldHave(Condition.text("Kundenmanager"));
 
-        //manageStaffPage.submitButton.click();  //TODO Aktivieren!
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        manageStaffPage.buttonSearchUsername.click();
+        manageStaffPage.submitButton.click();
+        $x("//div[@class='notificationArea']").shouldHave(Condition.text("Mitarbeiter erfolgreich angelegt"));
+
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     @Test
     public void isSearchWorkingOnEditTab(){
         manageStaffPage.editTab.click();
         manageStaffPage.inputEditEmployeeNo.clear();
-        manageStaffPage.inputEditEmployeeNo.sendKeys("2");
+        manageStaffPage.inputEditEmployeeNo.sendKeys("5");
         manageStaffPage.searchButtonEdit.click();
 
-        manageStaffPage.inputEditSurname.shouldHave(attribute("value","Peter"));
-        manageStaffPage.inputEditName.shouldHave(attribute("value"," Quistgard"));
+        manageStaffPage.inputEditSurname.shouldHave(attribute("value","Juri"));
+        manageStaffPage.inputEditName.shouldHave(attribute("value"," Juhu"));
         manageStaffPage.inputEditPassword.shouldHave(attribute("value",""));
         manageStaffPage.inputEditPasswordRepeat.shouldHave(attribute("value",""));
-        manageStaffPage.inputEditDropDownRole.shouldHave(Condition.text("Buchungsmanager"));
-
-        //manageStaffPage.submitButton.click();  //TODO Aktivieren!
+        manageStaffPage.inputEditDropDownRole.shouldHave(Condition.text("Raummanager"));
     }
 
     @Test
-    public void isEditingPossibleOnEmployee(){
+    public void isEditingPossibleOnEmployee(){//TODO: Hier fehlt Funktionalität!!!!!!!!!!!!!!!!!!! auf Angularseite
         manageStaffPage.editTab.click();
         manageStaffPage.inputEditEmployeeNo.clear();
         manageStaffPage.inputEditEmployeeNo.sendKeys("2");
@@ -115,7 +143,12 @@ public class ManageStaffPageTest {
         manageStaffPage.inputEditPasswordRepeat.shouldHave(attribute("value",password));
         manageStaffPage.inputEditDropDownRole.shouldHave(Condition.text("Hotelleiter"));
 
-        //manageStaffPage.submitButtonEdit.click(); TODO: Aktivieren!
+        manageStaffPage.submitButtonEdit.click();
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
     }
 
@@ -139,21 +172,22 @@ public class ManageStaffPageTest {
     public void isDeletionWorking(){
         manageStaffPage.deleteTab.click();
         manageStaffPage.inputDeleteEmployeeNo.clear();
-        manageStaffPage.inputDeleteEmployeeNo.sendKeys("4");
+        manageStaffPage.inputDeleteEmployeeNo.sendKeys("5");
         manageStaffPage.searchButtonDelete.click();
 
         manageStaffPage.releaseToogleButton.click();
-        //manageStaffPage.deleteButton.click(); TODO: Aktivieren!
+        manageStaffPage.deleteButton.click();
+        $x("//div[@class='notificationArea']").shouldHave(Condition.text("Mitarbeiter erfolgreich gelöscht"));
     }
 
     @Test
     public void isSearchWorkingOnShowTab(){
-        manageStaffPage.deleteTab.click();
-        manageStaffPage.inputDeleteEmployeeNo.clear();
-        manageStaffPage.inputDeleteEmployeeNo.sendKeys("3");
-        manageStaffPage.searchButtonDelete.click();
+        manageStaffPage.showTab.click();
+        manageStaffPage.inputShowEmployeeNo.clear();
+        manageStaffPage.inputShowEmployeeNo.sendKeys("3");
+        manageStaffPage.searchButtonShow.click();
 
-        manageStaffPage.staffInformationCardDeletion.shouldHave(
+        manageStaffPage.staffInformationCardShow.shouldHave(
                 Condition.text("Mitarbeiternummer 3"),
                 Condition.text("Malignes Rau"),
                 Condition.text("Rolle Hotelleiter"),
@@ -161,7 +195,7 @@ public class ManageStaffPageTest {
     }
 
     @Test
-    public void isEmployeeListAvaiable(){
+    public void isEmployeeListAvaiable(){//TODO: Füllen!
 
     }
 }

@@ -25,6 +25,7 @@ public class MainPageTest {
     @BeforeAll
     public static void setUpAll() {
         Configuration.startMaximized = true;
+
         SelenideLogger.addListener("allure", new AllureSelenide());
 
     }
@@ -33,15 +34,7 @@ public class MainPageTest {
     public void setUp() {
 
         open("http://localhost:4200/");
-        mainPage.logoutButton.click();
-    }
 
-    @AfterEach
-    public void tearDown(){
-        mainPage.navitemLogin.click();
-        loginPage.inputUsername.sendKeys("FlodinWiesret");
-        loginPage.inputPassword.sendKeys("SicheresPasswort");
-        loginPage.loginButton.click();
     }
 
 
@@ -61,6 +54,7 @@ public class MainPageTest {
 
     @Test   //diesen Test auslagern für MobileDevices
     public void clickNavigationElementOnSmallDevices() {
+        //Configuration.browserSize="200x200";
         mainPage.navBarToogleButton.click();
 
     }

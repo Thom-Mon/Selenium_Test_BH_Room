@@ -24,6 +24,9 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class ManageCustomerPageTest {
     ManageCustomerPage manageCustomerPage = new ManageCustomerPage();
+    LoggedInMainPage loggedInMainPage = new LoggedInMainPage();
+    MainPage mainPage = new MainPage();
+    LoginPage loginPage = new LoginPage();
     //Testdaten
     String surname = "Hans";
     String name = "Glöckner";
@@ -34,7 +37,7 @@ public class ManageCustomerPageTest {
     String phone = "0190 - 76 76 76";
     String mail = "derBuckelglöckner@gmx.de";
     String paymethod = "PayPal";
-    String strongPassword = "Signal-Iduna,8,1";
+    String strongPassword = "$2a$10$9Gr2iERTPcOrSvZB.8f4..m87AU/I4RfWuMz.Ya3JbsneCCVU81bO"; //HASH weil Funktion noch nicht implementiert
 
     @BeforeAll
     public static void setUpAll() {
@@ -47,7 +50,20 @@ public class ManageCustomerPageTest {
 
 
     @BeforeEach
-    public void setUp() {open("http://localhost:4200/management/customer");}
+    public void setUp() {
+        open("http://localhost:4200/");
+        mainPage.navitemLogin.click();
+        loginPage.inputUsername.sendKeys("FlodinWiesret");
+        loginPage.inputPassword.sendKeys("SicheresPasswort");
+        loginPage.loginButton.click();
+
+
+        loggedInMainPage.manageCustomerButton.click();
+    }
+    @AfterEach
+    public void tearDown(){
+        loggedInMainPage.logoutButton.click();
+    }
 
 
     //TAB-AVAIABILITY
@@ -100,11 +116,11 @@ public class ManageCustomerPageTest {
 
 
         try {
-            Thread.sleep(3000);
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        //manageCustomerPage.submitButton.click(); //TODO: wieder aktivieren, für Tests erstmal deaktiviert
+        manageCustomerPage.submitButton.click(); //TODO: wieder aktivieren, für Tests erstmal deaktiviert
     }
     @Test
     public void isSearchWorkingInEditTab(){
@@ -113,9 +129,9 @@ public class ManageCustomerPageTest {
         manageCustomerPage.inputEditCustomerNo.sendKeys("6");
         manageCustomerPage.searchButtonEdit.click();
 
-
-
-
+        manageCustomerPage.inputEditSurname.shouldHave(attribute("value","Shigeru"));
+        manageCustomerPage.inputEditMail.shouldHave(attribute("value","MarioMaker@shin.jp"));
+        manageCustomerPage.inputEditStreet.shouldHave(attribute("value","Nintendoweg"));
         try {
             Thread.sleep(3000);
         } catch (InterruptedException e) {
@@ -148,33 +164,28 @@ public class ManageCustomerPageTest {
         manageCustomerPage.inputEditPassword.shouldHave(attribute("value",strongPassword));
         manageCustomerPage.inputEditPasswordRepeat.shouldHave(attribute("value",strongPassword));
 
-
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        manageCustomerPage.submitButtonEdit.click();
     }
     @Test
     public void isSearchWorkingOnDeleteTab(){
         manageCustomerPage.deleteTab.click();
         manageCustomerPage.inputDeleteCustomerNo.clear();
-        manageCustomerPage.inputDeleteCustomerNo.sendKeys("6");
+        manageCustomerPage.inputDeleteCustomerNo.sendKeys("5");
         manageCustomerPage.searchButtonDelete.click();
 
         manageCustomerPage.customerInformationDeletion.shouldHave(
-                Condition.text("Shigeru"),
-                Condition.text("Miyamoto"),
-                Condition.text("BergeLiebhabber"),
-                Condition.text("paypal"),
+                Condition.text("Jonas"),
+                Condition.text("Stenberg"),
+                Condition.text("Gewinnerstraße"),
+                Condition.text("bill"),
                 Condition.text("Business-Kunde? Nein"),
-                Condition.text("FlodinWiesret"));
+                Condition.text("Kekslieferant400"));
     }
     @Test
     public void isDeletionWorking(){
         manageCustomerPage.deleteTab.click();
         manageCustomerPage.inputDeleteCustomerNo.clear();
-        manageCustomerPage.inputDeleteCustomerNo.sendKeys("6");
+        manageCustomerPage.inputDeleteCustomerNo.sendKeys("8");
         manageCustomerPage.searchButtonDelete.click();
 
         manageCustomerPage.releaseButtonToogleDeletion.click();
@@ -197,9 +208,10 @@ public class ManageCustomerPageTest {
 
         manageCustomerPage.customerInformationShow.shouldHave(
                 Condition.text("Shigeru"),
-                Condition.text("Miyamoto"),
-                Condition.text("BergeLiebhabber"),
-                Condition.text("paypal"),
+                Condition.text("MarioMaker@shin.jp"),
+                Condition.text("Nintendoweg"),
+                Condition.text("Hausnummer 14"),
+                Condition.text("debit"),
                 Condition.text("Business-Kunde? Nein"),
                 Condition.text("FlodinWiesret"));
     }

@@ -15,6 +15,7 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class LoginPageTest {
     LoginPage loginPage = new LoginPage();
+    LoggedInMainPage loggedInMainPage = new LoggedInMainPage();
 
     @BeforeAll
     public static void setUpAll() {
@@ -45,14 +46,21 @@ public class LoginPageTest {
         loginPage.inputUsername.sendKeys("FlodinWiesret");
         loginPage.inputPassword.sendKeys("SicheresPasswort");
         loginPage.loginButton.click();
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        loggedInMainPage.logoutButton.shouldBe(visible);
+        loggedInMainPage.logoutButton.click();
 
         //TODO: Login überwachen -> Zugang muss bei richtigen Daten gehen, ansonsten verweigert werden mit entsprechender Meldung
     }
+
+    @Test
+    public void checkErrorMessageWrongInputs(){
+        loginPage.inputUsername.sendKeys("FlodinWiesret");
+        loginPage.inputPassword.sendKeys("falschesPasswort");
+        loginPage.loginButton.click();
+        $x("//div[text()='Username oder Passwort falsh']").shouldBe(visible); //TODO: falsh -> falsch !sic
+    }
+
+    //div[text()='Username oder Passwort falsh']
 
 
 
