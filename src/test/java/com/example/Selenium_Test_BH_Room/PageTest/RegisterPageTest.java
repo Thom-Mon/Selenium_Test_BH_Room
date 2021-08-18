@@ -1,4 +1,4 @@
-package com.example.Selenium_Test_BH_Room;
+package com.example.Selenium_Test_BH_Room.PageTest;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
