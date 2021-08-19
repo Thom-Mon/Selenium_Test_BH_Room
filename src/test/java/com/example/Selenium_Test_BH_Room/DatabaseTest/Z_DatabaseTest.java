@@ -62,8 +62,7 @@ public class Z_DatabaseTest{
                 Condition.text("+490190123456"),
                 Condition.text("debit"),
                 Condition.text("Clownery@gmx.de"),
-                Condition.text("Business-Kunde? Ja"),
-                Condition.text("Hol2952Lucy"));
+                Condition.text("Business-Kunde? Ja"));
     }
 
     @Test

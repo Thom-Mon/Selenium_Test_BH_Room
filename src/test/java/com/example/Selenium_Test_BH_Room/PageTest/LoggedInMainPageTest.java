@@ -27,6 +27,10 @@ public class LoggedInMainPageTest {
         loginPage.inputPassword.sendKeys("SicheresPasswort");
         loginPage.loginButton.click();
     }
+    @AfterEach
+    public void tearDown() {
+        loggedInMainPage.logoutButton.click();
+    }
 
     //Avaiability-Tests for the Tabs
     @Test
@@ -41,7 +45,56 @@ public class LoggedInMainPageTest {
         $x("//h1[contains(text(),'Personalverwaltung')]").shouldBe(visible);
         loggedInMainPage.manageEmployeeButton.click();
         $x("/html/body/app-root/div/div[2]/app-employee").shouldBe(visible);
+    }
+
+    @Test
+    public void RoleCustomerManagerCanOnlySeeCustomerManagement(){
+        //Kundenmanager 12 -> UnheardLove400
         loggedInMainPage.logoutButton.click();
-        $x("//h1[contains(text(),'Businesshotel Roomanger')]").shouldBe(visible);
+        mainPage.navitemLogin.click();
+        loginPage.inputUsername.sendKeys("UnheardLove400");
+        loginPage.inputPassword.sendKeys("SicheresPasswort");
+        loginPage.loginButton.click();
+        loggedInMainPage.manageBookingButton.shouldNotBe(visible);
+        loggedInMainPage.manageStaffButton.shouldNotBe(visible);
+        loggedInMainPage.manageRoomButton.shouldNotBe(visible);
+        loggedInMainPage.manageCustomerButton.shouldBe(visible);
+    }
+
+    @Test
+    public void RoleRoomManagerCanOnlySeeRoomManagement(){
+        //Roommanager 11 -> FramePerfekt
+        loggedInMainPage.logoutButton.click();
+        mainPage.navitemLogin.click();
+        loginPage.inputUsername.sendKeys("FramePerfekt");
+        loginPage.inputPassword.sendKeys("SicheresPasswort");
+        loginPage.loginButton.click();
+        loggedInMainPage.manageBookingButton.shouldNotBe(visible);
+        loggedInMainPage.manageStaffButton.shouldNotBe(visible);
+        loggedInMainPage.manageRoomButton.shouldBe(visible);
+        loggedInMainPage.manageCustomerButton.shouldNotBe(visible);
+    }
+
+    @Test
+    public void RoleStaffManagerCanOnlySeeStaffManagement(){
+        //Roommanager 10 -> FramePerfekt
+        loggedInMainPage.logoutButton.click();
+        mainPage.navitemLogin.click();
+        loginPage.inputUsername.sendKeys("Marius Mac Mac");
+        loginPage.inputPassword.sendKeys("SicheresPasswort");
+        loginPage.loginButton.click();
+        loggedInMainPage.manageBookingButton.shouldNotBe(visible);
+        loggedInMainPage.manageStaffButton.shouldBe(visible);
+        loggedInMainPage.manageRoomButton.shouldNotBe(visible);
+        loggedInMainPage.manageCustomerButton.shouldNotBe(visible);
+    }
+
+    @Test
+    public void RoleHotelbossCanSeeAll(){
+        //Hotelboss -> FlodinWiesret
+        loggedInMainPage.manageBookingButton.shouldBe(visible);
+        loggedInMainPage.manageStaffButton.shouldBe(visible);
+        loggedInMainPage.manageRoomButton.shouldBe(visible);
+        loggedInMainPage.manageCustomerButton.shouldBe(visible);
     }
 }
