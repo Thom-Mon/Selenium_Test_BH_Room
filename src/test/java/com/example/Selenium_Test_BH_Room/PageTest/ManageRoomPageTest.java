@@ -6,11 +6,8 @@ import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.*;
 
-
 import static com.codeborne.selenide.Condition.attribute;
 import static com.codeborne.selenide.Selenide.*;
-
-
 
 public class ManageRoomPageTest {
     ManageRoomPage manageRoomPage = new ManageRoomPage();
@@ -20,12 +17,10 @@ public class ManageRoomPageTest {
 
     @BeforeAll
     public static void setUpAll() {
-        //Configuration.browserSize = "1280x1200";
         Configuration.startMaximized = true;
         SelenideLogger.addListener("allure", new AllureSelenide());
-        //mainPage.navitemLogin.click();
-        //loginPage.forceLoginButton.click();
     }
+
     @BeforeEach
     public void setUp() {
         open("http://localhost:4200/");
@@ -34,15 +29,12 @@ public class ManageRoomPageTest {
         loginPage.inputPassword.sendKeys("SicheresPasswort");
         loginPage.loginButton.click();
 
-
         loggedInMainPage.manageRoomButton.click();
     }
     @AfterEach
     public void tearDown(){
         loggedInMainPage.logoutButton.click();
     }
-
-
 
     //TAB-AVAIABILITY
     @Test

@@ -39,7 +39,6 @@ public class BookingPage {
     public SelenideElement inputHourEnd = $x("/html/body/app-root/div/div[2]/app-booking/div/div/div/div/div[3]/div/div[2]/div/div[2]/ngb-timepicker/fieldset/div/div[1]/input");
     public SelenideElement inputMinuteEnd = $x("/html/body/app-root/div/div[2]/app-booking/div/div/div/div/div[3]/div/div[2]/div/div[2]/ngb-timepicker/fieldset/div/div[3]/input");
 
-
     public SelenideElement upperArrowHoursStart = $x("/html/body/app-root/div/div[2]/app-booking/div/div/div/div/div[3]/div/div[2]/div/div[1]/ngb-timepicker/fieldset/div/div[1]/button[1]");
     public SelenideElement lowerArrowHoursStart = $x("/html/body/app-root/div/div[2]/app-booking/div/div/div/div/div[3]/div/div[2]/div/div[1]/ngb-timepicker/fieldset/div/div[1]/button[2]");
     public SelenideElement upperArrowMinutesStart = $x("/html/body/app-root/div/div[2]/app-booking/div/div/div/div/div[3]/div/div[2]/div/div[1]/ngb-timepicker/fieldset/div/div[3]/button[1]");
@@ -50,10 +49,6 @@ public class BookingPage {
     public SelenideElement upperArrowMinutesEnd = $x("/html/body/app-root/div/div[2]/app-booking/div/div/div/div/div[3]/div/div[2]/div/div[2]/ngb-timepicker/fieldset/div/div[3]/button[1]");
     public SelenideElement lowerArrowMinutesEnd = $x("/html/body/app-root/div/div[2]/app-booking/div/div/div/div/div[3]/div/div[2]/div/div[2]/ngb-timepicker/fieldset/div/div[3]/button[2]");
 
-    public SelenideElement dateShowerStart = $x("//div[@class='card-body'][.//*[@id='btn-check-outlined']]");
-
-    public SelenideElement bookingDetailsCard = $x("//div[@class='card booking-details-card']//div[@class='card-body']");
-
-
-
+    public SelenideElement dateShowerStart = $x("//div[@class='card-body booking-details-card']");
+    public SelenideElement bookingDetailsCard = $x("//div[@class='card-body booking-details-card']");
 }

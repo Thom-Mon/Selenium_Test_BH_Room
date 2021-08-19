@@ -5,9 +5,7 @@ import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.*;
-
 import static com.codeborne.selenide.Condition.*;
-
 import static com.codeborne.selenide.Selenide.*;
 
 public class BookingPageTest {
@@ -24,7 +22,6 @@ public class BookingPageTest {
 
     @BeforeEach
     public void setUp() {
-
         open("http://localhost:4200");
         mainPage.navitemRooms.click();
         roomPage.hotelroomTab.click();
@@ -83,6 +80,8 @@ public class BookingPageTest {
         bookingPage.inputName.click();
         bookingPage.submitButton.click();
 
+        mainPage.logoutButton.click();
+
     }
 
     @Test
@@ -104,19 +103,9 @@ public class BookingPageTest {
         bookingPage.startDate.click();
         bookingPage.endDate.click();
 
-        try {
-            Thread.sleep(4000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         bookingPage.submitButton.click();
-
         mainPage.logoutButton.click();
-        try {
-            Thread.sleep(4000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+
     }
 
     @Test
@@ -126,26 +115,18 @@ public class BookingPageTest {
         loginPage.inputPassword.sendKeys("SicheresPasswort");
         loginPage.loginButton.click();
         bookingPage.buttonBooking.click();
-        try {
-            Thread.sleep(4000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        $x("//p").shouldHave(Condition.text("booking-viewer works!"));
+
+        $x("//h4").shouldHave(Condition.text("Ihre Buchungen"));
         mainPage.logoutButton.click();
     }
 
     @Test
     public void clickPreviousAndNextMonth(){
         bookingPage.monthPicker.selectOption("Okt");
-
         bookingPage.leftArrowMonth.click();
         bookingPage.leftArrowMonth.click();
-
         bookingPage.monthPicker.shouldHave(Condition.text("Aug"));
-
         bookingPage.rightArrowMonth.click();
-
         bookingPage.monthPicker.shouldHave(Condition.text("Sep"));
     }
 
@@ -155,14 +136,10 @@ public class BookingPageTest {
         String testYear = "2022";
         bookingPage.monthPicker.selectOption(testMonth);
         bookingPage.yearPicker.selectOption(testYear);
-
         //startDate ist immer die 2. Woche Montag -> endDate ist immer 3. Woche Donnerstag
         bookingPage.startDate.click();
         bookingPage.endDate.click();
-
         bookingPage.dateShowerStart.shouldHave(Condition.text("07.02.2022"),Condition.text("19.02.2022"));
-
     }
-
 }
 

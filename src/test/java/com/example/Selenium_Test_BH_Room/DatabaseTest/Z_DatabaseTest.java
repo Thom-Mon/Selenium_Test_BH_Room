@@ -10,7 +10,6 @@ import org.junit.jupiter.api.*;
 import static com.codeborne.selenide.Selenide.*;
 
 public class Z_DatabaseTest{
-    BookingPage bookingPage = new BookingPage();
     ManageRoomPage manageRoomPage = new ManageRoomPage();
     ManageBookingPage manageBookingPage = new ManageBookingPage();
     ManageStaffPage manageStaffPage = new ManageStaffPage();
@@ -41,7 +40,7 @@ public class Z_DatabaseTest{
     public void isBookingAddedToDatabase(){
         loggedInMainPage.manageBookingButton.click();
         manageBookingPage.showTab.click();
-        manageBookingPage.inputBookingNoShow.sendKeys("10");
+        manageBookingPage.inputBookingNoShow.sendKeys("11");
         manageBookingPage.searchButtonShow.click();
         manageBookingPage.bookingInformationShow.shouldHave(
                 Condition.text("empNo 3"),
@@ -163,7 +162,7 @@ public class Z_DatabaseTest{
         manageStaffPage.staffInformationCardShow.shouldHave(
                 Condition.text("Julius Cäsar"),
                 Condition.text("Rolle Kundenmanager"),
-                Condition.text("AccountID 14"));
+                Condition.text("AccountID 16"));
     }
     @Test
     public void isEmployeeUpdated(){
@@ -177,11 +176,5 @@ public class Z_DatabaseTest{
                 Condition.text("Hotelleiter"),
                 Condition.text("AccountID 3"));
     }
-
-    @Test
-    public void isBookingFromCustomerAddedToDatabase(){
-
-    }
-
 }
 

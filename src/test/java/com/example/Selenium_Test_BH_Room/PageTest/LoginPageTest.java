@@ -48,8 +48,6 @@ public class LoginPageTest {
         loginPage.loginButton.click();
         loggedInMainPage.logoutButton.shouldBe(visible);
         loggedInMainPage.logoutButton.click();
-
-        //TODO: Login überwachen -> Zugang muss bei richtigen Daten gehen, ansonsten verweigert werden mit entsprechender Meldung
     }
 
     @Test
@@ -59,11 +57,4 @@ public class LoginPageTest {
         loginPage.loginButton.click();
         $x("//div[text()='Username oder Passwort falsh']").shouldBe(visible); //TODO: falsh -> falsch !sic
     }
-
-    //div[text()='Username oder Passwort falsh']
-
-
-
-
-
 }

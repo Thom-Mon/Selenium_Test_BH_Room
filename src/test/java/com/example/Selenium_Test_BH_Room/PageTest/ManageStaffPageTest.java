@@ -43,9 +43,6 @@ public class ManageStaffPageTest {
         loggedInMainPage.logoutButton.click();
     }
 
-
-
-
     //TAB-AVAIABILITY
     @Test
     public void isTabAddAvaiable(){manageStaffPage.addTab.click();}
@@ -80,20 +77,10 @@ public class ManageStaffPageTest {
         manageStaffPage.inputPasswordRepeat.shouldHave(attribute("value",password));
         manageStaffPage.inputDropDownRole.shouldHave(Condition.text("Kundenmanager"));
 
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         manageStaffPage.buttonSearchUsername.click();
         manageStaffPage.submitButton.click();
         $x("//div[@class='notificationArea']").shouldHave(Condition.text("Mitarbeiter erfolgreich angelegt"));
 
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     }
 
     @Test
@@ -133,12 +120,6 @@ public class ManageStaffPageTest {
         manageStaffPage.inputEditDropDownRole.shouldHave(Condition.text("Hotelleiter"));
 
         manageStaffPage.submitButtonEdit.click();
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
     }
 
     @Test
@@ -153,8 +134,6 @@ public class ManageStaffPageTest {
                 Condition.text("Malignes Rau"),
                 Condition.text("Rolle Hotelleiter"),
                 Condition.text("AccountID 7"));
-
-
     }
 
     @Test
@@ -181,11 +160,6 @@ public class ManageStaffPageTest {
                 Condition.text("Malignes Rau"),
                 Condition.text("Rolle Hotelleiter"),
                 Condition.text("AccountID 7"));
-    }
-
-    @Test
-    public void isEmployeeListAvaiable(){//TODO: Füllen!
-
     }
 }
 

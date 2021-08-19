@@ -6,10 +6,8 @@ import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.*;
 
-
 import static com.codeborne.selenide.Condition.attribute;
 import static com.codeborne.selenide.Selenide.*;
-
 
 
 public class ManageBookingPageTest {
@@ -22,8 +20,6 @@ public class ManageBookingPageTest {
     public static void setUpAll() {
         Configuration.startMaximized = true;
         SelenideLogger.addListener("allure", new AllureSelenide());
-        //mainPage.navitemLogin.click();
-        //loginPage.forceLoginButton.click();
     }
     @BeforeEach
     public void setUp() {
@@ -32,17 +28,12 @@ public class ManageBookingPageTest {
         loginPage.inputUsername.sendKeys("FlodinWiesret");
         loginPage.inputPassword.sendKeys("SicheresPasswort");
         loginPage.loginButton.click();
-
         loggedInMainPage.manageBookingButton.click();
-        //open("http://localhost:4200/management/booking");;
     }
     @AfterEach
     public void tearDown(){
         loggedInMainPage.logoutButton.click();
     }
-
-
-
 
     //TAB-AVAIABILITY
     @Test
@@ -58,13 +49,13 @@ public class ManageBookingPageTest {
     @Test
     public void isTabShowAvaiable(){manageBookingPage.showTab.click();}
 
-    @Test //TODO: unfertig in der Abfrage des RadioZustands!!!!
+    @Test
     public void isRadioButtonWorking(){
         manageBookingPage.radioButtonHotel.click();
         manageBookingPage.radioButtonConference.click();
     }
 
-    @Test //TODO: DATEPICKER UND TIMEPICKER IN TEST ->Dropdown bei Raumnummer geht noch nicht
+    @Test
     public void addBookingInformation(){ //TODO: KLick auf Element in Dropdown geht nicht!!!
         manageBookingPage.addTab.click();
         manageBookingPage.inputCustomerNo.sendKeys("4");
@@ -80,26 +71,19 @@ public class ManageBookingPageTest {
         manageBookingPage.inputEndDate.click();
 
         manageBookingPage.submitButton.click();
-        //div[@class='notificationArea']
     }
     @Test
     public void isSearchWorkingEditTab(){
         manageBookingPage.editTab.click();
         manageBookingPage.inputBookingNo.sendKeys("1");
         manageBookingPage.searchButton.click();
-
-
-        //manageBookingPage.inputEditStartDate.shouldBe(Condition.text("01042021"));
         manageBookingPage.inputEditCustomerNo.shouldHave(attribute("value", "2"));
-        //manageBookingPage.inputEditRoomNo.shouldHave(attribute("value", "2")); erstmal auskommentiert, weil nicht integriert:-)
-
 
         manageBookingPage.inputEditStartDate.shouldHave(attribute("value", "2021-04-01"));
         manageBookingPage.inputEditEndDate.shouldHave(attribute("value", "2021-04-04"));
         manageBookingPage.inputEditStartTime.shouldHave(attribute("value", "10:30"));
         manageBookingPage.inputEditEndTime.shouldHave(attribute("value", "10:30"));
         manageBookingPage.inputEditCustomerWishes.shouldHave(attribute("value", "Cola so viel und so oft wie geht"));
-        //manageBookingPage.submitButton.click();
     }
 
     @Test
@@ -115,17 +99,11 @@ public class ManageBookingPageTest {
 
         manageBookingPage.inputEditCustomerNo.click();
 
-
         manageBookingPage.inputEditCustomerWishes.shouldHave(attribute("value", "Oder doch lieber Fanta!"));
         manageBookingPage.inputEditCustomerNo.shouldHave(attribute("value", "3"));
 
         manageBookingPage.submitEditButton.click();
 
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     }
 
     @Test
@@ -142,7 +120,6 @@ public class ManageBookingPageTest {
                 Condition.text("2021-04-04 10:30:00"),
                 Condition.text("customerID 2"),
                 Condition.text("empNo 4"));
-
     }
 
     @Test
@@ -153,11 +130,6 @@ public class ManageBookingPageTest {
         manageBookingPage.searchButtonDeletion.click();
 
         manageBookingPage.releaseButtonToogleDeletion.click();
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         manageBookingPage.deletionButton.click();
     }
 
@@ -176,5 +148,4 @@ public class ManageBookingPageTest {
                 Condition.text("customerID 2"),
                 Condition.text("empNo 4"));
     }
-
 }

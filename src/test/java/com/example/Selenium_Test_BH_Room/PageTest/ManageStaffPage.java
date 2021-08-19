@@ -2,8 +2,6 @@ package com.example.Selenium_Test_BH_Room.PageTest;
 
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
@@ -20,11 +18,9 @@ public class ManageStaffPage {
     public SelenideElement inputSurname= $x("//*[@id='mat-input-0']");
     public SelenideElement inputName= $x("//*[@id='mat-input-1']");
     public SelenideElement inputPassword= $x("//*[@id='mat-input-2']");
-    public SelenideElement inputPasswordRepeat= $x("//*[@id='mat-input-3']");//*[@id='mat-input-193']
-    public SelenideElement inputUsername = $(By.name("username"));//username    //button[contains(@class, 'mat-icon-button')]
+    public SelenideElement inputPasswordRepeat= $x("//*[@id='mat-input-3']");
+    public SelenideElement inputUsername = $(By.name("username"));
     public SelenideElement buttonSearchUsername = $x("//button[contains(@class, 'mat-icon-button')]");
-
-
     public SelenideElement submitButton= $x("//button[@type='submit']");
 
     public SelenideElement inputEditEmployeeNo= $x("//*[@id='mat-input-5']");

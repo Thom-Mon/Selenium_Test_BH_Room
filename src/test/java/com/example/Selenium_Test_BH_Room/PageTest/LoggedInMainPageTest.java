@@ -5,8 +5,6 @@ import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.*;
 
-
-import static com.codeborne.selenide.Condition.attribute;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -15,26 +13,20 @@ public class LoggedInMainPageTest {
     MainPage mainPage = new MainPage();
     LoginPage loginPage = new LoginPage();
 
-
-
     @BeforeAll
     public static void setUpAll() {
         Configuration.startMaximized = true;
         SelenideLogger.addListener("allure", new AllureSelenide());
     }
 
-
     @BeforeEach
     public void setUp() {
-
         open("http://localhost:4200/");
         mainPage.navitemLogin.click();
         loginPage.inputUsername.sendKeys("FlodinWiesret");
         loginPage.inputPassword.sendKeys("SicheresPasswort");
         loginPage.loginButton.click();
     }
-
-
 
     //Avaiability-Tests for the Tabs
     @Test
@@ -52,10 +44,4 @@ public class LoggedInMainPageTest {
         loggedInMainPage.logoutButton.click();
         $x("//h1[contains(text(),'Businesshotel Roomanger')]").shouldBe(visible);
     }
-
-
-
-//TODO:---Kussi--kuss--kuss-longclick_clicki schnuff
-
-
 }

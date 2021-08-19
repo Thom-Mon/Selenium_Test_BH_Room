@@ -24,10 +24,8 @@ public class conferenceRoomBookingPageTest {
         open("http://localhost:4200/booking/6");
     }
 
-
-
     @Test
-    public void isBookingPossibleAsNewUser() { //TODO: Funktion muss noch implementiert werden
+    public void isBookingPossibleAsNewUser() {
         String name = "Luciferius";
         String surname = "Hogland";
         String company= "Lange Industries GmbH" ;
@@ -49,7 +47,6 @@ public class conferenceRoomBookingPageTest {
         bookingPage.yearPicker.selectOption(testYear);
 
         bookingPage.startDate.click();
-
 
         bookingPage.inputSurname.sendKeys(surname);
         bookingPage.inputName.sendKeys(name);
@@ -79,12 +76,8 @@ public class conferenceRoomBookingPageTest {
         bookingPage.inputSpecialWishes.shouldHave(attribute("value", specialWishes));
 
         bookingPage.submitButton.click();
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     }
+
     @Test
     public void isWritingPossibleToClock(){
         bookingPage.inputHourStart.clear();
@@ -107,12 +100,10 @@ public class conferenceRoomBookingPageTest {
     @Test
     public void clickPreviousAndNextMonth(){
         bookingPage.monthPicker.selectOption("Okt");
-
         bookingPage.leftArrowMonth.click();
         bookingPage.leftArrowMonth.click();
 
         bookingPage.monthPicker.shouldHave(Condition.text("Aug"));
-
         bookingPage.rightArrowMonth.click();
 
         bookingPage.monthPicker.shouldHave(Condition.text("Sep"));
@@ -128,7 +119,6 @@ public class conferenceRoomBookingPageTest {
 
         //startDate ist immer die 2. Woche Montag
         bookingPage.startDate.click();
-
         bookingPage.dateShowerStart.shouldHave(Condition.text("07.02.2022"));
     }
 
@@ -143,8 +133,7 @@ public class conferenceRoomBookingPageTest {
         bookingPage.inputMinuteStart.sendKeys("15");
         bookingPage.inputHourEnd.sendKeys("15");
         bookingPage.inputMinuteEnd.sendKeys("30");
-        bookingPage.bookingDetailsCard.click(); //dieser Click ist notwendig um die neue Eingabe zu übernehmen in die Anzeige bei Buchungsdetails
-
+        bookingPage.bookingDetailsCard.click();
 
         bookingPage.bookingDetailsCard.shouldHave(Condition.text("12:15"), Condition.text("15:30"));
     }
@@ -183,6 +172,5 @@ public class conferenceRoomBookingPageTest {
         bookingPage.upperArrowMinutesEnd.click();
         bookingPage.inputMinuteEnd.shouldHave(attribute("value", "30"));
     }
-
 }
 

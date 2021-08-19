@@ -2,8 +2,6 @@ package com.example.Selenium_Test_BH_Room.PageTest;
 
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
@@ -22,7 +20,7 @@ public class ManageRoomPage {
     public SelenideElement inputDropDownChooseConference= $x("//span[text()='Konferenzzimmer']");
     public SelenideElement inputDropDownChooseHotel= $x("//span[text()='Einzelzimmer']");
     public SelenideElement inputPricePerUnit= $x("//*[@id='mat-input-4']");
-    public SelenideElement inputBedCount = $x("//*[@id='mat-input-5']");//*[@id='mat-input-5']
+    public SelenideElement inputBedCount = $x("//*[@id='mat-input-5']");
     public SelenideElement inputMaxUser = $x("//*[@id='mat-input-5']");
     public SelenideElement inputWhiteboard= $x("//*[@id='mat-input-6']");
     public SelenideElement inputBeamer = $x("//*[@id='mat-input-7']");
@@ -65,14 +63,14 @@ public class ManageRoomPage {
     public SelenideElement checkBoxEditProjectScreen = $x("//*[@id='mat-checkbox-3']");
     public SelenideElement checkBoxEditComputerAvaiable = $x("//*[@id='mat-checkbox-4']");
 
-    public SelenideElement inputDeleteRoomNo = $x("//*[@id='mat-input-2']");//*[@id='mat-tab-content-0-2']/div/div/div[1]/button[1]
+    public SelenideElement inputDeleteRoomNo = $x("//*[@id='mat-input-2']");
     public SelenideElement searchButtonDelete = $x("//button[@ng-reflect-disabled='false']");
-    public SelenideElement roomInformationDeletionCard = $x("//mat-card");//*[@id='mat-tab-content-0-2']/div/div/div[1]/button[1]
+    public SelenideElement roomInformationDeletionCard = $x("//mat-card");
     public SelenideElement releaseButtonToogle = $x("//*[@id='mat-slide-toggle-1']/label/div/div/div[1]");
     public SelenideElement deleteButton = $x("//button[@type='submit']");
 
     public SelenideElement inputShowRoomNo = $x("//*[@id='mat-input-3']");
     public SelenideElement searchButtonShow = $x("//button[@color='primary']");
-    public SelenideElement roomInformationShowCard = $x("//mat-card");//*[@id='mat-tab-content-0-2']/div/div/div[1]/button[1]
+    public SelenideElement roomInformationShowCard = $x("//mat-card");
 }
 

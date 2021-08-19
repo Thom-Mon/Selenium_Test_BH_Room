@@ -5,7 +5,6 @@ import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.*;
 
-import static com.codeborne.selenide.Condition.attribute;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -21,10 +20,8 @@ public class RoomPageTest {
 
     @BeforeEach
     public void setUp() {
-
         open("http://localhost:4200");
         mainPage.navitemRooms.click();
-
     }
 
     @Test
@@ -46,7 +43,6 @@ public class RoomPageTest {
     @Test
     public void clickBookingButtonHotelroom(){
         roomPage.hotelRoomBookingButton.click();
-
         $x("//h3[contains(text(),'Buchungs Details')]").shouldBe(visible);
         $x("//h4[contains(text(),'HOTELROOM')]").shouldBe(visible);
     }
@@ -55,7 +51,6 @@ public class RoomPageTest {
     public void clickBookingButtonConferenceroom(){
         roomPage.conferenceRoomTab.click();
         roomPage.conferenceRoomBookingButton.click();
-
         $x("//h3[contains(text(),'Buchungs Details')]").shouldBe(visible);
         $x("//h4[contains(text(),'CONFERENCEROOM')]").shouldBe(visible);
     }

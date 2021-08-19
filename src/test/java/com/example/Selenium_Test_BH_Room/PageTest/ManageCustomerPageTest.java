@@ -104,13 +104,7 @@ public class ManageCustomerPageTest {
         manageCustomerPage.inputPaymethodPayPalAdressField.shouldHave(attribute("value", mail));
         manageCustomerPage.inputPaymethod.shouldHave(Condition.text("PayPal"));
 
-
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        manageCustomerPage.submitButton.click(); //TODO: wieder aktivieren, für Tests erstmal deaktiviert
+        manageCustomerPage.submitButton.click();
     }
     @Test
     public void isSearchWorkingInEditTab(){
@@ -122,11 +116,6 @@ public class ManageCustomerPageTest {
         manageCustomerPage.inputEditSurname.shouldHave(attribute("value","Shigeru"));
         manageCustomerPage.inputEditMail.shouldHave(attribute("value","MarioMaker@shin.jp"));
         manageCustomerPage.inputEditStreet.shouldHave(attribute("value","Nintendoweg"));
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     }
 
     @Test
@@ -180,13 +169,7 @@ public class ManageCustomerPageTest {
 
         manageCustomerPage.releaseButtonToogleDeletion.click();
 
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        //manageCustomerPage.deletionButton.click(); //TODO: Wieder einschalten für finale Tests
+        manageCustomerPage.deletionButton.click();
     }
 
     @Test

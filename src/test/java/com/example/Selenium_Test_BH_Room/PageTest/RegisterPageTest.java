@@ -26,21 +26,16 @@ public class RegisterPageTest {
     String password = "SicheresPasswort";
     String invalidMail= "asd";
 
-
     @BeforeAll
     public static void setUpAll() {
-        //Configuration.browserSize = "1280x900"; //Höhe wurde angepasst weil Elemente in Register -> Registrierung + Cancal nicht anklickbar waren
         Configuration.startMaximized = true;
         SelenideLogger.addListener("allure", new AllureSelenide());
-
     }
 
     @BeforeEach
     public void setUp() {
         open("http://localhost:4200/register");
     }
-
-
 
     @Test
     public void clickCancelButton() {
@@ -70,17 +65,10 @@ public class RegisterPageTest {
         registerPage.inputPasswordRepeat.shouldHave(attribute("value",   password));
 
         registerPage.registerbutton.click();
-
         registerPage.bookingButton.shouldBe(visible);
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         loggedInMainPage.logoutButton.click();
     }
-    //TODO: Login überwachen -> Zugang muss bei richtigen Daten gehen, ansonsten verweigert werden mit entsprechender Meldung
-    //TODO: Allgemein noch die Fehlerabfragen auf Richtigkeit überprüfen!
+
     @Test
     public void sameUserNameShouldBeImpossible(){
         registerPage.inputName.sendKeys(name);
@@ -120,6 +108,4 @@ public class RegisterPageTest {
         registerPage.inputPasswordRepeat.sendKeys("as");
         $x("//div[text()='Passwort nicht identisch']").shouldBe(visible);
     }
-
-
 }

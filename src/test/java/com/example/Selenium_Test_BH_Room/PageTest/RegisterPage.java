@@ -2,18 +2,12 @@ package com.example.Selenium_Test_BH_Room.PageTest;
 
 
 import com.codeborne.selenide.SelenideElement;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-
-import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
 
 public class RegisterPage {
     public SelenideElement registerbutton = $x("/html/body/app-root/div/div[2]/app-registration/div/div/div/form/div[10]/button");
     public SelenideElement cancelButton = $x("/html/body/app-root/div/div[2]/app-registration/div/div/div/form/div[10]/a");
     public SelenideElement bookingButton = $x("//*[@id='pills-bookings-tab']");
-
-    //*[@id='pills-bookings-tab']
 
     //INPUT-ELEMENTE - FORMULAR
     public SelenideElement buttonBusinessCustomer = $x("/html/body/app-root/div/div[2]/app-registration/div/div/div/form/div[1]/div/label");

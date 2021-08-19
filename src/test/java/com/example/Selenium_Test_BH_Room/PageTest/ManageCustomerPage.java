@@ -30,9 +30,6 @@ public class ManageCustomerPage {
     public SelenideElement inputPaymethodPayPal = $x("//*[@id='mat-option-2']");
     public SelenideElement inputPaymethodPayPalAdressField = $x("//*[@id='mat-input-11']");
 
-
-
-
     public SelenideElement submitButton = $x("//button[@type='submit']");
 
     public SelenideElement inputEditCustomerNo = $x("//*[@id='mat-input-8']");
@@ -59,10 +56,10 @@ public class ManageCustomerPage {
     public SelenideElement searchButtonDelete = $x("//button[@ng-reflect-disabled='false']");
     public SelenideElement customerInformationDeletion = $x("//mat-card");
     public SelenideElement releaseButtonToogleDeletion= $x("//*[@id='mat-slide-toggle-1']/label/div/div");
-    public SelenideElement deletionButton= $x("//*[@id='mat-tab-content-0-2']/div/div/div[1]/button[2]");
+    public SelenideElement deletionButton= $x("//button[@type='submit']");
 
     public SelenideElement inputShowCustomerNo = $x("//*[@id='mat-input-10']");
-    public SelenideElement searchButtonShow = $x("//*[@id='mat-tab-content-0-3']/div/div/div[1]/button");
+    public SelenideElement searchButtonShow = $x("//button[@color='primary']");
     public SelenideElement customerInformationShow= $x("//mat-card");
 
 }
