@@ -1,26 +1,12 @@
-package com.example.Selenium_Test_BH_Room;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
+package com.example.Selenium_Test_BH_Room.PageTest;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.Selenide;
-import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.*;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
 import static com.codeborne.selenide.Condition.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 import static com.codeborne.selenide.Selenide.*;
 
@@ -41,28 +27,63 @@ public class conferenceRoomBookingPageTest {
 
 
     @Test
-    public void isWritingPossibleToAllInput() { //TODO: Funktion muss noch implementiert werden
-        String name = "Lucifer";
-        String surname = "Holger";
+    public void isBookingPossibleAsNewUser() { //TODO: Funktion muss noch implementiert werden
+        String name = "Luciferius";
+        String surname = "Hogland";
         String company= "Lange Industries GmbH" ;
         String mail = "Clownery@gmx.de";
         String phone = "+490190123456";
+        String testMonth = "Jan";
+        String testYear = "2022";
+        String street = "Teststraße";
+        String houseNo = "4";
+        String zipcode = "99610";
+        String city = "Sömmerda";
+        String paymethod = "Debit";
+        String iban = "DE12 2345 6789 1011";
+        String specialWishes = "Buchung Konferenzraum - unangemeldet - als Test vom Holger Lucifer - DEV-Notes";
 
         bookingPage.buttonBusinessCustomer.click();
 
-        bookingPage.inputName.sendKeys(name);
+        bookingPage.monthPicker.selectOption(testMonth);
+        bookingPage.yearPicker.selectOption(testYear);
+
+        bookingPage.startDate.click();
+
+
         bookingPage.inputSurname.sendKeys(surname);
+        bookingPage.inputName.sendKeys(name);
         bookingPage.inputCompany.sendKeys(company);
         bookingPage.inputMail.sendKeys(mail);
         bookingPage.inputPhone.sendKeys(phone);
+
+        bookingPage.inputStreet.sendKeys(street);
+        bookingPage.inputStreetNo.sendKeys(houseNo);
+        bookingPage.inputZipcode.sendKeys(zipcode);
+        bookingPage.inputCity.sendKeys(city);
+        bookingPage.dropDownPaymentMethod.selectOption(paymethod);
+        bookingPage.inputIban.sendKeys(iban);
+        bookingPage.inputSpecialWishes.sendKeys(specialWishes);
 
         bookingPage.inputName.shouldHave(attribute("value", name));
         bookingPage.inputSurname.shouldHave(attribute("value", surname));
         bookingPage.inputCompany.shouldHave(attribute("value", company));
         bookingPage.inputMail.shouldHave(attribute("value", mail));
         bookingPage.inputPhone.shouldHave(attribute("value", phone));
+        bookingPage.inputStreet.shouldHave(attribute("value", street));
+        bookingPage.inputStreetNo.shouldHave(attribute("value", houseNo));
+        bookingPage.inputZipcode.shouldHave(attribute("value", zipcode));
+        bookingPage.inputCity.shouldHave(attribute("value", city));
+        bookingPage.dropDownPaymentMethod.shouldHave(attribute("value", "debit"));
+        bookingPage.inputIban.shouldHave(attribute("value", iban));
+        bookingPage.inputSpecialWishes.shouldHave(attribute("value", specialWishes));
 
         bookingPage.submitButton.click();
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
     @Test
     public void isWritingPossibleToClock(){
@@ -108,7 +129,7 @@ public class conferenceRoomBookingPageTest {
         //startDate ist immer die 2. Woche Montag
         bookingPage.startDate.click();
 
-        bookingPage.dateShower.shouldHave(Condition.text("07.02.2022"));
+        bookingPage.dateShowerStart.shouldHave(Condition.text("07.02.2022"));
     }
 
     @Test

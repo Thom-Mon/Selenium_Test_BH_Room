@@ -1,0 +1,551 @@
+<html lang="de"><head>
+  <meta charset="utf-8">
+  <title>BH-Room</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+<!--  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">-->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<link rel="stylesheet" href="styles.css"><style>.app-component[_ngcontent-dyq-c148] {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 56px 1fr 44px;
+  grid-gap: 22px 0px;
+  gap: 22px 0px;
+  grid-template-areas: "app-navigation" "router-outlet" "app-footer";
+}
+
+.app-navigation[_ngcontent-dyq-c148] {
+  grid-area: app-navigation;
+}
+
+.router-outlet[_ngcontent-dyq-c148] {
+  grid-area: router-outlet;
+}
+
+.app-footer[_ngcontent-dyq-c148] {
+  grid-area: app-footer;
+}
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFwcC5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGFBQUE7RUFDQSwwQkFBQTtFQUNBLGlDQUFBO0VBQ0Esa0JBQUE7RUFBQSxhQUFBO0VBQ0Esa0VBQ0U7QUFBSjs7QUFJQTtFQUFrQix5QkFBQTtBQUFsQjs7QUFDQTtFQUFpQix3QkFBQTtBQUdqQjs7QUFGQTtFQUFjLHFCQUFBO0FBTWQiLCJmaWxlIjoiYXBwLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmFwcC1jb21wb25lbnQge1xyXG4gIGRpc3BsYXk6IGdyaWQ7XHJcbiAgZ3JpZC10ZW1wbGF0ZS1jb2x1bW5zOiAxZnI7XHJcbiAgZ3JpZC10ZW1wbGF0ZS1yb3dzOiA1NnB4IDFmciA0NHB4O1xyXG4gIGdhcDogMjJweCAwcHg7XHJcbiAgZ3JpZC10ZW1wbGF0ZS1hcmVhczpcclxuICAgIFwiYXBwLW5hdmlnYXRpb25cIlxyXG4gICAgXCJyb3V0ZXItb3V0bGV0XCJcclxuICAgIFwiYXBwLWZvb3RlclwiO1xyXG59XHJcbi5hcHAtbmF2aWdhdGlvbiB7IGdyaWQtYXJlYTogYXBwLW5hdmlnYXRpb247IH1cclxuLnJvdXRlci1vdXRsZXQgeyBncmlkLWFyZWE6IHJvdXRlci1vdXRsZXQ7IH1cclxuLmFwcC1mb290ZXIgeyBncmlkLWFyZWE6IGFwcC1mb290ZXI7IH1cclxuIl19 */</style><style>a[_ngcontent-dyq-c146] {
+  color: white;
+  text-decoration: none;
+}
+
+.nav-pills[_ngcontent-dyq-c146]   .nav-item[_ngcontent-dyq-c146] {
+  padding: 3px 8px;
+}
+
+.bhRoomLogo[_ngcontent-dyq-c146] {
+  width: 200px;
+}
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm5hdmlnYXRpb24uY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxZQUFBO0VBQ0EscUJBQUE7QUFDRjs7QUFFQTtFQUNFLGdCQUFBO0FBQ0Y7O0FBWUE7RUFDRSxZQUFBO0FBVEYiLCJmaWxlIjoibmF2aWdhdGlvbi5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImEge1xyXG4gIGNvbG9yOiB3aGl0ZTtcclxuICB0ZXh0LWRlY29yYXRpb246IG5vbmU7XHJcbn1cclxuXHJcbi5uYXYtcGlsbHMgLm5hdi1pdGVtIHtcclxuICBwYWRkaW5nOiAzcHggOHB4O1xyXG59XHJcblxyXG4vLy50b3BuYXYge1xyXG4vLyAgZGlzcGxheTogZmxleDtcclxuLy8gIGZsZXgtZGlyZWN0aW9uOiByb3c7XHJcbi8vICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWFyb3VuZDtcclxuLy8gIGJhY2tncm91bmQtY29sb3I6IGdyYXk7XHJcbi8vICBwYWRkaW5nOiA1cHg7XHJcbi8vICBoZWlnaHQ6IDUwcHg7XHJcbi8vXHJcbi8vfVxyXG5cclxuLmJoUm9vbUxvZ297XHJcbiAgd2lkdGg6MjAwcHg7XHJcbn1cclxuIl19 */</style><style>.footer[_ngcontent-dyq-c147] {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: white;
+  text-align: center;
+  height: 44px;
+}
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImZvb3Rlci5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFFQTtFQUNFLGVBQUE7RUFDQSxPQUFBO0VBQ0EsU0FBQTtFQUNBLFdBQUE7RUFDQSxZQUFBO0VBQ0Esa0JBQUE7RUFDQSxZQUFBO0FBREYiLCJmaWxlIjoiZm9vdGVyLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiJGJhc2UtY29sb3I6ICNjNjUzOGM7XHJcblxyXG4uZm9vdGVyIHtcclxuICBwb3NpdGlvbjogZml4ZWQ7XHJcbiAgbGVmdDogMDtcclxuICBib3R0b206IDA7XHJcbiAgd2lkdGg6IDEwMCU7XHJcbiAgY29sb3I6IHdoaXRlO1xyXG4gIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICBoZWlnaHQ6IDQ0cHg7XHJcbn1cclxuXHJcbiJdfQ== */</style><style>.mainContent[_ngcontent-dyq-c90] {
+  margin-top: 300px;
+  margin-left: 20%;
+  margin-right: 20%;
+  height: 100%;
+}
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm1haW4uY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxpQkFBQTtFQUNBLGdCQUFBO0VBQ0EsaUJBQUE7RUFDQSxZQUFBO0FBQ0YiLCJmaWxlIjoibWFpbi5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5tYWluQ29udGVudCB7XHJcbiAgbWFyZ2luLXRvcDogMzAwcHg7XHJcbiAgbWFyZ2luLWxlZnQ6IDIwJTtcclxuICBtYXJnaW4tcmlnaHQ6IDIwJTtcclxuICBoZWlnaHQ6IDEwMCU7XHJcbn1cclxuIl19 */</style><style>.rooms-list[_ngcontent-dyq-c88] {
+  text-align: center;
+  padding-top: 22px;
+  padding-bottom: 44px;
+}
+
+.rooms-view[_ngcontent-dyq-c88] {
+  padding-left: 22px;
+  padding-right: 22px;
+}
+
+.hiddenRow[_ngcontent-dyq-c88] {
+  padding: 0 !important;
+}
+
+.col-centered[_ngcontent-dyq-c88] {
+  float: none;
+  margin: 0 auto;
+}
+
+.col[_ngcontent-dyq-c88] {
+  padding: 11px;
+}
+
+.card[_ngcontent-dyq-c88] {
+  width: 286px;
+  height: 302px;
+  margin: 0;
+}
+
+.btn[_ngcontent-dyq-c88] {
+  padding: 3px 8px;
+  margin-top: 10px;
+}
+
+h5[_ngcontent-dyq-c88] {
+  display: inline;
+}
+
+h6[_ngcontent-dyq-c88] {
+  display: inline;
+}
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInJvb20uY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxrQkFBQTtFQUNBLGlCQUFBO0VBQ0Esb0JBQUE7QUFDRjs7QUFFQTtFQUNFLGtCQUFBO0VBQ0EsbUJBQUE7QUFDRjs7QUFFQTtFQUNFLHFCQUFBO0FBQ0Y7O0FBRUE7RUFDRSxXQUFBO0VBQ0EsY0FBQTtBQUNGOztBQUVBO0VBQ0UsYUFBQTtBQUNGOztBQUVBO0VBQ0UsWUFBQTtFQUNBLGFBQUE7RUFDQSxTQUFBO0FBQ0Y7O0FBRUE7RUFDRSxnQkFBQTtFQUNBLGdCQUFBO0FBQ0Y7O0FBS0E7RUFDRSxlQUFBO0FBRkY7O0FBSUE7RUFDRSxlQUFBO0FBREYiLCJmaWxlIjoicm9vbS5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5yb29tcy1saXN0IHtcclxuICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbiAgcGFkZGluZy10b3A6IDIycHg7XHJcbiAgcGFkZGluZy1ib3R0b206IDQ0cHg7XHJcbn1cclxuXHJcbi5yb29tcy12aWV3IHtcclxuICBwYWRkaW5nLWxlZnQ6IDIycHg7XHJcbiAgcGFkZGluZy1yaWdodDogMjJweDtcclxufVxyXG5cclxuLmhpZGRlblJvdyB7XHJcbiAgcGFkZGluZzogMCAhaW1wb3J0YW50O1xyXG59XHJcblxyXG4uY29sLWNlbnRlcmVke1xyXG4gIGZsb2F0OiBub25lO1xyXG4gIG1hcmdpbjogMCBhdXRvO1xyXG59XHJcblxyXG4uY29sIHtcclxuICBwYWRkaW5nOiAxMXB4O1xyXG59XHJcblxyXG4uY2FyZCB7XHJcbiAgd2lkdGg6IDI4NnB4O1xyXG4gIGhlaWdodDogMzAycHg7XHJcbiAgbWFyZ2luOiAwO1xyXG59XHJcblxyXG4uYnRuIHtcclxuICBwYWRkaW5nOiAzcHggOHB4O1xyXG4gIG1hcmdpbi10b3A6IDEwcHg7XHJcbn1cclxuXHJcblxyXG5cclxuXHJcbmg1IHtcclxuICBkaXNwbGF5OiBpbmxpbmU7XHJcbn1cclxuaDYge1xyXG4gIGRpc3BsYXk6IGlubGluZTtcclxufVxyXG5cclxuIl19 */</style><style>.booking-view[_ngcontent-dyq-c196] {
+  padding: 22px;
+}
+@media only screen and (min-width: 1300px) {
+  .booking-view[_ngcontent-dyq-c196]   .form-inline[_ngcontent-dyq-c196] {
+    display: grid;
+    grid-template-columns: 400px 1fr 458px;
+    grid-template-rows: 1fr;
+    grid-gap: 22px 22px;
+    gap: 22px 22px;
+    grid-template-areas: "room-details booking-details date-group";
+  }
+  .booking-view[_ngcontent-dyq-c196]   .date-group[_ngcontent-dyq-c196] {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-gap: 0px 0px;
+    gap: 0px 0px;
+    grid-template-areas: "date-picker" "time-picker";
+    grid-area: date-group;
+    float: right;
+  }
+  .booking-view[_ngcontent-dyq-c196]   .md-date-time-picker[_ngcontent-dyq-c196] {
+    visibility: hidden;
+    display: none;
+  }
+}
+@media only screen and (max-width: 1299px) {
+  .booking-view[_ngcontent-dyq-c196]   .form-inline[_ngcontent-dyq-c196] {
+    display: grid;
+    grid-template-columns: 400px 1fr;
+    grid-template-rows: 1fr;
+    grid-gap: 22px 22px;
+    gap: 22px 22px;
+    grid-template-areas: "room-details booking-details";
+  }
+  .booking-view[_ngcontent-dyq-c196]   .date-group[_ngcontent-dyq-c196] {
+    visibility: hidden;
+    display: none;
+  }
+  .booking-view[_ngcontent-dyq-c196]   button.calendar[_ngcontent-dyq-c196], .booking-view[_ngcontent-dyq-c196]   button.calendar[_ngcontent-dyq-c196]:active {
+    width: 2.75rem;
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAcCAYAAAAEN20fAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAEUSURBVEiJ7ZQxToVAEIY/YCHGxN6XGOIpnpaEsBSeQC9ArZbm9TZ6ADyBNzAhQGGl8Riv4BLAWAgmkpBYkH1b8FWT2WK/zJ8ZJ4qiI6XUI3ANnGKWBnht2/ZBDRK3hgVGNsCd7/ui+JkEIrKtqurLpEWaphd933+IyI3LEIdpCYCiKD6HcuOa/nwOa0ScJEnk0BJg0UTUWJRl6RxCYEzEmomsIlPU3IPW+grIAbquy+q6fluy/28RIBeRMwDXdXMgXLj/B2uimRXpui4D9sBeRLKl+1N+L+t6RwbWrZliTTTr1oxYtzVWiTQAcRxvTX+eJMnlUDaO1vpZRO5NS0x48sIwfPc87xg4B04MCzQi8hIEwe4bl1DnFMCN2zsAAAAASUVORK5CYII=") !important;
+    background-repeat: no-repeat;
+    background-size: 23px;
+    background-position: center;
+    height: 2.75rem;
+  }
+  .booking-view[_ngcontent-dyq-c196]   button.time[_ngcontent-dyq-c196], .booking-view[_ngcontent-dyq-c196]   button.time[_ngcontent-dyq-c196]:active {
+    width: 2.75rem;
+    color: #444444;
+    background-repeat: no-repeat;
+    background-size: 23px;
+    background-position: center;
+    height: 2.75rem;
+    padding: 0;
+    padding-bottom: 4px;
+  }
+  .booking-view[_ngcontent-dyq-c196]   .input-group-append[_ngcontent-dyq-c196] {
+    width: 44px;
+  }
+  .booking-view[_ngcontent-dyq-c196]   .booking-card[_ngcontent-dyq-c196] {
+    min-height: 480px;
+  }
+}
+.booking-view[_ngcontent-dyq-c196]   .date-picker-error[_ngcontent-dyq-c196] {
+  padding: 9px;
+  font-weight: bold;
+  color: #DC3545;
+}
+.booking-view[_ngcontent-dyq-c196]   .col[_ngcontent-dyq-c196] {
+  padding: 0;
+}
+.booking-view[_ngcontent-dyq-c196]   .room-image[_ngcontent-dyq-c196] {
+  width: 400px;
+  height: 300px;
+  object-fit: cover;
+}
+.booking-view[_ngcontent-dyq-c196]   .booking-details[_ngcontent-dyq-c196] {
+  grid-area: booking-details;
+}
+.booking-view[_ngcontent-dyq-c196]   .room-details[_ngcontent-dyq-c196] {
+  grid-area: room-details;
+  text-align: center;
+  min-width: 400px;
+  height: 300px;
+}
+.booking-view[_ngcontent-dyq-c196]   .room-details-card[_ngcontent-dyq-c196] {
+  margin-left: 0;
+  margin-right: auto;
+  width: 400px;
+}
+.booking-view[_ngcontent-dyq-c196]   .date-picker[_ngcontent-dyq-c196] {
+  grid-area: date-picker;
+  align-items: center;
+}
+.booking-view[_ngcontent-dyq-c196]   .time-picker[_ngcontent-dyq-c196] {
+  display: grid;
+  grid-template-columns: 1fr 0.5fr;
+  grid-template-rows: 1fr;
+  grid-gap: 0px 0px;
+  gap: 0px 0px;
+  grid-template-areas: "start-time end-time";
+  grid-area: time-picker;
+}
+.booking-view[_ngcontent-dyq-c196]   .start-time[_ngcontent-dyq-c196] {
+  grid-area: start-time;
+  display: inline;
+}
+.booking-view[_ngcontent-dyq-c196]   .end-time[_ngcontent-dyq-c196] {
+  grid-area: end-time;
+}
+.booking-view[_ngcontent-dyq-c196]   .btn[_ngcontent-dyq-c196] {
+  visibility: visible;
+}
+.custom-day[_ngcontent-dyq-c196] {
+  text-align: center;
+  padding: 0.15rem 0.25rem;
+  display: inline-block;
+  height: 2rem;
+  width: 2rem;
+  border-radius: 10px;
+}
+.custom-day.single[_ngcontent-dyq-c196] {
+  background-color: #0275d8;
+  color: white;
+}
+.custom-day.rangeStart[_ngcontent-dyq-c196] {
+  background-color: #0275d8;
+  color: white;
+  border-radius: 10px 0 0 10px;
+}
+.custom-day.rangeEnd[_ngcontent-dyq-c196] {
+  background-color: #0275d8;
+  color: white;
+  border-radius: 0 10px 10px 0;
+}
+.custom-day[_ngcontent-dyq-c196]:hover {
+  background-color: #0275d8;
+  color: white;
+}
+.custom-day.faded[_ngcontent-dyq-c196] {
+  background-color: rgba(2, 117, 216, 0.5);
+  color: white;
+  border-radius: 0;
+}
+.custom-day.unavailable[_ngcontent-dyq-c196] {
+  background-color: rgba(222, 50, 50, 0.4);
+  color: white;
+  border-radius: 0;
+}
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImJvb2tpbmcuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBSUE7RUFDRSxhQUFBO0FBSEY7QUFLRTtFQUNFO0lBQ0UsYUFBQTtJQUNBLHNDQUFBO0lBQ0EsdUJBQUE7SUFDQSxtQkFBQTtJQUFBLGNBQUE7SUFDQSw4REFDRjtFQUpGO0VBTUU7SUFDRSxhQUFBO0lBQ0EsMEJBQUE7SUFDQSwyQkFBQTtJQUNBLGlCQUFBO0lBQUEsWUFBQTtJQUNBLGdEQUNGO0lBRUUscUJBQUE7SUFDQSxZQUFBO0VBTko7RUFRRTtJQUNFLGtCQUFBO0lBQ0EsYUFBQTtFQU5KO0FBQ0Y7QUFRRTtFQUNFO0lBQ0UsYUFBQTtJQUNBLGdDQUFBO0lBQ0EsdUJBQUE7SUFFQSxtQkFBQTtJQUFBLGNBQUE7SUFDQSxtREFDRjtFQVJGO0VBVUU7SUFDRSxrQkFBQTtJQUNBLGFBQUE7RUFSSjtFQVdFO0lBQ0UsY0FBQTtJQUNBLDBsQkFBQTtJQUNBLDRCQUFBO0lBQ0EscUJBQUE7SUFDQSwyQkFBQTtJQUNBLGVBQUE7RUFUSjtFQVlFO0lBQ0UsY0FBQTtJQUNBLGNBQUE7SUFFQSw0QkFBQTtJQUNBLHFCQUFBO0lBQ0EsMkJBQUE7SUFDQSxlQUFBO0lBQ0EsVUFBQTtJQUNBLG1CQUFBO0VBWEo7RUFjRTtJQUNFLFdBQUE7RUFaSjtFQWVFO0lBQ0UsaUJBQUE7RUFiSjtBQUNGO0FBaUJFO0VBQ0UsWUFBQTtFQUNBLGlCQUFBO0VBQ0EsY0FBQTtBQWZKO0FBbUJFO0VBQ0UsVUFBQTtBQWpCSjtBQW9CRTtFQUNFLFlBQUE7RUFDQSxhQUFBO0VBQ0EsaUJBQUE7QUFsQko7QUFxQkU7RUFDRSwwQkFBQTtBQW5CSjtBQTRCRTtFQUNFLHVCQUFBO0VBQ0Esa0JBQUE7RUFDQSxnQkFBQTtFQUNBLGFBQUE7QUExQko7QUE2QkU7RUFDRSxjQUFBO0VBQ0Esa0JBQUE7RUFDQSxZQUFBO0FBM0JKO0FBaUNFO0VBQ0Usc0JBQUE7RUFFQSxtQkFBQTtBQWhDSjtBQW1DRTtFQUNFLGFBQUE7RUFDQSxnQ0FBQTtFQUNBLHVCQUFBO0VBQ0EsaUJBQUE7RUFBQSxZQUFBO0VBQ0EsMENBQ0E7RUFDQSxzQkFBQTtBQWxDSjtBQW9DRTtFQUNFLHFCQUFBO0VBRUEsZUFBQTtBQW5DSjtBQXFDRTtFQUNFLG1CQUFBO0FBbkNKO0FBeUNFO0VBQ0UsbUJBQUE7QUF2Q0o7QUFnREE7RUFDRSxrQkFBQTtFQUNBLHdCQUFBO0VBQ0EscUJBQUE7RUFDQSxZQUFBO0VBQ0EsV0FBQTtFQUNBLG1CQUFBO0FBN0NGO0FBd0RBO0VBQ0UseUJBQUE7RUFDQSxZQUFBO0FBckRGO0FBd0RBO0VBQ0UseUJBQUE7RUFDQSxZQUFBO0VBQ0EsNEJBQUE7QUFyREY7QUF3REE7RUFDRSx5QkFBQTtFQUNBLFlBQUE7RUFDQSw0QkFBQTtBQXJERjtBQXdEQTtFQUNFLHlCQUFBO0VBQ0EsWUFBQTtBQXJERjtBQXdEQTtFQUNFLHdDQUFBO0VBQ0EsWUFBQTtFQUNBLGdCQUFBO0FBckRGO0FBd0RBO0VBQ0Usd0NBQUE7RUFDQSxZQUFBO0VBQ0EsZ0JBQUE7QUFyREYiLCJmaWxlIjoiYm9va2luZy5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIlxyXG5cclxuXHJcbi8vIGdyaWRMYXlvdXRcclxuLmJvb2tpbmctdmlldyB7XHJcbiAgcGFkZGluZzogMjJweDtcclxuXHJcbiAgQG1lZGlhIG9ubHkgc2NyZWVuIGFuZCAobWluLXdpZHRoOiAxMzAwcHgpIHtcclxuICAgIC5mb3JtLWlubGluZSB7XHJcbiAgICAgIGRpc3BsYXk6IGdyaWQ7XHJcbiAgICAgIGdyaWQtdGVtcGxhdGUtY29sdW1uczogNDAwcHggMWZyIDQ1OHB4O1xyXG4gICAgICBncmlkLXRlbXBsYXRlLXJvd3M6IDFmcjtcclxuICAgICAgZ2FwOiAyMnB4IDIycHg7XHJcbiAgICAgIGdyaWQtdGVtcGxhdGUtYXJlYXM6XHJcbiAgICBcInJvb20tZGV0YWlscyBib29raW5nLWRldGFpbHMgZGF0ZS1ncm91cFwiO1xyXG4gICAgfVxyXG4gICAgLmRhdGUtZ3JvdXAge1xyXG4gICAgICBkaXNwbGF5OiBncmlkO1xyXG4gICAgICBncmlkLXRlbXBsYXRlLWNvbHVtbnM6IDFmcjtcclxuICAgICAgZ3JpZC10ZW1wbGF0ZS1yb3dzOiAxZnIgMWZyO1xyXG4gICAgICBnYXA6IDBweCAwcHg7XHJcbiAgICAgIGdyaWQtdGVtcGxhdGUtYXJlYXM6XHJcbiAgICBcImRhdGUtcGlja2VyXCJcclxuICAgIFwidGltZS1waWNrZXJcIjtcclxuICAgICAgZ3JpZC1hcmVhOiBkYXRlLWdyb3VwO1xyXG4gICAgICBmbG9hdDogcmlnaHQ7XHJcbiAgICB9XHJcbiAgICAubWQtZGF0ZS10aW1lLXBpY2tlciB7XHJcbiAgICAgIHZpc2liaWxpdHk6IGhpZGRlbjtcclxuICAgICAgZGlzcGxheTogbm9uZTtcclxuICAgIH1cclxuICB9XHJcbiAgQG1lZGlhIG9ubHkgc2NyZWVuIGFuZCAobWF4LXdpZHRoOiAxMjk5cHgpIHtcclxuICAgIC5mb3JtLWlubGluZSB7XHJcbiAgICAgIGRpc3BsYXk6IGdyaWQ7XHJcbiAgICAgIGdyaWQtdGVtcGxhdGUtY29sdW1uczogNDAwcHggMWZyO1xyXG4gICAgICBncmlkLXRlbXBsYXRlLXJvd3M6IDFmcjtcclxuICAgICAgLy9qdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWJldHdlZW47XHJcbiAgICAgIGdhcDogMjJweCAyMnB4O1xyXG4gICAgICBncmlkLXRlbXBsYXRlLWFyZWFzOlxyXG4gICAgXCJyb29tLWRldGFpbHMgYm9va2luZy1kZXRhaWxzXCI7XHJcbiAgICB9XHJcbiAgICAuZGF0ZS1ncm91cCB7XHJcbiAgICAgIHZpc2liaWxpdHk6IGhpZGRlbjtcclxuICAgICAgZGlzcGxheTogbm9uZTtcclxuXHJcbiAgICB9XHJcbiAgICBidXR0b24uY2FsZW5kYXIsIGJ1dHRvbi5jYWxlbmRhcjphY3RpdmUge1xyXG4gICAgICB3aWR0aDogMi43NXJlbTtcclxuICAgICAgYmFja2dyb3VuZC1pbWFnZTogdXJsKCdkYXRhOmltYWdlL3BuZztiYXNlNjQsaVZCT1J3MEtHZ29BQUFBTlNVaEVVZ0FBQUNJQUFBQWNDQVlBQUFBRU4yMGZBQUFBQkhOQ1NWUUlDQWdJZkFoa2lBQUFBQWx3U0ZsekFBQU94QUFBRHNRQmxTc09Hd0FBQUJsMFJWaDBVMjltZEhkaGNtVUFkM2QzTG1sdWEzTmpZWEJsTG05eVo1dnVQQm9BQUFFVVNVUkJWRWlKN1pReFRvVkFFSVkvWUNIR3hONlhHT0lwbnBhRXNCU2VRQzlBclpibTlUWjZBRHlCTnpBaFFHR2w4Uml2NEJMQVdBZ21rcEJZa0gxYjhGV1QyV0sveko4Wko0cWlJNlhVSTNBTm5HS1dCbmh0Mi9aQkRSSzNoZ1ZHTnNDZDcvdWkrSmtFSXJLdHF1ckxwRVdhcGhkOTMzK0l5STNMRUlkcENZQ2lLRDZIY3VPYS9ud09hMFNjSkVuazBCSmcwVVRVV0pSbDZSeENZRXpFbW9tc0lsUFUzSVBXK2dySUFicXV5K3E2Zmx1eS8yOFJJQmVSTXdEWGRYTWdYTGovQjJ1aW1SWHB1aTREOXNCZVJMS2wrMU4rTCt0NlJ3YldyWmxpVFRUcjFveFl0elZXaVRRQWNSeHZUWCtlSk1ubFVEYU8xdnBaUk81TlMweDQ4c0l3ZlBjODd4ZzRCMDRNQ3pRaThoSUV3ZTRibDFEbkZNQ04yenNBQUFBQVNVVk9SSzVDWUlJPScpICFpbXBvcnRhbnQ7XHJcbiAgICAgIGJhY2tncm91bmQtcmVwZWF0OiBuby1yZXBlYXQ7XHJcbiAgICAgIGJhY2tncm91bmQtc2l6ZTogMjNweDtcclxuICAgICAgYmFja2dyb3VuZC1wb3NpdGlvbjogY2VudGVyO1xyXG4gICAgICBoZWlnaHQ6IDIuNzVyZW07XHJcbiAgICB9XHJcblxyXG4gICAgYnV0dG9uLnRpbWUsIGJ1dHRvbi50aW1lOmFjdGl2ZSB7XHJcbiAgICAgIHdpZHRoOiAyLjc1cmVtO1xyXG4gICAgICBjb2xvcjogIzQ0NDQ0NDtcclxuICAgICAgLy9iYWNrZ3JvdW5kLWltYWdlOiB1cmwoJ2RhdGE6aW1hZ2UvcG5nO2Jhc2U2NCxpVkJPUncwS0dnb0FBQUFOU1VoRVVnQUFBQ0lBQUFBY0NBWUFBQUFFTjIwZkFBQUFCSE5DU1ZRSUNBZ0lmQWhraUFBQUFBbHdTRmx6QUFBT3hBQUFEc1FCbFNzT0d3QUFBQmwwUlZoMFUyOW1kSGRoY21VQWQzZDNMbWx1YTNOallYQmxMbTl5WjV2dVBCb0FBQUVVU1VSQlZFaUo3WlF4VG9WQUVJWS9ZQ0hHeE42WEdPSXBucGFFc0JTZVFDOUFyWmJtOVRaNkFEeUJOekFoUUdHbDhSaXY0QkxBV0FnbWtwQllrSDFiOEZXVDJXSy96SjhaSjRxaUk2WFVJM0FObkdLV0JuaHQyL1pCRFJLM2hnVkdOc0NkNy91aStKa0VJckt0cXVyTHBFV2FwaGQ5MzMrSXlJM0xFSWRwQ1lDaUtENkhjdU9hL253T2EwU2NKRW5rMEJKZzBVVFVXSlJsNlJ4Q1lFekVtb21zSWxQVTNJUFcrZ3JJQWJxdXkrcTZmbHV5LzI4UklCZVJNd0RYZFhNZ1hMai9CMnVpbVJYcHVpNEQ5c0JlUkxLbCsxTitMK3Q2UndiV3JabGlUVFRyMW94WXR6VldpVFFBY1J4dlRYK2VKTW5sVURhTzF2cFpSTzVOUzB4NDhzSXdmUGM4N3hnNEIwNE1DelFpOGhJRXdlNGJsMURuRk1DTjJ6c0FBQUFBU1VWT1JLNUNZSUk9JykgIWltcG9ydGFudDtcclxuICAgICAgYmFja2dyb3VuZC1yZXBlYXQ6IG5vLXJlcGVhdDtcclxuICAgICAgYmFja2dyb3VuZC1zaXplOiAyM3B4O1xyXG4gICAgICBiYWNrZ3JvdW5kLXBvc2l0aW9uOiBjZW50ZXI7XHJcbiAgICAgIGhlaWdodDogMi43NXJlbTtcclxuICAgICAgcGFkZGluZzogMDtcclxuICAgICAgcGFkZGluZy1ib3R0b206IDRweDtcclxuICAgIH1cclxuXHJcbiAgICAuaW5wdXQtZ3JvdXAtYXBwZW5kIHtcclxuICAgICAgd2lkdGg6IDQ0cHg7XHJcbiAgICB9XHJcblxyXG4gICAgLmJvb2tpbmctY2FyZCB7XHJcbiAgICAgIG1pbi1oZWlnaHQ6IDQ4MHB4O1xyXG4gICAgfVxyXG5cclxuICB9XHJcblxyXG4gIC5kYXRlLXBpY2tlci1lcnJvciB7XHJcbiAgICBwYWRkaW5nOiA5cHg7XHJcbiAgICBmb250LXdlaWdodDogYm9sZDtcclxuICAgIGNvbG9yOiAjREMzNTQ1O1xyXG4gIH1cclxuXHJcblxyXG4gIC5jb2wge1xyXG4gICAgcGFkZGluZzogMDtcclxuICB9XHJcblxyXG4gIC5yb29tLWltYWdlIHtcclxuICAgIHdpZHRoOiA0MDBweDtcclxuICAgIGhlaWdodDogMzAwcHg7XHJcbiAgICBvYmplY3QtZml0OiBjb3ZlcjtcclxuICB9XHJcblxyXG4gIC5ib29raW5nLWRldGFpbHMge1xyXG4gICAgZ3JpZC1hcmVhOiBib29raW5nLWRldGFpbHM7XHJcbiAgICAvLyB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbiAgfVxyXG5cclxuICAuYm9va2luZy1kZXRhaWxzLWNhcmQge1xyXG4gICAgLy8gaGVpZ2h0OiA1MDBweDtcclxuXHJcbiAgfVxyXG5cclxuICAucm9vbS1kZXRhaWxzIHtcclxuICAgIGdyaWQtYXJlYTogcm9vbS1kZXRhaWxzO1xyXG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gICAgbWluLXdpZHRoOiA0MDBweDtcclxuICAgIGhlaWdodDogMzAwcHg7XHJcbiAgfVxyXG5cclxuICAucm9vbS1kZXRhaWxzLWNhcmQge1xyXG4gICAgbWFyZ2luLWxlZnQ6IDA7XHJcbiAgICBtYXJnaW4tcmlnaHQ6IGF1dG87XHJcbiAgICB3aWR0aDogNDAwcHg7XHJcbiAgICAvL2hlaWdodDogMzAwcHg7XHJcbiAgfVxyXG5cclxuXHJcblxyXG4gIC5kYXRlLXBpY2tlciB7XHJcbiAgICBncmlkLWFyZWE6IGRhdGUtcGlja2VyO1xyXG4gICAgLy9tYXJnaW4tcmlnaHQ6IDBweDtcclxuICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XHJcbiAgfVxyXG5cclxuICAudGltZS1waWNrZXIge1xyXG4gICAgZGlzcGxheTogZ3JpZDtcclxuICAgIGdyaWQtdGVtcGxhdGUtY29sdW1uczogMWZyIDAuNWZyO1xyXG4gICAgZ3JpZC10ZW1wbGF0ZS1yb3dzOiAxZnI7XHJcbiAgICBnYXA6IDBweCAwcHg7XHJcbiAgICBncmlkLXRlbXBsYXRlLWFyZWFzOlxyXG4gICAgXCJzdGFydC10aW1lIGVuZC10aW1lXCI7XHJcbiAgICBncmlkLWFyZWE6IHRpbWUtcGlja2VyO1xyXG4gIH1cclxuICAuc3RhcnQtdGltZSB7XHJcbiAgICBncmlkLWFyZWE6IHN0YXJ0LXRpbWU7XHJcbiAgICAvL3dpZHRoOiAxMjBweDtcclxuICAgIGRpc3BsYXk6IGlubGluZTtcclxuICB9XHJcbiAgLmVuZC10aW1lIHtcclxuICAgIGdyaWQtYXJlYTogZW5kLXRpbWU7XHJcbiAgICAvL3dpZHRoOiAxNDNweDtcclxuICB9XHJcblxyXG5cclxuXHJcbiAgLmJ0biB7XHJcbiAgICB2aXNpYmlsaXR5OiB2aXNpYmxlO1xyXG4gIH1cclxuXHJcblxyXG5cclxufVxyXG5cclxuXHJcbi8vIG5nYkRhdGVQaWNrZXJcclxuLmN1c3RvbS1kYXkge1xyXG4gIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICBwYWRkaW5nOiAwLjE1cmVtIDAuMjVyZW07XHJcbiAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xyXG4gIGhlaWdodDogMnJlbTtcclxuICB3aWR0aDogMnJlbTtcclxuICBib3JkZXItcmFkaXVzOiAxMHB4O1xyXG5cclxufVxyXG4vLy5jdXN0b20tZGF5LmZvY3VzZWQge1xyXG4vLyAgYmFja2dyb3VuZC1jb2xvcjogcmVkO1xyXG4vL31cclxuLy8uY3VzdG9tLWRheS5yYW5nZSB7XHJcbi8vICBiYWNrZ3JvdW5kLWNvbG9yOiByZ2IoMiwgMTE3LCAyMTYpO1xyXG4vLyAgY29sb3I6IHdoaXRlO1xyXG4vL31cclxuXHJcbi5jdXN0b20tZGF5LnNpbmdsZSB7XHJcbiAgYmFja2dyb3VuZC1jb2xvcjogcmdiKDIsIDExNywgMjE2KTtcclxuICBjb2xvcjogd2hpdGU7XHJcbn1cclxuXHJcbi5jdXN0b20tZGF5LnJhbmdlU3RhcnQge1xyXG4gIGJhY2tncm91bmQtY29sb3I6IHJnYigyLCAxMTcsIDIxNik7XHJcbiAgY29sb3I6IHdoaXRlO1xyXG4gIGJvcmRlci1yYWRpdXM6IDEwcHggMCAwIDEwcHg7XHJcbn1cclxuXHJcbi5jdXN0b20tZGF5LnJhbmdlRW5kIHtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiByZ2IoMiwgMTE3LCAyMTYpO1xyXG4gIGNvbG9yOiB3aGl0ZTtcclxuICBib3JkZXItcmFkaXVzOiAwIDEwcHggMTBweCAwO1xyXG59XHJcblxyXG4uY3VzdG9tLWRheTpob3ZlciB7XHJcbiAgYmFja2dyb3VuZC1jb2xvcjogcmdiKDIsIDExNywgMjE2KTtcclxuICBjb2xvcjogd2hpdGU7XHJcbn1cclxuXHJcbi5jdXN0b20tZGF5LmZhZGVkIHtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiByZ2JhKDIsIDExNywgMjE2LCAwLjUpO1xyXG4gIGNvbG9yOiB3aGl0ZTtcclxuICBib3JkZXItcmFkaXVzOiAwO1xyXG59XHJcblxyXG4uY3VzdG9tLWRheS51bmF2YWlsYWJsZSB7XHJcbiAgYmFja2dyb3VuZC1jb2xvcjogcmdiKDIyMiwgNTAsIDUwLCAwLjQpO1xyXG4gIGNvbG9yOiB3aGl0ZTtcclxuICBib3JkZXItcmFkaXVzOiAwO1xyXG59XHJcblxyXG5cclxuXHJcbi8vLmN1c3RvbS1kYXkge1xyXG4vLyAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4vLyAgcGFkZGluZzogMC4xODVyZW0gMC4yNXJlbTtcclxuLy8gIGRpc3BsYXk6IGlubGluZS1ibG9jaztcclxuLy8gIGhlaWdodDogMnJlbTtcclxuLy8gIHdpZHRoOiAycmVtO1xyXG4vL31cclxuLy8uY3VzdG9tLWRheS5mb2N1c2VkIHtcclxuLy8gIGJhY2tncm91bmQtY29sb3I6ICNlNmU2ZTY7XHJcbi8vfVxyXG4vL1xyXG4vLy5jdXN0b20tZGF5LnNpbmdsZSB7XHJcbi8vICBib3JkZXItcmFkaXVzOiAxMHB4O1xyXG4vL31cclxuLy9cclxuLy8uY3VzdG9tLWRheS5yYW5nZSB7XHJcbi8vICBiYWNrZ3JvdW5kLWNvbG9yOiByZ2IoMiwgMTE3LCAyMTYpO1xyXG4vLyAgY29sb3I6IHdoaXRlO1xyXG4vL31cclxuLy9cclxuLy8uY3VzdG9tLWRheTpob3ZlciB7XHJcbi8vICBiYWNrZ3JvdW5kLWNvbG9yOiByZ2IoMiwgMTE3LCAyMTYpO1xyXG4vLyAgY29sb3I6IHdoaXRlO1xyXG4vLyAgYm9yZGVyLXJhZGl1czogMTBweDtcclxuLy9cclxuLy99XHJcbi8vLmN1c3RvbS1kYXkuZmFkZWQge1xyXG4vLyAgYmFja2dyb3VuZC1jb2xvcjogcmdiYSgyLCAxMTcsIDIxNiwgMC41KTtcclxuLy8gIGJvcmRlci1yYWRpdXM6IDA7XHJcbi8vfVxyXG4vL1xyXG4vLy5jdXN0b20tZGF5LmVuZCB7XHJcbi8vICBiYWNrZ3JvdW5kLWNvbG9yOiByZ2IoMiwgMTE3LCAyMTYpO1xyXG4vLyAgY29sb3I6IHdoaXRlO1xyXG4vL1xyXG4vLyAgYm9yZGVyLXJhZGl1czogMCAxMHB4IDEwcHggMDtcclxuLy99XHJcbi8vXHJcbi8vLmN1c3RvbS1kYXkucmFuZ2UuZW5kIHtcclxuLy8gIGJhY2tncm91bmQtY29sb3I6IHJnYigyLCAxMTcsIDIxNik7XHJcbi8vICBjb2xvcjogd2hpdGU7XHJcbi8vXHJcbi8vICBib3JkZXItcmFkaXVzOiAwIDEwcHggMTBweCAwO1xyXG4vL31cclxuXHJcblxyXG4vLy5kYXkge1xyXG4vLyAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4vLyAgcGFkZGluZzogN3B4O1xyXG4vLyAgYm9yZGVyLXJhZGl1czogMXJlbTtcclxuLy8gIHdpZHRoOiAxMDAlICFpbXBvcnRhbnQ7XHJcbi8vfVxyXG5cclxuIl19 */</style><style>ngb-datepicker{border:1px solid #dfdfdf;border-radius:.25rem;display:inline-block}ngb-datepicker-month{pointer-events:auto}ngb-datepicker.dropdown-menu{padding:0}.ngb-dp-body{z-index:1050}.ngb-dp-header{border-bottom:0;border-radius:.25rem .25rem 0 0;padding-top:.25rem;background-color:#f8f9fa;background-color:var(--light)}.ngb-dp-months{display:flex}.ngb-dp-month{pointer-events:none}.ngb-dp-month-name{font-size:larger;height:2rem;line-height:2rem;text-align:center;background-color:#f8f9fa;background-color:var(--light)}.ngb-dp-month+.ngb-dp-month .ngb-dp-month-name,.ngb-dp-month+.ngb-dp-month .ngb-dp-week{padding-left:1rem}.ngb-dp-month:last-child .ngb-dp-week{padding-right:.25rem}.ngb-dp-month:first-child .ngb-dp-week{padding-left:.25rem}.ngb-dp-month .ngb-dp-week:last-child{padding-bottom:.25rem}</style><style>ngb-datepicker-navigation{display:flex;align-items:center}.ngb-dp-navigation-chevron{border-style:solid;border-width:.2em .2em 0 0;display:inline-block;width:.75em;height:.75em;margin-left:.25em;margin-right:.15em;transform:rotate(-135deg)}.ngb-dp-arrow{display:flex;flex:1 1 auto;padding-right:0;padding-left:0;margin:0;width:2rem;height:2rem}.ngb-dp-arrow.right{justify-content:flex-end}.ngb-dp-arrow.right .ngb-dp-navigation-chevron{transform:rotate(45deg);margin-left:.15em;margin-right:.25em}.ngb-dp-arrow-btn{padding:0 .25rem;margin:0 .5rem;border:none;background-color:transparent;z-index:1}.ngb-dp-arrow-btn:focus{outline-width:1px;outline-style:auto}@media (-ms-high-contrast:active),(-ms-high-contrast:none){.ngb-dp-arrow-btn:focus{outline-style:solid}}.ngb-dp-month-name{font-size:larger;height:2rem;line-height:2rem;text-align:center}.ngb-dp-navigation-select{display:flex;flex:1 1 9rem}</style><style>ngb-datepicker-navigation-select>.custom-select{flex:1 1 auto;padding:0 .5rem;font-size:.875rem;height:1.85rem}ngb-datepicker-navigation-select>.custom-select:focus{z-index:1}ngb-datepicker-navigation-select>.custom-select::-ms-value{background-color:transparent!important}</style><style>ngb-datepicker-month{display:block}.ngb-dp-week-number,.ngb-dp-weekday{line-height:2rem;text-align:center;font-style:italic}.ngb-dp-weekday{color:#5bc0de;color:var(--info)}.ngb-dp-week{border-radius:.25rem;display:flex}.ngb-dp-weekdays{border-bottom:1px solid rgba(0,0,0,.125);border-radius:0;background-color:#f8f9fa;background-color:var(--light)}.ngb-dp-day,.ngb-dp-week-number,.ngb-dp-weekday{width:2rem;height:2rem}.ngb-dp-day{cursor:pointer}.ngb-dp-day.disabled,.ngb-dp-day.hidden{cursor:default;pointer-events:none}.ngb-dp-day[tabindex="0"]{z-index:1}</style></head>
+<body>
+  <app-root _nghost-dyq-c148="" ng-version="12.0.5"><div _ngcontent-dyq-c148="" class="app-component"><div _ngcontent-dyq-c148="" class="app-navigation"><app-navigation _ngcontent-dyq-c148="" _nghost-dyq-c146=""><nav _ngcontent-dyq-c146="" class="navbar navbar-expand-lg navbar-dark bg-primary"><div _ngcontent-dyq-c146="" class="container-fluid"><a _ngcontent-dyq-c146="" href="" class="navbar-brand">BH Roommanager</a><button _ngcontent-dyq-c146="" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"><span _ngcontent-dyq-c146="" class="navbar-toggler-icon"></span></button><div _ngcontent-dyq-c146="" id="navbarSupportedContent" class="collapse navbar-collapse"><ul _ngcontent-dyq-c146="" id="pills-tab" class="navbar-nav nav nav-pills ms-auto mb-2 mb-lg-0"><li _ngcontent-dyq-c146="" role="presentation" class="nav-item"><button _ngcontent-dyq-c146="" routerlink="rooms" id="pills-rooms-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true" class="nav-link nav-item d-none d-sm-none d-md-none d-lg-block active" tabindex="0" ng-reflect-router-link="rooms">Räume</button></li><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><li _ngcontent-dyq-c146="" role="presentation" class="nav-item"><a _ngcontent-dyq-c146="" href="login" class="nav-link nav-item">Login</a></li><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></ul></div></div></nav><div _ngcontent-dyq-c146=""></div></app-navigation></div><div _ngcontent-dyq-c148="" class="router-outlet"><router-outlet _ngcontent-dyq-c148=""></router-outlet><app-booking _nghost-dyq-c196=""><div _ngcontent-dyq-c196="" class="booking-view"><div _ngcontent-dyq-c196="" class="card"><h4 _ngcontent-dyq-c196="" class="card-header">HOTELROOM - DOUBLE</h4><div _ngcontent-dyq-c196="" class="card-body booking-card"><div _ngcontent-dyq-c196="" class="form-inline"><div _ngcontent-dyq-c196="" class="booking-details"><div _ngcontent-dyq-c196="" class="card booking-details-card"><div _ngcontent-dyq-c196="" class="card-body"><form _ngcontent-dyq-c196="" novalidate="" ng-reflect-form="[object Object]" class="ng-dirty ng-touched ng-valid"><div _ngcontent-dyq-c196="" class="row"><h3 _ngcontent-dyq-c196="" class="card-title">Buchungs Details</h3></div><div _ngcontent-dyq-c196="" class="row"><label _ngcontent-dyq-c196="" ngdefaultcontrol="">Anreise: 07.02.2022</label><br _ngcontent-dyq-c196=""></div><div _ngcontent-dyq-c196="" class="row"><label _ngcontent-dyq-c196="" ngdefaultcontrol=""> Abreise: 19.02.2022</label><br _ngcontent-dyq-c196=""></div><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><div _ngcontent-dyq-c196="" class="md-date-time-picker row"><div _ngcontent-dyq-c196="" class="d-flex"><div _ngcontent-dyq-c196=""><div _ngcontent-dyq-c196="" class="input-group-append"><button _ngcontent-dyq-c196="" type="button" class="btn btn-outline-secondary calendar"></button></div><div _ngcontent-dyq-c196="" class="form-group hidden"><div _ngcontent-dyq-c196="" class="input-group"><input _ngcontent-dyq-c196="" name="datepicker" ngbdatepicker="" outsidedays="hidden" tabindex="-1" class="form-control visually-hidden" ng-reflect-outside-days="hidden" ng-reflect-auto-close="outside" ng-reflect-display-months="1" ng-reflect-day-template="[object Object]" ng-reflect-start-date="[object Object]"><!--container--><!--container--></div></div></div><!--bindings={
+  "ng-reflect-ng-for-of": ""
+}--></div></div><div _ngcontent-dyq-c196="" class="form-group row"><input _ngcontent-dyq-c196="" name="datePicker" class="form-control visually-hidden" ng-reflect-ng-class="[object Object]"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></div><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><div _ngcontent-dyq-c196="" class="md-date-time-picker row"><div _ngcontent-dyq-c196="" class="d-flex"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></div></div><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><br _ngcontent-dyq-c196=""><div _ngcontent-dyq-c196="" class="form-group"><div _ngcontent-dyq-c196="" class="form-group"><div _ngcontent-dyq-c196="" class="form-check" style="padding: 0;"><input _ngcontent-dyq-c196="" type="checkbox" id="btn-check-outlined" autocomplete="off" class="btn-check"><label _ngcontent-dyq-c196="" for="btn-check-outlined" class="btn btn-outline-primary">Geschäftskonto</label><br _ngcontent-dyq-c196=""></div></div><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></div><div _ngcontent-dyq-c196="" class="form-group"><label _ngcontent-dyq-c196="">Name *</label><input _ngcontent-dyq-c196="" type="text" formcontrolname="lastName" name="lastName" class="form-control ng-dirty ng-valid ng-touched" ng-reflect-name="lastName" ng-reflect-ng-class="[object Object]"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></div><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><div _ngcontent-dyq-c196="" class="form-group"><label _ngcontent-dyq-c196="">Vorname *</label><input _ngcontent-dyq-c196="" type="text" formcontrolname="firstName" name="firstName" class="form-control ng-dirty ng-valid ng-touched" ng-reflect-name="firstName" ng-reflect-ng-class="[object Object]"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></div><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><div _ngcontent-dyq-c196="" class="form-group"><div _ngcontent-dyq-c196=""><label _ngcontent-dyq-c196="">Firma *</label><input _ngcontent-dyq-c196="" type="text" value="d" formcontrolname="companyName" name="company" class="form-control ng-dirty ng-valid ng-touched" ng-reflect-name="companyName" ng-reflect-ng-class="[object Object]"><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></div><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></div><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><div _ngcontent-dyq-c196="" class="form-group"><label _ngcontent-dyq-c196="">Email-Adresse *</label><input _ngcontent-dyq-c196="" type="text" formcontrolname="emailAddress" name="emailAddress" class="form-control ng-dirty ng-valid ng-touched" ng-reflect-name="emailAddress" ng-reflect-ng-class="[object Object]"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></div><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><div _ngcontent-dyq-c196="" class="form-group"><label _ngcontent-dyq-c196="">Telefonnummer</label><input _ngcontent-dyq-c196="" type="text" formcontrolname="phoneNumber" placeholder="+00" name="phoneNumber" class="form-control ng-dirty ng-valid ng-touched" ng-reflect-name="phoneNumber" ng-reflect-ng-class="[object Object]"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></div><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><div _ngcontent-dyq-c196="" class="form-group"><label _ngcontent-dyq-c196="">Straße *</label><input _ngcontent-dyq-c196="" type="text" formcontrolname="streetName" name="street" class="form-control ng-dirty ng-valid ng-touched" ng-reflect-name="streetName" ng-reflect-ng-class="[object Object]"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></div><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><div _ngcontent-dyq-c196="" class="form-group"><label _ngcontent-dyq-c196="">Hausnummer *</label><input _ngcontent-dyq-c196="" type="text" formcontrolname="streetNumber" name="streetNumber" class="form-control ng-dirty ng-valid ng-touched" ng-reflect-name="streetNumber" ng-reflect-ng-class="[object Object]"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></div><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><div _ngcontent-dyq-c196="" class="form-group"><label _ngcontent-dyq-c196="">Postleitzahl *</label><input _ngcontent-dyq-c196="" type="text" formcontrolname="postalCode" name="postalCode" class="form-control ng-dirty ng-valid ng-touched" ng-reflect-name="postalCode" ng-reflect-ng-class="[object Object]"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></div><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><div _ngcontent-dyq-c196="" class="form-group"><label _ngcontent-dyq-c196="">Stadt *</label><input _ngcontent-dyq-c196="" type="text" formcontrolname="cityName" name="city" class="form-control ng-dirty ng-valid ng-touched" ng-reflect-name="cityName" ng-reflect-ng-class="[object Object]"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></div><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><div _ngcontent-dyq-c196="" class="form-group"><label _ngcontent-dyq-c196="">Zahlungsmethode *</label><select _ngcontent-dyq-c196="" aria-label="Default select example" formcontrolname="paymentMethod" name="paymentMethod" class="form-select form-control ng-dirty ng-valid ng-touched" ng-reflect-name="paymentMethod" ng-reflect-ng-class="[object Object]"><option _ngcontent-dyq-c196="" value="paypal" ng-reflect-value="paypal">PayPal</option><option _ngcontent-dyq-c196="" value="debit" ng-reflect-value="debit">Debit</option><option _ngcontent-dyq-c196="" value="bill" ng-reflect-value="bill">Rechnunug</option></select><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></div><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><div _ngcontent-dyq-c196="" class="form-group"><label _ngcontent-dyq-c196="">Iban *</label><input _ngcontent-dyq-c196="" type="text" formcontrolname="paymentCredentials" class="form-control ng-dirty ng-valid ng-touched" ng-reflect-name="paymentCredentials" name="iban" ng-reflect-ng-class="[object Object]"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></div><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><div _ngcontent-dyq-c196="" class="form-group"><label _ngcontent-dyq-c196="">Sonderwünsche</label><input _ngcontent-dyq-c196="" type="text" formcontrolname="specialWishes" name="extras" class="form-control ng-valid ng-dirty ng-touched" ng-reflect-name="specialWishes"></div><br _ngcontent-dyq-c196=""><label _ngcontent-dyq-c196="" style="border-bottom: 1px solid black;">Gesamtpreis: 6600,-€</label><br _ngcontent-dyq-c196=""><br _ngcontent-dyq-c196=""><div _ngcontent-dyq-c196="" class="form-group"><button _ngcontent-dyq-c196="" class="btn btn-secondary" tabindex="0" ng-reflect-router-link="/booking,1"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--> Jetzt Buchen </button></div></form><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></div></div><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></div><div _ngcontent-dyq-c196="" class="room-details"><div _ngcontent-dyq-c196="" class="card room-details-card"><img _ngcontent-dyq-c196="" alt="..." class="card-img-top room-image" src="assets/DOUBLE-70.jpg"><div _ngcontent-dyq-c196="" align="left" class="card-body"><label _ngcontent-dyq-c196="">Preis pro Nacht: 550€</label><br _ngcontent-dyq-c196=""><label _ngcontent-dyq-c196="">Fläche : 70qm</label><br _ngcontent-dyq-c196=""></div></div><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></div><div _ngcontent-dyq-c196="" class="date-group"><div _ngcontent-dyq-c196="" class="card"><div _ngcontent-dyq-c196="" class="date-picker"><ngb-datepicker _ngcontent-dyq-c196="" outsidedays="hidden" class="border-0" ng-reflect-outside-days="hidden" ng-reflect-display-months="1" ng-reflect-day-template="[object Object]"><!--container--><!--container--><div class="ngb-dp-header"><ngb-datepicker-navigation ng-reflect-date="[object Object]" ng-reflect-months="[object Object]" ng-reflect-disabled="false" ng-reflect-show-select="true" ng-reflect-prev-disabled="false" ng-reflect-next-disabled="false" ng-reflect-select-boxes="[object Object]"><div class="ngb-dp-arrow"><button type="button" aria-label="Previous month" title="Previous month" class="btn btn-link ngb-dp-arrow-btn"><span class="ngb-dp-navigation-chevron"></span></button></div><ngb-datepicker-navigation-select class="ngb-dp-navigation-select" ng-reflect-date="[object Object]" ng-reflect-disabled="false" ng-reflect-months="1,2,3,4,5,6,7,8,9,10,11,12" ng-reflect-years="2012,2013,2014,2015,2016,2017,"><select aria-label="Select month" title="Select month" class="custom-select"><option value="1" ng-reflect-value="1" aria-label="Januar">Jan</option><option value="2" ng-reflect-value="2" aria-label="Februar">Feb</option><option value="3" ng-reflect-value="3" aria-label="März">Mär</option><option value="4" ng-reflect-value="4" aria-label="April">Apr</option><option value="5" ng-reflect-value="5" aria-label="Mai">Mai</option><option value="6" ng-reflect-value="6" aria-label="Juni">Jun</option><option value="7" ng-reflect-value="7" aria-label="Juli">Jul</option><option value="8" ng-reflect-value="8" aria-label="August">Aug</option><option value="9" ng-reflect-value="9" aria-label="September">Sep</option><option value="10" ng-reflect-value="10" aria-label="Oktober">Okt</option><option value="11" ng-reflect-value="11" aria-label="November">Nov</option><option value="12" ng-reflect-value="12" aria-label="Dezember">Dez</option><!--bindings={
+  "ng-reflect-ng-for-of": "1,2,3,4,5,6,7,8,9,10,11,12"
+}--></select><select aria-label="Select year" title="Select year" class="custom-select"><option value="2012" ng-reflect-value="2012">2012</option><option value="2013" ng-reflect-value="2013">2013</option><option value="2014" ng-reflect-value="2014">2014</option><option value="2015" ng-reflect-value="2015">2015</option><option value="2016" ng-reflect-value="2016">2016</option><option value="2017" ng-reflect-value="2017">2017</option><option value="2018" ng-reflect-value="2018">2018</option><option value="2019" ng-reflect-value="2019">2019</option><option value="2020" ng-reflect-value="2020">2020</option><option value="2021" ng-reflect-value="2021">2021</option><option value="2022" ng-reflect-value="2022">2022</option><option value="2023" ng-reflect-value="2023">2023</option><option value="2024" ng-reflect-value="2024">2024</option><option value="2025" ng-reflect-value="2025">2025</option><option value="2026" ng-reflect-value="2026">2026</option><option value="2027" ng-reflect-value="2027">2027</option><option value="2028" ng-reflect-value="2028">2028</option><option value="2029" ng-reflect-value="2029">2029</option><option value="2030" ng-reflect-value="2030">2030</option><option value="2031" ng-reflect-value="2031">2031</option><option value="2032" ng-reflect-value="2032">2032</option><!--bindings={
+  "ng-reflect-ng-for-of": "2012,2013,2014,2015,2016,2017,"
+}--></select></ngb-datepicker-navigation-select><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><div class="ngb-dp-arrow right"><button type="button" aria-label="Next month" title="Next month" class="btn btn-link ngb-dp-arrow-btn"><span class="ngb-dp-navigation-chevron"></span></button></div></ngb-datepicker-navigation><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></div><div class="ngb-dp-content ngb-dp-months"><div class="ngb-dp-month"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><ngb-datepicker-month role="grid" ng-reflect-month="[object Object]"><div role="row" class="ngb-dp-week ngb-dp-weekdays"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><div role="columnheader" class="ngb-dp-weekday small">Mo.</div><div role="columnheader" class="ngb-dp-weekday small">Di.</div><div role="columnheader" class="ngb-dp-weekday small">Mi.</div><div role="columnheader" class="ngb-dp-weekday small">Do.</div><div role="columnheader" class="ngb-dp-weekday small">Fr.</div><div role="columnheader" class="ngb-dp-weekday small">Sa.</div><div role="columnheader" class="ngb-dp-weekday small">So.</div><!--bindings={
+  "ng-reflect-ng-for-of": "Mo.,Di.,Mi.,Do.,Fr.,Sa.,So."
+}--></div><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><div role="row" class="ngb-dp-week"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><div role="gridcell" class="ngb-dp-day hidden" tabindex="-1" aria-label="Montag, 31. Januar 2022"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></div><div role="gridcell" class="ngb-dp-day" tabindex="-1" aria-label="Dienstag, 1. Februar 2022"><div _ngcontent-dyq-c196="" class="custom-day"> 1 </div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></div><div role="gridcell" class="ngb-dp-day" tabindex="-1" aria-label="Mittwoch, 2. Februar 2022"><div _ngcontent-dyq-c196="" class="custom-day"> 2 </div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></div><div role="gridcell" class="ngb-dp-day" tabindex="-1" aria-label="Donnerstag, 3. Februar 2022"><div _ngcontent-dyq-c196="" class="custom-day"> 3 </div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></div><div role="gridcell" class="ngb-dp-day" tabindex="-1" aria-label="Freitag, 4. Februar 2022"><div _ngcontent-dyq-c196="" class="custom-day"> 4 </div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></div><div role="gridcell" class="ngb-dp-day" tabindex="-1" aria-label="Samstag, 5. Februar 2022"><div _ngcontent-dyq-c196="" class="custom-day"> 5 </div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></div><div role="gridcell" class="ngb-dp-day" tabindex="-1" aria-label="Sonntag, 6. Februar 2022"><div _ngcontent-dyq-c196="" class="custom-day"> 6 </div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></div><!--bindings={
+  "ng-reflect-ng-for-of": "[object Object],[object Object"
+}--></div><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><div role="row" class="ngb-dp-week"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><div role="gridcell" class="ngb-dp-day" tabindex="-1" aria-label="Montag, 7. Februar 2022"><div _ngcontent-dyq-c196="" class="custom-day rangeStart"> 7 </div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></div><div role="gridcell" class="ngb-dp-day" tabindex="-1" aria-label="Dienstag, 8. Februar 2022"><div _ngcontent-dyq-c196="" class="custom-day faded"> 8 </div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></div><div role="gridcell" class="ngb-dp-day" tabindex="-1" aria-label="Mittwoch, 9. Februar 2022"><div _ngcontent-dyq-c196="" class="custom-day faded"> 9 </div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></div><div role="gridcell" class="ngb-dp-day" tabindex="-1" aria-label="Donnerstag, 10. Februar 2022"><div _ngcontent-dyq-c196="" class="custom-day faded"> 10 </div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></div><div role="gridcell" class="ngb-dp-day" tabindex="-1" aria-label="Freitag, 11. Februar 2022"><div _ngcontent-dyq-c196="" class="custom-day faded"> 11 </div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></div><div role="gridcell" class="ngb-dp-day" tabindex="-1" aria-label="Samstag, 12. Februar 2022"><div _ngcontent-dyq-c196="" class="custom-day faded"> 12 </div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></div><div role="gridcell" class="ngb-dp-day" tabindex="-1" aria-label="Sonntag, 13. Februar 2022"><div _ngcontent-dyq-c196="" class="custom-day faded"> 13 </div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></div><!--bindings={
+  "ng-reflect-ng-for-of": "[object Object],[object Object"
+}--></div><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><div role="row" class="ngb-dp-week"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><div role="gridcell" class="ngb-dp-day" tabindex="-1" aria-label="Montag, 14. Februar 2022"><div _ngcontent-dyq-c196="" class="custom-day faded"> 14 </div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></div><div role="gridcell" class="ngb-dp-day" tabindex="-1" aria-label="Dienstag, 15. Februar 2022"><div _ngcontent-dyq-c196="" class="custom-day faded"> 15 </div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></div><div role="gridcell" class="ngb-dp-day" tabindex="-1" aria-label="Mittwoch, 16. Februar 2022"><div _ngcontent-dyq-c196="" class="custom-day faded"> 16 </div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></div><div role="gridcell" class="ngb-dp-day" tabindex="-1" aria-label="Donnerstag, 17. Februar 2022"><div _ngcontent-dyq-c196="" class="custom-day faded"> 17 </div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></div><div role="gridcell" class="ngb-dp-day" tabindex="0" aria-label="Freitag, 18. Februar 2022"><div _ngcontent-dyq-c196="" class="custom-day rangeEnd"> 18 </div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></div><div role="gridcell" class="ngb-dp-day" tabindex="-1" aria-label="Samstag, 19. Februar 2022"><div _ngcontent-dyq-c196="" class="custom-day"> 19 </div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></div><div role="gridcell" class="ngb-dp-day" tabindex="-1" aria-label="Sonntag, 20. Februar 2022"><div _ngcontent-dyq-c196="" class="custom-day"> 20 </div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></div><!--bindings={
+  "ng-reflect-ng-for-of": "[object Object],[object Object"
+}--></div><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><div role="row" class="ngb-dp-week"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><div role="gridcell" class="ngb-dp-day" tabindex="-1" aria-label="Montag, 21. Februar 2022"><div _ngcontent-dyq-c196="" class="custom-day"> 21 </div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></div><div role="gridcell" class="ngb-dp-day" tabindex="-1" aria-label="Dienstag, 22. Februar 2022"><div _ngcontent-dyq-c196="" class="custom-day"> 22 </div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></div><div role="gridcell" class="ngb-dp-day" tabindex="-1" aria-label="Mittwoch, 23. Februar 2022"><div _ngcontent-dyq-c196="" class="custom-day"> 23 </div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></div><div role="gridcell" class="ngb-dp-day" tabindex="-1" aria-label="Donnerstag, 24. Februar 2022"><div _ngcontent-dyq-c196="" class="custom-day"> 24 </div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></div><div role="gridcell" class="ngb-dp-day" tabindex="-1" aria-label="Freitag, 25. Februar 2022"><div _ngcontent-dyq-c196="" class="custom-day"> 25 </div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></div><div role="gridcell" class="ngb-dp-day" tabindex="-1" aria-label="Samstag, 26. Februar 2022"><div _ngcontent-dyq-c196="" class="custom-day"> 26 </div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></div><div role="gridcell" class="ngb-dp-day" tabindex="-1" aria-label="Sonntag, 27. Februar 2022"><div _ngcontent-dyq-c196="" class="custom-day"> 27 </div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></div><!--bindings={
+  "ng-reflect-ng-for-of": "[object Object],[object Object"
+}--></div><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><div role="row" class="ngb-dp-week"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><div role="gridcell" class="ngb-dp-day" tabindex="-1" aria-label="Montag, 28. Februar 2022"><div _ngcontent-dyq-c196="" class="custom-day"> 28 </div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></div><div role="gridcell" class="ngb-dp-day hidden" tabindex="-1" aria-label="Dienstag, 1. März 2022"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></div><div role="gridcell" class="ngb-dp-day hidden" tabindex="-1" aria-label="Mittwoch, 2. März 2022"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></div><div role="gridcell" class="ngb-dp-day hidden" tabindex="-1" aria-label="Donnerstag, 3. März 2022"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></div><div role="gridcell" class="ngb-dp-day hidden" tabindex="-1" aria-label="Freitag, 4. März 2022"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></div><div role="gridcell" class="ngb-dp-day hidden" tabindex="-1" aria-label="Samstag, 5. März 2022"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></div><div role="gridcell" class="ngb-dp-day hidden" tabindex="-1" aria-label="Sonntag, 6. März 2022"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></div><!--bindings={
+  "ng-reflect-ng-for-of": "[object Object],[object Object"
+}--></div><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><div role="row" class="ngb-dp-week"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><div role="gridcell" class="ngb-dp-day hidden" tabindex="-1" aria-label="Montag, 7. März 2022"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></div><div role="gridcell" class="ngb-dp-day hidden" tabindex="-1" aria-label="Dienstag, 8. März 2022"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></div><div role="gridcell" class="ngb-dp-day hidden" tabindex="-1" aria-label="Mittwoch, 9. März 2022"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></div><div role="gridcell" class="ngb-dp-day hidden" tabindex="-1" aria-label="Donnerstag, 10. März 2022"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></div><div role="gridcell" class="ngb-dp-day hidden" tabindex="-1" aria-label="Freitag, 11. März 2022"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></div><div role="gridcell" class="ngb-dp-day hidden" tabindex="-1" aria-label="Samstag, 12. März 2022"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></div><div role="gridcell" class="ngb-dp-day hidden" tabindex="-1" aria-label="Sonntag, 13. März 2022"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></div><!--bindings={
+  "ng-reflect-ng-for-of": "[object Object],[object Object"
+}--></div><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><!--bindings={
+  "ng-reflect-ng-for-of": "[object Object],[object Object"
+}--></ngb-datepicker-month></div><!--bindings={
+  "ng-reflect-ng-for-of": "[object Object]"
+}--><!--bindings={
+  "ng-reflect-ng-template-outlet": "[object Object]"
+}--></div><!--bindings={}--></ngb-datepicker><!--container--></div><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></div><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><!--bindings={
+  "ng-reflect-ng-for-of": ""
+}--></div></div></div></div></div></app-booking><!--container--></div><div _ngcontent-dyq-c148="" class="app-footer"><app-footer _ngcontent-dyq-c148="" _nghost-dyq-c147=""><div _ngcontent-dyq-c147="" class="footer bg-primary"><a _ngcontent-dyq-c147="" href="">hier könnte man zum Impressum gelangen</a> Tel.: <a _ngcontent-dyq-c147="" href="">0361 123456789</a></div></app-footer></div></div></app-root>
+<script src="runtime.js" defer=""></script><script src="polyfills.js" defer=""></script><script src="styles.js" defer=""></script><script src="scripts.js" defer=""></script><script src="vendor.js" defer=""></script><script src="main.js" defer=""></script>
+
+</body></html>

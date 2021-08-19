@@ -1,7 +1,8 @@
-package com.example.Selenium_Test_BH_Room;
+package com.example.Selenium_Test_BH_Room.PageTest;
 
 
 import com.codeborne.selenide.SelenideElement;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -10,14 +11,21 @@ import static com.codeborne.selenide.Selenide.$x;
 
 
 public class BookingPage {
-    public SelenideElement inputName = $x("/html/body/app-root/div/div[2]/app-booking/div/div/div/div/div[1]/div/div/form/div/input[1]");
-    public SelenideElement inputSurname = $x("//input[@formcontrolname='firstName']");
-    public SelenideElement inputCompany = $x("//input[@value='d']");
+    public SelenideElement inputName = $(By.name("lastName"));
+    public SelenideElement inputSurname  = $(By.name("firstName"));
+    public SelenideElement inputCompany  = $(By.name("company"));
     public SelenideElement inputMail = $x("//input[@formcontrolname='emailAddress']");
     public SelenideElement inputPhone = $x("//input[@formcontrolname='phoneNumber']");
-    public SelenideElement submitButton = $x("//button[normalize-space(text()) = 'Jetzt Buchen']");
+    public SelenideElement submitButton = $(".btn-secondary");     //button[normalize-space(text()) = 'Jetzt Buchen']
     public SelenideElement buttonBusinessCustomer = $x("//label[text()='Geschäftskonto']");
-
+    public SelenideElement inputStreet = $(By.name("street"));
+    public SelenideElement inputStreetNo = $(By.name("streetNumber"));
+    public SelenideElement inputZipcode = $(By.name("postalCode"));
+    public SelenideElement inputCity = $(By.name("city"));
+    public SelenideElement dropDownPaymentMethod = $(By.name("paymentMethod"));
+    public SelenideElement inputIban = $(By.name("iban"));
+    public SelenideElement inputSpecialWishes = $(By.name("extras"));
+    public SelenideElement buttonBooking = $x("//*[@id='pills-bookings-tab']");
 
     public SelenideElement leftArrowMonth = $x("/html/body/app-root/div/div[2]/app-booking/div/div/div/div/div[3]/div/div/ngb-datepicker/div[1]/ngb-datepicker-navigation/div[1]/button");
     public SelenideElement rightArrowMonth = $x("/html/body/app-root/div/div[2]/app-booking/div/div/div/div/div[3]/div/div/ngb-datepicker/div[1]/ngb-datepicker-navigation/div[2]/button");
@@ -42,7 +50,8 @@ public class BookingPage {
     public SelenideElement upperArrowMinutesEnd = $x("/html/body/app-root/div/div[2]/app-booking/div/div/div/div/div[3]/div/div[2]/div/div[2]/ngb-timepicker/fieldset/div/div[3]/button[1]");
     public SelenideElement lowerArrowMinutesEnd = $x("/html/body/app-root/div/div[2]/app-booking/div/div/div/div/div[3]/div/div[2]/div/div[2]/ngb-timepicker/fieldset/div/div[3]/button[2]");
 
-    public SelenideElement dateShower = $x("/html/body/app-root/div/div[2]/app-booking/div/div/div/div/div[1]/div/div/div[2]/label");
+    public SelenideElement dateShowerStart = $x("//div[@class='card-body'][.//*[@id='btn-check-outlined']]");
+
     public SelenideElement bookingDetailsCard = $x("//div[@class='card booking-details-card']//div[@class='card-body']");
 
 
