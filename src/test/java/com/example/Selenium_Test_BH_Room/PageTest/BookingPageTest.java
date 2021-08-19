@@ -17,6 +17,7 @@ public class BookingPageTest {
     @BeforeAll
     public static void setUpAll() {
         Configuration.startMaximized = true;
+        //Configuration.headless = true;
         SelenideLogger.addListener("allure", new AllureSelenide());
     }
 
@@ -26,6 +27,7 @@ public class BookingPageTest {
         mainPage.navitemRooms.click();
         roomPage.hotelroomTab.click();
         roomPage.hotelRoomBookingButton.click();
+
     }
 
 
@@ -79,8 +81,13 @@ public class BookingPageTest {
 
         bookingPage.inputName.click();
         bookingPage.submitButton.click();
-
+        confirm();
         mainPage.logoutButton.click();
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
     }
 
@@ -104,8 +111,13 @@ public class BookingPageTest {
         bookingPage.endDate.click();
 
         bookingPage.submitButton.click();
+        confirm();
         mainPage.logoutButton.click();
-
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     @Test
@@ -132,14 +144,14 @@ public class BookingPageTest {
 
     @Test
     public void isCalendarValueSetAsSelected(){
-        String testMonth = "Feb";
+        String testMonth = "Sep";
         String testYear = "2022";
         bookingPage.monthPicker.selectOption(testMonth);
         bookingPage.yearPicker.selectOption(testYear);
         //startDate ist immer die 2. Woche Montag -> endDate ist immer 3. Woche Donnerstag
         bookingPage.startDate.click();
         bookingPage.endDate.click();
-        bookingPage.dateShowerStart.shouldHave(Condition.text("07.02.2022"),Condition.text("19.02.2022"));
+        bookingPage.dateShowerStart.shouldHave(Condition.text("05.09.2022"),Condition.text("17.09.2022"));
     }
 }
 

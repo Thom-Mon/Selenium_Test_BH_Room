@@ -54,16 +54,16 @@ public class Z_DatabaseTest{
     public void isCustomerAddedToDatabase(){
         loggedInMainPage.manageCustomerButton.click();
         manageCustomerPage.showTab.click();
-        manageCustomerPage.inputShowCustomerNo.sendKeys("8");
+        manageCustomerPage.inputShowCustomerNo.sendKeys("10");
         manageCustomerPage.searchButtonShow.click();
         manageCustomerPage.customerInformationShow.shouldHave(
-                Condition.text("Selen"),
-                Condition.text("Konquistator"),
-                Condition.text("+490167171717"),
-                Condition.text("Auf Rechnung"),
-                Condition.text("register_me@googlemail.com"),
+                Condition.text("Holger"),
+                Condition.text("Lucyius"),
+                Condition.text("+490190123456"),
+                Condition.text("debit"),
+                Condition.text("Clownery@gmx.de"),
                 Condition.text("Business-Kunde? Ja"),
-                Condition.text("BennoGroß4"));
+                Condition.text("Hol2952Lucy"));
     }
 
     @Test
