@@ -3,7 +3,7 @@ Testsuite for BH-Room
 
 ___
 
-##Ausführung der Tests:
+## Ausführung der Tests:
 Erstellen Sie die DB mit den Testdaten neu. Die Skripte finden Sie im Projekt "Business-Hotel-Roommanager" im Ordner "database"
 
 1. Erstellen Sie die Datenbank neu mit dem SQL Skript "DatabaseCreate.sql"
