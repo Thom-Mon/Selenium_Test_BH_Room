@@ -18,7 +18,7 @@ public class ManageRoomPage {
     public SelenideElement radioButtonConferenceRoom = $x("//*[@id='mat-radio-3']");
     public SelenideElement inputAreaInSqrMetre = $x("//*[@id='mat-input-0']");
 
-    public SelenideElement inputDropDownCategory = $(By.name("chooseCategory"));
+    public SelenideElement inputDropDownCategory = $(By.name("category"));
     public SelenideElement inputDropDownChooseConference= $x("//span[text()='Konferenzzimmer']");
     public SelenideElement inputDropDownChooseHotel= $x("//span[text()='Einzelzimmer']");
     public SelenideElement inputPricePerUnit= $x("//*[@id='mat-input-4']");

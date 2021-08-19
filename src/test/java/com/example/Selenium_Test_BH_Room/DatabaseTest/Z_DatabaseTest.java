@@ -36,16 +36,12 @@ public class Z_DatabaseTest{
     public void tearDown(){
         loggedInMainPage.logoutButton.click();
     }
-    /*manageBookingPage.inputStartDate.sendKeys("23122023");
-          manageBookingPage.inputEndDate.sendKeys("29122023");
-          manageBookingPage.inputStartTime.sendKeys("1100");
-          manageBookingPage.inputEndTime.sendKeys("1200");
-          manageBookingPage.inputCustomerWishes.sendKeys("Jeden Tag eine Kugel Eis...auf die Hand...und Cola...verdammt ja...Cola!!!");*/
+
     @Test
     public void isBookingAddedToDatabase(){
         loggedInMainPage.manageBookingButton.click();
         manageBookingPage.showTab.click();
-        manageBookingPage.inputBookingNoShow.sendKeys("9");
+        manageBookingPage.inputBookingNoShow.sendKeys("10");
         manageBookingPage.searchButtonShow.click();
         manageBookingPage.bookingInformationShow.shouldHave(
                 Condition.text("empNo 3"),
@@ -53,7 +49,7 @@ public class Z_DatabaseTest{
                 Condition.text("2023-12-23 10:00:00"),
                 Condition.text("2023-12-29 11:00:00"),
                 Condition.text("specialWishes Jeden Tag eine Kugel Eis...auf die Hand...und Cola...verdammt ja...Cola!!!"),
-                Condition.text("pricing 3600"));
+                Condition.text("pricing 3300"));
     }
     @Test
     public void isCustomerAddedToDatabase(){
@@ -67,7 +63,7 @@ public class Z_DatabaseTest{
                 Condition.text("+490167171717"),
                 Condition.text("Auf Rechnung"),
                 Condition.text("register_me@googlemail.com"),
-                Condition.text("Business-Kunde? Nein"),
+                Condition.text("Business-Kunde? Ja"),
                 Condition.text("BennoGroß4"));
     }
 

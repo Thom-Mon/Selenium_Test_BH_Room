@@ -24,10 +24,10 @@ public class ManageCustomerPageTest {
     String houseNo = "9";
     String zipcode = "99610";
     String city = "Danzig";
-    String phone = "0190 - 76 76 76";
+    String phone = "+490190767676";
     String mail = "derBuckelglöckner@gmx.de";
     String paymethod = "PayPal";
-    String strongPassword = "$2a$10$9Gr2iERTPcOrSvZB.8f4..m87AU/I4RfWuMz.Ya3JbsneCCVU81bO"; //HASH weil Funktion noch nicht implementiert
+    String strongPassword = "SicheresPasswort"; //HASH weil Funktion noch nicht implementiert
 
     @BeforeAll
     public static void setUpAll() {
@@ -202,7 +202,7 @@ public class ManageCustomerPageTest {
                 Condition.text("Nintendoweg"),
                 Condition.text("Hausnummer 14"),
                 Condition.text("debit"),
-                Condition.text("Business-Kunde? Nein"),
+                Condition.text("Business-Kunde? Ja"),
                 Condition.text("FlodinWiesret"));
     }
 }

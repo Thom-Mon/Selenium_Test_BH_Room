@@ -8,8 +8,8 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
 
 public class RoomPage {
-    public SelenideElement hotelroomTab = $x("//*[@id='myTab']/li[1]");
-    public SelenideElement conferenceRoomTab = $x("//*[@id='myTab']/li[2]");
-    public SelenideElement hotelRoomBookingButton = $x("//*[@id='hotelRoom']/div[1]/div[1]/div/div/button");
+    public SelenideElement hotelroomTab = $x("//*[@id='hotelRoom-tab']");
+    public SelenideElement conferenceRoomTab = $x("//*[@id='conferencRoom-tab']");
+    public SelenideElement hotelRoomBookingButton = $x("//button[@ng-reflect-router-link='/booking,1']");
     public SelenideElement conferenceRoomBookingButton = $x("//*[@id='conferencRoom']/div[1]/div[1]/div/div/button");
 }

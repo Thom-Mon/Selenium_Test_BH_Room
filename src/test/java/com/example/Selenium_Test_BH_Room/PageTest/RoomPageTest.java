@@ -11,6 +11,7 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class RoomPageTest {
     RoomPage roomPage = new RoomPage();
+    MainPage mainPage = new MainPage();
 
     @BeforeAll
     public static void setUpAll() {
@@ -20,7 +21,10 @@ public class RoomPageTest {
 
     @BeforeEach
     public void setUp() {
-        open("http://localhost:4200/rooms");
+
+        open("http://localhost:4200");
+        mainPage.navitemRooms.click();
+
     }
 
     @Test
@@ -43,8 +47,8 @@ public class RoomPageTest {
     public void clickBookingButtonHotelroom(){
         roomPage.hotelRoomBookingButton.click();
 
-        $x("/html/body/app-root/div/div[2]/app-booking/div/div/div/div/div[1]/div/div/div[1]/h3[contains(text(),'Buchungs Details')]").shouldBe(visible);
-        $x("/html/body/app-root/div/div[2]/app-booking/div/div/h4[contains(text(),'HOTELROOM')]").shouldBe(visible);
+        $x("//h3[contains(text(),'Buchungs Details')]").shouldBe(visible);
+        $x("//h4[contains(text(),'HOTELROOM')]").shouldBe(visible);
     }
 
     @Test
@@ -52,8 +56,8 @@ public class RoomPageTest {
         roomPage.conferenceRoomTab.click();
         roomPage.conferenceRoomBookingButton.click();
 
-        $x("/html/body/app-root/div/div[2]/app-booking/div/div/div/div/div[1]/div/div/div[1]/h3[contains(text(),'Buchungs Details')]").shouldBe(visible);
-        $x("/html/body/app-root/div/div[2]/app-booking/div/div/h4[contains(text(),'CONFERENCEROOM')]").shouldBe(visible);
+        $x("//h3[contains(text(),'Buchungs Details')]").shouldBe(visible);
+        $x("//h4[contains(text(),'CONFERENCEROOM')]").shouldBe(visible);
     }
 
 
