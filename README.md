@@ -13,3 +13,6 @@ Erstellen Sie die DB mit den Testdaten neu. Die Skripte finden Sie im Projekt "B
 2. Führen Sie danach den Ordner DatabaseTest aus.
 
 Obwohl der PageTest bereits einige Datenbanktests integriert hat, wird die Funktion des Eintrages in die Datenbank im gesamten nur durch die DatabaseTest abgedeckt.
+Innerhalb der PageTest finden Sie jeweils ein Element mit der Bezeichnung der Page (z.B. RegisterPage) und eine Datei mit den Test (z.B. RegisterPageTest).
+In der Page-Datei der jeweiligen Seite finden Sie die xpath-Variablen der Seite. Jedes Element was im Test verwendet wurde, wird hier vorhergehend definiert, zur Übersichtlichkeit und Strukturierung des Codes.
+In den Klassen die mit "Test" im Namen enden, finden Sie die eigentlichen Tests. 
